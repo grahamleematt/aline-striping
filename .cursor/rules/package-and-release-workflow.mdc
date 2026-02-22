@@ -1,0 +1,14 @@
+---
+description: Package management and release workflow guardrails for this repository
+alwaysApply: true
+---
+
+# Package and Release Workflow
+
+- Use `yarn` for package operations in this repo.
+- Before upgrades, summarize expected impact and flag major-version migrations.
+- Prefer latest stable packages unless project constraints require pinning.
+- Do not create commits unless explicitly requested by the user.
+- When asked to commit, use descriptive messages that explain intent and impact.
+- Do not push unless explicitly requested by the user.
+- Verify core checks for touched areas (build, lint, or tests) before final handoff when practical.

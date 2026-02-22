@@ -1,0 +1,97 @@
+---
+description: Coding standards for the A-Line Striping frontend. Covers context gathering, TypeScript, Tailwind, React patterns, TanStack, accessibility, and quality gates.
+globs:
+alwaysApply: true
+---
+
+# Coding Standards
+
+## Context First
+
+Before writing or modifying code:
+
+- Read the target file and its immediate imports to understand existing patterns
+- Search `src/components/ui/` and `src/components/layout/` for existing shared components before creating new ones
+- Check `docs/` for business content that should drive page copy
+- Understand the route structure — see [routeTree.gen.ts](mdc:src/routeTree.gen.ts) for the generated tree
+
+## React Patterns
+
+- Prefer derived values over storing duplicated state
+- Avoid mirroring props into local state unless there is a clear state transition reason
+- Use pure helper functions for data shaping and presentation logic
+- Use `useMemo` only when it prevents measurable recomputation or re-render cost
+- Use `useEffect` only to synchronize with external systems (network, subscriptions, timers, browser APIs)
+- If an effect is required, keep dependencies complete and explain the external sync goal
+- Keep components composable: extract reusable logic to focused hooks or utilities
+
+## TanStack Patterns
+
+- Prefer TanStack-native capabilities before custom routing or scroll logic
+- Use `scrollRestoration` on the router (configured in [main.tsx](mdc:src/main.tsx)), not deprecated component APIs
+- Keep navigation behavior consistent across desktop and mobile
+- Use typed route params/search patterns and route-aware data loading via `createFileRoute`
+- Avoid custom transition logic that fights router navigation timing or causes flicker
+- Keep query keys stable and deterministic; colocate query config near feature boundaries
+- Use suspense/loading states intentionally to keep transitions smooth and predictable
+
+## TypeScript
+
+- Write all new code in TypeScript (`.ts`/`.tsx`) with `strict: true`
+- No `any` without justification — prefer `unknown` and narrow
+- Path alias: `@/*` maps to `src/*` (configured in [tsconfig.json](mdc:tsconfig.json))
+- Prefer `interface` for object shapes, `type` for unions and intersections
+- Use `as const` for literal tuples (query keys, route paths)
+
+## Imports
+
+- Use absolute paths (`@/`) for all imports: `import { cn } from '@/lib/utils'`
+- Group: external libraries → internal `@/` modules → relative imports
+
+## Styling
+
+- Use Tailwind CSS 4 classes exclusively — no inline styles, no new CSS files
+- Use design tokens defined in [index.css](mdc:src/index.css) `@theme` block (colors, spacing, fonts)
+- Use `cn()` from [utils.ts](mdc:src/lib/utils.ts) for conditional class merging
+- Use `class-variance-authority` (cva) for component variant APIs
+
+## Icons and Assets
+
+- Use `lucide-react` for all icons — never emojis in UI code
+- Use the [ResponsiveImage](mdc:src/components/ui/responsive-image.tsx) component for optimized image loading
+- Set explicit dimensions on images to prevent layout shift
+
+## Components
+
+Existing shared components — check before creating new ones:
+
+| Layer         | Components                                                                                                                                                                                                                                                                                                                           |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| UI primitives | [button](mdc:src/components/ui/button.tsx), [card](mdc:src/components/ui/card.tsx), [badge](mdc:src/components/ui/badge.tsx), [accordion](mdc:src/components/ui/accordion.tsx), [motion](mdc:src/components/ui/motion.tsx), [responsive-image](mdc:src/components/ui/responsive-image.tsx)                                           |
+| Layout        | [Header](mdc:src/components/layout/Header.tsx), [Footer](mdc:src/components/layout/Footer.tsx), [PageHero](mdc:src/components/layout/PageHero.tsx), [CTASection](mdc:src/components/layout/CTASection.tsx), [TrustIndicators](mdc:src/components/layout/TrustIndicators.tsx), [FAQSection](mdc:src/components/layout/FAQSection.tsx) |
+
+## Naming
+
+- `const` arrow functions for components and handlers
+- Prefix event handlers: `handleClick`, `handleKeyDown`, `handleSubmit`
+- Descriptive names — no abbreviations, no single-letter variables
+
+## Accessibility
+
+Interactive elements must include:
+
+- Semantic HTML (`button`, `nav`, `main`, `section`) over generic `div`
+- `aria-label` for screen readers on icon-only buttons
+- Keyboard handlers alongside click handlers
+- Focus-visible styles (the design system uses OSHA yellow ring)
+
+## Quality Gates
+
+Before considering work complete:
+
+- `yarn build` passes (includes TypeScript compilation)
+- `yarn lint` passes
+- Check modified files for linter errors using the agentic lint check
+- Accessibility attributes on all interactive elements
+- No hardcoded color/spacing values where Tailwind tokens exist
+- Mobile and desktop parity verified for layout and navigation changes

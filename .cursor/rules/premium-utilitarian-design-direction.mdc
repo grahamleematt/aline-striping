@@ -1,0 +1,54 @@
+---
+description: Maintain premium utilitarian visual direction for A-Line Striping UI
+globs: src/**/*.{tsx,css}
+alwaysApply: false
+---
+
+# Premium Utilitarian Design Direction
+
+## Audience
+
+Facility managers, industrial directors, and commercial property owners. Design must communicate OSHA compliance, durability, and trust — not creativity or playfulness.
+
+## Design System Reference
+
+All tokens are defined in the [index.css](mdc:src/index.css) `@theme` block. Do not introduce new color or spacing values outside this system.
+
+## Visual Language
+
+- **Corners**: 0px border-radius everywhere — sharp, mechanical, industrial
+- **Shadows**: Hard brutal box-shadows, no soft glows
+- **Spacing**: 8dp grid system, disciplined alignment in header/footer/hero compositions
+- **Transitions**: Snappy, mechanical motion via [motion.tsx](mdc:src/components/ui/motion.tsx) — no floaty or ornamental animation
+- **Contrast**: WCAG AA+ minimum, high-contrast text on dark backgrounds
+
+## Typography
+
+- **Display**: Barlow Condensed (`font-display`) — heavy, uppercase headings
+- **Body**: Public Sans (`font-sans`) — USWDS-grade legibility
+- Strong hierarchy with uppercase display treatment and direct content structure
+
+## Color Palette
+
+| Token                        | Role                                                   | Hex                  |
+| ---------------------------- | ------------------------------------------------------ | -------------------- |
+| `stripe-500`                 | OSHA Safety Yellow — primary accent, CTAs, focus rings | `#ffd100`            |
+| `electric-500`               | ADA Compliance Blue — links, secondary accent          | defined in index.css |
+| `asphalt-950` → `asphalt-50` | Concrete-to-near-black neutral scale                   | defined in index.css |
+
+## Anti-Patterns
+
+- No playful, soft, or generic SaaS styling
+- No rounded corners or pill shapes
+- No pastel colors or gradient washes
+- No decorative complexity over functional clarity
+- No emojis — use `lucide-react` icons
+
+## Reference Implementations
+
+| Component                                                  | Demonstrates                                           |
+| ---------------------------------------------------------- | ------------------------------------------------------ |
+| [Header.tsx](mdc:src/components/layout/Header.tsx)         | Navigation with industrial styling, dropdown alignment |
+| [PageHero.tsx](mdc:src/components/layout/PageHero.tsx)     | Hero composition with strong typography hierarchy      |
+| [CTASection.tsx](mdc:src/components/layout/CTASection.tsx) | Decisive call-to-action with high-contrast treatment   |
+| [button.tsx](mdc:src/components/ui/button.tsx)             | CVA variant API with industrial button styles          |

@@ -1,0 +1,14 @@
+---
+description: Safety-net delivery preferences for planning and implementation quality.
+alwaysApply: true
+---
+
+# Core Delivery Preferences
+
+- Start with a short implementation plan for multi-file or risky changes.
+- Surface edge cases before editing, then include mitigations in the plan.
+- Preserve working behavior unless the user explicitly asks for behavioral changes.
+- Prefer incremental, low-risk edits over broad rewrites.
+- Validate user-visible behavior after edits (especially navigation, layout, and responsiveness).
+- Verify mobile and desktop parity for any layout or navigation change.
+- Call out assumptions when requirements are ambiguous, then resolve quickly.
