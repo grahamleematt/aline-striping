@@ -23,6 +23,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
 
 export const Route = createLazyFileRoute("/services/parking-lot-striping")({
@@ -382,12 +383,13 @@ function ParkingLotStripingPage() {
               <Card variant="elevated" className="overflow-hidden p-8">
                 <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-stripe-500/20 to-stripe-400/5 blur-3xl" />
                 <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-asphalt-100">
-                  <img
+                  <ResponsiveImage
                     src="/images/parking-lot-striping.webp"
                     alt="Professional parking lot striping project by A-Line Striping"
-                    width={640}
-                    height={480}
-                    loading="lazy"
+                    widths={[400, 800]}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    width={800}
+                    height={369}
                     className="h-full w-full object-cover"
                   />
                 </div>

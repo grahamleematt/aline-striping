@@ -83,6 +83,8 @@ export function Footer() {
                 alt="A-Line Striping Inc."
                 width={180}
                 height={64}
+                loading="lazy"
+                decoding="async"
                 className="h-12 w-auto"
               />
             </Link>
@@ -236,6 +238,8 @@ export function Footer() {
                   alt="BBB A+ Accredited Business"
                   width={70}
                   height={40}
+                  loading="lazy"
+                  decoding="async"
                   className="h-8 w-auto"
                 />
               </a>

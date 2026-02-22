@@ -4,7 +4,7 @@ export const Route = createFileRoute("/why-us")({
   head: () => ({
     meta: [
       {
-        title: "Why Choose A-Line Striping Inc. | Women-Owned Since 2003",
+        title: "Why Choose A-Line Striping Inc.",
       },
       {
         name: "description",

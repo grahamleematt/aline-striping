@@ -25,6 +25,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
 
 export const Route = createLazyFileRoute(
@@ -328,12 +329,13 @@ function PrecisionLineworkSignagePage() {
               <Card variant="elevated" className="overflow-hidden p-8">
                 <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-stripe-500/20 to-stripe-400/5 blur-3xl" />
                 <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-asphalt-100">
-                  <img
+                  <ResponsiveImage
                     src="/images/precision-signage.webp"
                     alt="Custom parking lot signage and markings by A-Line Striping"
-                    width={640}
-                    height={480}
-                    loading="lazy"
+                    widths={[400, 800]}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    width={800}
+                    height={392}
                     className="h-full w-full object-cover"
                   />
                 </div>

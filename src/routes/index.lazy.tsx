@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn, SlideIn } from "@/components/ui/motion";
+import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, SERVICE_AREAS, formatPhoneLink } from "@/lib/utils";
 
 export const Route = createLazyFileRoute("/")({
@@ -30,7 +31,6 @@ const services = [
     description:
       "Improve safety and traffic flow with professional parking lot striping. We deliver clear, long-lasting lines for commercial lots of every size.",
     href: "/services/parking-lot-striping",
-    icon: "🅿️",
     gradient: "from-blue-500/20 to-cyan-500/20",
     image: "/images/parking-lot-striping.webp",
   },
@@ -39,7 +39,6 @@ const services = [
     description:
       "A-Line Striping, Inc. provides tailored warehouse striping solutions to define work zones, improve safety, and keep operations efficient and compliant.",
     href: "/services/warehouse-floor-striping",
-    icon: "🏭",
     gradient: "from-purple-500/20 to-pink-500/20",
     image: "/images/warehouse-floor-striping.webp",
   },
@@ -48,7 +47,6 @@ const services = [
     description:
       "Our sealcoating protects parking lots, commercial properties, and driveways from cracks, fading, and weather damage with a smooth, durable finish.",
     href: "/services/asphalt-sealcoating",
-    icon: "🛡️",
     gradient: "from-orange-500/20 to-red-500/20",
     image: "/images/asphalt-sealcoating.webp",
   },
@@ -57,7 +55,6 @@ const services = [
     description:
       "Our designers develop organized, high-efficiency parking lot layouts that maximize space, improve traffic flow, and ensure ADA compliance.",
     href: "/services/layout-design",
-    icon: "📐",
     gradient: "from-green-500/20 to-emerald-500/20",
     image: "/images/layout-design.webp",
   },
@@ -66,7 +63,6 @@ const services = [
     description:
       "Our signage designers enhance the organization of parking lots with clear traffic signs, custom striping layouts, fire lanes, pedestrian crossings, and no-parking zones.",
     href: "/services/precision-linework-signage",
-    icon: "⚠️",
     gradient: "from-yellow-500/20 to-amber-500/20",
     image: "/images/precision-signage.webp",
   },
@@ -282,12 +278,13 @@ function HomePage() {
             >
               <div className="relative flex h-full flex-col sm:flex-row">
                 <div className="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
-                  <img
+                  <ResponsiveImage
                     src={services[0].image}
                     alt={services[0].title}
+                    widths={[400, 800]}
+                    sizes="(max-width: 640px) 100vw, 40vw"
                     width={500}
                     height={350}
-                    loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-linear-to-r from-transparent to-white/10" />
@@ -321,12 +318,13 @@ function HomePage() {
                 className="group overflow-hidden"
               >
                 <div className="relative h-36 w-full overflow-hidden sm:h-40">
-                  <img
+                  <ResponsiveImage
                     src={service.image}
                     alt={service.title}
+                    widths={[400, 800]}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     width={400}
                     height={200}
-                    loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-white/20 to-transparent" />

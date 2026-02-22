@@ -1,5 +1,13 @@
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Phone, HelpCircle, MessageCircle } from "lucide-react";
+import {
+  ArrowRight,
+  Phone,
+  HelpCircle,
+  MessageCircle,
+  ParkingSquare,
+  Shield,
+  Factory,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -17,7 +25,7 @@ export const Route = createLazyFileRoute("/faq")({
 const faqCategories = [
   {
     title: "Parking Lot Striping",
-    icon: "🅿️",
+    icon: ParkingSquare,
     questions: [
       {
         question: "How often should a parking lot be re-striped?",
@@ -43,7 +51,7 @@ const faqCategories = [
   },
   {
     title: "Asphalt Sealcoating",
-    icon: "🛡️",
+    icon: Shield,
     questions: [
       {
         question: "What is asphalt sealcoating?",
@@ -69,7 +77,7 @@ const faqCategories = [
   },
   {
     title: "Warehouse Striping",
-    icon: "🏭",
+    icon: Factory,
     questions: [
       {
         question: "How long does warehouse striping last?",
@@ -90,7 +98,7 @@ const faqCategories = [
   },
   {
     title: "General Questions",
-    icon: "❓",
+    icon: HelpCircle,
     questions: [
       {
         question: "What areas do you serve?",
@@ -177,7 +185,7 @@ function FAQPage() {
                 className={categoryIndex > 0 ? "mt-16" : ""}
               >
                 <div className="mb-8 flex items-center gap-3">
-                  <span className="text-3xl">{category.icon}</span>
+                  <category.icon className="h-7 w-7 text-stripe-500" />
                   <h2 className="font-display text-2xl font-bold text-asphalt-900">
                     {category.title}
                   </h2>

@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { ResponsiveImage } from "@/components/ui/responsive-image";
 import {
   cn,
   BUSINESS_INFO,
@@ -59,11 +60,14 @@ export function Header() {
             to="/"
             className="group flex items-center gap-2.5 transition-opacity duration-200 hover:opacity-80 md:gap-3"
           >
-            <img
-              src="/images/logo.png"
+            <ResponsiveImage
+              src="/images/logo.webp"
               alt="A-Line Striping Inc."
-              width={160}
-              height={57}
+              width={320}
+              height={114}
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
               className="h-9 w-auto md:h-11"
             />
           </Link>

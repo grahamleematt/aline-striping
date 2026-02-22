@@ -12,6 +12,10 @@ import {
   Zap,
   CircleDollarSign,
   Hammer,
+  ParkingSquare,
+  Home,
+  Wrench,
+  Factory,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,6 +26,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
 
 export const Route = createLazyFileRoute("/services/asphalt-sealcoating")({
@@ -57,25 +62,25 @@ const benefits = [
 
 const services = [
   {
-    icon: "🅿️",
+    icon: ParkingSquare,
     title: "Parking Lot Sealcoating",
     description:
       "Commercial-grade sealant for busy parking lots, protecting against heavy traffic, UV rays, and weather. Perfect for retail centers, industrial lots, offices, churches, and schools.",
   },
   {
-    icon: "🏠",
+    icon: Home,
     title: "Driveway Sealcoating",
     description:
       "Residential sealcoating that prevents cracking, fading, and water intrusion, keeping your property looking sharp and protected for years.",
   },
   {
-    icon: "🔧",
+    icon: Wrench,
     title: "Crack Sealing & Repair",
     description:
       "Before applying sealcoat, we fill cracks and repair problem areas to ensure a smooth, long-lasting finish that protects your investment.",
   },
   {
-    icon: "🏭",
+    icon: Factory,
     title: "Commercial & Industrial",
     description:
       "Industrial-strength sealing for warehouse yards, loading areas, and trucking lanes built for heavy-duty use and maximum durability.",
@@ -289,9 +294,7 @@ function AsphaltSealcoatingPage() {
                 key={service.title}
                 className="glass-dark rounded-2xl border border-white/10 p-8"
               >
-                <span className="mb-4 inline-block text-4xl">
-                  {service.icon}
-                </span>
+                <service.icon className="mb-4 h-9 w-9 text-stripe-400" />
                 <h3 className="mb-3 font-display text-xl font-bold text-white">
                   {service.title}
                 </h3>
@@ -349,12 +352,13 @@ function AsphaltSealcoatingPage() {
               <Card variant="elevated" className="overflow-hidden p-8">
                 <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-stripe-500/20 to-stripe-400/5 blur-3xl" />
                 <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-asphalt-100">
-                  <img
+                  <ResponsiveImage
                     src="/images/asphalt-sealcoating.webp"
                     alt="Freshly sealcoated parking lot by A-Line Striping"
-                    width={640}
-                    height={480}
-                    loading="lazy"
+                    widths={[400, 800]}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    width={800}
+                    height={164}
                     className="h-full w-full object-cover"
                   />
                 </div>

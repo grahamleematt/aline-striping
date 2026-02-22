@@ -24,6 +24,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
 
 export const Route = createLazyFileRoute("/services/layout-design")({
@@ -336,12 +337,13 @@ function LayoutDesignPage() {
               <Card variant="elevated" className="overflow-hidden p-8">
                 <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-stripe-500/20 to-stripe-400/5 blur-3xl" />
                 <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-asphalt-100">
-                  <img
+                  <ResponsiveImage
                     src="/images/layout-design.webp"
                     alt="Parking lot layout design plan by A-Line Striping"
-                    width={640}
-                    height={480}
-                    loading="lazy"
+                    widths={[400]}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    width={800}
+                    height={665}
                     className="h-full w-full object-cover"
                   />
                 </div>

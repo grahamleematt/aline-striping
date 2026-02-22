@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
 
 export const Route = createLazyFileRoute("/our-work")({
@@ -182,12 +183,13 @@ function OurWorkPage() {
                 className="group overflow-hidden"
               >
                 <div className="relative aspect-4/3 overflow-hidden bg-asphalt-100">
-                  <img
+                  <ResponsiveImage
                     src={`/images/projects/${project.id}.webp`}
                     alt={project.title}
+                    widths={[400]}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     width={640}
                     height={480}
-                    loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-asphalt-900/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
