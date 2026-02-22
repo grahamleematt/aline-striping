@@ -50,30 +50,30 @@ graph TB
 
 ## Tech Stack
 
-| Layer | Technology |
-| ----- | ---------- |
-| **Framework** | React 19 + React Compiler |
-| **Routing** | TanStack Router (file-based, type-safe) |
-| **Data** | TanStack Query |
-| **Styling** | Tailwind CSS 4 + custom industrial design system |
+| Layer             | Technology                                                        |
+| ----------------- | ----------------------------------------------------------------- |
+| **Framework**     | React 19 + React Compiler                                         |
+| **Routing**       | TanStack Router (file-based, type-safe)                           |
+| **Data**          | TanStack Query                                                    |
+| **Styling**       | Tailwind CSS 4 + custom industrial design system                  |
 | **UI Primitives** | Radix UI (accordion, dialog, dropdown, navigation, select, toast) |
-| **Animation** | Motion (Framer Motion) |
-| **Icons** | Lucide React |
-| **Validation** | Zod 4 |
-| **Build** | Vite 7 with image optimization (Sharp, SVGO) |
-| **Language** | TypeScript 5.9 (strict mode) |
+| **Animation**     | Motion (Framer Motion)                                            |
+| **Icons**         | Lucide React                                                      |
+| **Validation**    | Zod 4                                                             |
+| **Build**         | Vite 7 with image optimization (Sharp, SVGO)                      |
+| **Language**      | TypeScript 5.9 (strict mode)                                      |
 
 ## Design System
 
 The UI follows a **Premium Utilitarian / Industrial** direction — built for facility managers and commercial operators who value clarity over decoration.
 
-| Token | Purpose |
-| ----- | ------- |
-| `stripe-500` | OSHA Safety Yellow — primary accent, CTAs, focus rings |
-| `electric-500` | ADA Compliance Blue — links, secondary accent |
-| `asphalt-950 → 50` | Neutral scale — concrete to near-black |
-| `font-display` | Barlow Condensed — industrial uppercase headings |
-| `font-sans` | Public Sans — USWDS-grade body text |
+| Token              | Purpose                                                |
+| ------------------ | ------------------------------------------------------ |
+| `stripe-500`       | OSHA Safety Yellow — primary accent, CTAs, focus rings |
+| `electric-500`     | ADA Compliance Blue — links, secondary accent          |
+| `asphalt-950 → 50` | Neutral scale — concrete to near-black                 |
+| `font-display`     | Barlow Condensed — industrial uppercase headings       |
+| `font-sans`        | Public Sans — USWDS-grade body text                    |
 
 Key constraints: **0px border-radius**, **8dp spacing grid**, **hard box-shadows**, **WCAG AA+ contrast**.
 
@@ -130,10 +130,10 @@ src/
 
 ## Configuration
 
-| Item | Location | Action Required |
-| ---- | -------- | --------------- |
-| GA4 Measurement ID | `index.html` | Replace `G-XXXXXXXXXX` with your GA4 ID |
-| Web3Forms API Key | `src/routes/contact.lazy.tsx` | Replace `YOUR_WEB3FORMS_ACCESS_KEY` ([get one free](https://web3forms.com)) |
+| Item               | Location                      | Action Required                                                             |
+| ------------------ | ----------------------------- | --------------------------------------------------------------------------- |
+| GA4 Measurement ID | `index.html`                  | Replace `G-XXXXXXXXXX` with your GA4 ID                                     |
+| Web3Forms API Key  | `src/routes/contact.lazy.tsx` | Replace `YOUR_WEB3FORMS_ACCESS_KEY` ([get one free](https://web3forms.com)) |
 
 ## Sitemap
 
