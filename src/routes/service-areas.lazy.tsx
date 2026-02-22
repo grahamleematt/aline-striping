@@ -5,7 +5,6 @@ import {
   MapPin,
   CheckCircle2,
   Shield,
-  Star,
   Zap,
   Sparkles,
   Building2,
@@ -20,6 +19,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, SERVICE_AREAS, formatPhoneLink } from "@/lib/utils";
+import { PageHero } from "@/components/layout/PageHero";
+import { CTASection } from "@/components/layout/CTASection";
+import { TrustIndicators } from "@/components/layout/TrustIndicators";
 
 export const Route = createLazyFileRoute("/service-areas")({
   component: ServiceAreasPage,
@@ -114,79 +116,59 @@ function ServiceAreasPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-asphalt-950 pb-32 pt-40">
-        <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -left-40 top-20 h-80 w-80 rounded-full bg-stripe-500/10 blur-[100px]" />
-        <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-electric-500/10 blur-[120px]" />
-        <div className="absolute inset-0 bg-spotlight opacity-50" />
-
-        <div className="container-section relative">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-8 inline-flex animate-fade-in-up">
-              <Badge variant="glass" className="px-4 py-2 text-sm">
-                <MapPin className="mr-2 h-4 w-4 text-stripe-400" />
-                <span className="text-white/90">Based in Horn Lake, MS</span>
-              </Badge>
-            </div>
-
-            <h1 className="mb-6 animate-fade-in-up stagger-1 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-              Serving the
-              <br />
-              <span className="gradient-text">Mid-South Region</span>
-            </h1>
-
-            <p className="mx-auto mb-10 max-w-2xl animate-fade-in-up stagger-2 text-lg text-asphalt-300 sm:text-xl">
-              A-Line Striping, Inc. proudly provides high-quality striping,
-              sealcoating, signage, and parking lot layout services throughout
-              Mississippi, Tennessee, and Arkansas.
-            </p>
-
-            <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button asChild variant="primary" size="xl">
-                <Link to="/contact">
-                  Request a Free Quote
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline-light" size="xl">
-                <a href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}>
-                  <Phone className="mr-2 h-5 w-5" />
-                  {BUSINESS_INFO.phone}
-                </a>
-              </Button>
-            </div>
-
-            {/* Trust indicators */}
-            <div className="mt-12 flex animate-fade-in-up stagger-4 flex-wrap items-center justify-center gap-8 text-asphalt-300">
-              <div className="flex items-center gap-2">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-stripe-500 text-stripe-500"
-                    />
-                  ))}
-                </div>
-                <span className="text-sm font-medium">
-                  {BUSINESS_INFO.googleRating} on Google
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Shield className="h-5 w-5 text-success-400" />
-                <span className="text-sm font-medium">
-                  {BUSINESS_INFO.warranty} Warranty
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-stripe-400" />
-                <span className="text-sm font-medium">
-                  {BUSINESS_INFO.yearsExperience}+ Years
-                </span>
-              </div>
-            </div>
+      <PageHero>
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="mb-8 inline-flex animate-fade-in-up">
+            <Badge variant="glass" className="px-4 py-2 text-sm">
+              <MapPin className="mr-2 h-4 w-4 text-stripe-400" />
+              <span className="text-white/90">Based in Horn Lake, MS</span>
+            </Badge>
           </div>
+
+          <h1 className="mb-6 animate-fade-in-up stagger-1 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            Serving the
+            <br />
+            <span className="gradient-text">Mid-South Region</span>
+          </h1>
+
+          <p className="mx-auto mb-10 max-w-2xl animate-fade-in-up stagger-2 text-lg text-asphalt-300 sm:text-xl">
+            A-Line Striping, Inc. proudly provides high-quality striping,
+            sealcoating, signage, and parking lot layout services throughout
+            Mississippi, Tennessee, and Arkansas.
+          </p>
+
+          <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button asChild variant="primary" size="xl">
+              <Link to="/contact">
+                Request a Free Quote
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline-light" size="xl">
+              <a href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}>
+                <Phone className="mr-2 h-5 w-5" />
+                {BUSINESS_INFO.phone}
+              </a>
+            </Button>
+          </div>
+
+          <TrustIndicators
+            className="animate-fade-in-up stagger-4"
+            showStars
+            items={[
+              {
+                icon: Shield,
+                text: `${BUSINESS_INFO.warranty} Warranty`,
+                iconClassName: "text-success-400",
+              },
+              {
+                icon: CheckCircle2,
+                text: `${BUSINESS_INFO.yearsExperience}+ Years`,
+              },
+            ]}
+          />
         </div>
-      </section>
+      </PageHero>
 
       {/* Service Areas Grid */}
       <section className="relative pt-16 pb-24 lg:pb-32">
@@ -482,50 +464,11 @@ function ServiceAreasPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative overflow-hidden py-24 lg:py-32">
-        <div className="absolute inset-0 bg-linear-to-br from-stripe-500 via-stripe-400 to-stripe-500" />
-        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-        <div className="absolute left-10 top-10 h-32 w-32 rounded-full bg-white/10 blur-3xl" />
-        <div className="absolute bottom-10 right-10 h-48 w-48 rounded-full bg-asphalt-900/10 blur-3xl" />
-
-        <div className="container-section relative">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-6 font-display text-4xl font-bold text-asphalt-900 sm:text-5xl">
-              Need professional services
-              <br />
-              in your area?
-            </h2>
-            <p className="mb-10 text-xl text-asphalt-800">
-              A-Line Striping, Inc. is ready to serve your commercial or
-              industrial property with fast, reliable, and professional results.
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button
-                asChild
-                size="xl"
-                className="bg-asphalt-900 text-white shadow-xl hover:bg-asphalt-800"
-              >
-                <Link to="/contact">
-                  Request a Free Quote
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="xl"
-                className="border-asphalt-900 text-asphalt-900 hover:bg-asphalt-900/10"
-              >
-                <a href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}>
-                  <Phone className="mr-2 h-5 w-5" />
-                  {BUSINESS_INFO.phone}
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        heading={<>Need professional services<br />in your area?</>}
+        description="A-Line Striping, Inc. is ready to serve your commercial or industrial property with fast, reliable, and professional results."
+        primaryButtonText="Request a Free Quote"
+      />
     </div>
   );
 }

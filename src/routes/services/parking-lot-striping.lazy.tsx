@@ -25,6 +25,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
+import { SERVICE_FAQS } from "@/lib/constants";
+import { PageHero } from "@/components/layout/PageHero";
 
 export const Route = createLazyFileRoute("/services/parking-lot-striping")({
   component: ParkingLotStripingPage,
@@ -111,43 +113,17 @@ const benefits = [
   },
 ];
 
-const faqs = [
-  {
-    question: "How often should a parking lot be re-striped?",
-    answer:
-      "For most commercial lots, re-striping is recommended every 12–24 months, depending on traffic volume, climate exposure, and wear.",
-  },
-  {
-    question: "Do you handle ADA compliance and fire-lane markings?",
-    answer:
-      "Yes. We provide full ADA-compliant striping, accessible parking zones, fire-lane painting, and safety signage to meet local code requirements.",
-  },
-  {
-    question:
-      "Can you customize the layout to fit my lot size and traffic flow?",
-    answer:
-      "Absolutely. Every striping plan is tailored to your lot's dimensions, traffic patterns, and intended use.",
-  },
-  {
-    question: "Is sealcoating available along with striping?",
-    answer:
-      "Yes. We offer combined asphalt sealcoating and striping services to maximize pavement life and improve line visibility.",
-  },
-];
+const faqs = SERVICE_FAQS.parkingLotStriping;
 
 function ParkingLotStripingPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-asphalt-950 px-0 pb-16 pt-24 sm:pb-24 sm:pt-32 lg:pb-32 lg:pt-40">
-        {/* Background elements - hidden on mobile for performance */}
-        <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -left-40 top-20 hidden h-80 w-80 rounded-full bg-stripe-500/10 blur-[100px] sm:block" />
-        <div className="absolute -right-40 bottom-0 hidden h-96 w-96 rounded-full bg-electric-500/10 blur-[120px] sm:block" />
-        <div className="absolute inset-0 bg-spotlight opacity-50" />
-
-        <div className="container-section relative">
-          <div className="mx-auto max-w-4xl text-center">
+      <PageHero
+        hideBlursOnMobile
+        className="px-0 pb-16 pt-24 sm:pb-24 sm:pt-32 lg:pb-32 lg:pt-40"
+      >
+        <div className="mx-auto max-w-4xl text-center">
             <div className="mb-6 inline-flex animate-fade-in-up sm:mb-8">
               <Badge
                 variant="glass"
@@ -227,8 +203,7 @@ function ParkingLotStripingPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+      </PageHero>
 
       {/* Services Grid */}
       <section className="relative pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-32">

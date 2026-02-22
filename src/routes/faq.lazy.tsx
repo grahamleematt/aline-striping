@@ -16,6 +16,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { PageHero } from "@/components/layout/PageHero";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
 
 export const Route = createLazyFileRoute("/faq")({
@@ -149,12 +150,7 @@ function FAQPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-asphalt-950 pb-24 pt-40">
-        <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -left-40 top-20 h-80 w-80 rounded-full bg-stripe-500/10 blur-[100px]" />
-        <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-electric-500/10 blur-[120px]" />
-
-        <div className="container-section relative">
+      <PageHero showSpotlight={false} className="pb-24">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="glass" className="mb-6">
               <HelpCircle className="mr-1.5 h-3.5 w-3.5" />
@@ -172,8 +168,7 @@ function FAQPage() {
               what to expect when working with A-Line Striping.
             </p>
           </div>
-        </div>
-      </section>
+      </PageHero>
 
       {/* FAQ Content */}
       <section className="py-24 lg:py-32">

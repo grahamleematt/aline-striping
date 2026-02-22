@@ -1,7 +1,5 @@
-import { createLazyFileRoute, Link } from "@tanstack/react-router";
+import { createLazyFileRoute } from "@tanstack/react-router";
 import {
-  ArrowRight,
-  Phone,
   CheckCircle2,
   Shield,
   Award,
@@ -12,10 +10,11 @@ import {
   Clock,
   Zap,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
+import { PageHero } from "@/components/layout/PageHero";
+import { CTASection } from "@/components/layout/CTASection";
+import { BUSINESS_INFO } from "@/lib/utils";
 
 export const Route = createLazyFileRoute("/why-us")({
   component: WhyUsPage,
@@ -81,47 +80,40 @@ function WhyUsPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-asphalt-950 pb-32 pt-40">
-        {/* Background elements */}
-        <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -left-40 top-20 h-80 w-80 rounded-full bg-stripe-500/10 blur-[100px]" />
-        <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-electric-500/10 blur-[120px]" />
+      <PageHero showSpotlight={false}>
+        <div className="mx-auto max-w-4xl text-center">
+          <Badge variant="glass" className="mb-6">
+            <Heart className="mr-1.5 h-3.5 w-3.5" />
+            Women-Owned Since {BUSINESS_INFO.founded}
+          </Badge>
 
-        <div className="container-section relative">
-          <div className="mx-auto max-w-4xl text-center">
-            <Badge variant="glass" className="mb-6">
-              <Heart className="mr-1.5 h-3.5 w-3.5" />
-              Women-Owned Since {BUSINESS_INFO.founded}
+          <h1 className="mb-6 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">
+            Built on trust,
+            <br />
+            <span className="gradient-text">driven by quality</span>
+          </h1>
+
+          <p className="mx-auto max-w-2xl text-xl text-asphalt-300">
+            For over {BUSINESS_INFO.yearsExperience} years, our simple promise
+            has guided our growth: deliver quality work with honesty and care.
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Badge variant="rating">
+              <Star className="mr-1.5 h-4 w-4 fill-current" />
+              {BUSINESS_INFO.googleRating}/5 Rating
             </Badge>
-
-            <h1 className="mb-6 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">
-              Built on trust,
-              <br />
-              <span className="gradient-text">driven by quality</span>
-            </h1>
-
-            <p className="mx-auto max-w-2xl text-xl text-asphalt-300">
-              For over {BUSINESS_INFO.yearsExperience} years, our simple promise
-              has guided our growth: deliver quality work with honesty and care.
-            </p>
-
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Badge variant="rating">
-                <Star className="mr-1.5 h-4 w-4 fill-current" />
-                {BUSINESS_INFO.googleRating}/5 Rating
-              </Badge>
-              <Badge variant="glass-dark">
-                <Award className="mr-1.5 h-4 w-4" />
-                BBB A+ Accredited
-              </Badge>
-              <Badge variant="warranty">
-                <Shield className="mr-1.5 h-4 w-4" />
-                {BUSINESS_INFO.warranty} Warranty
-              </Badge>
-            </div>
+            <Badge variant="glass-dark">
+              <Award className="mr-1.5 h-4 w-4" />
+              BBB A+ Accredited
+            </Badge>
+            <Badge variant="warranty">
+              <Shield className="mr-1.5 h-4 w-4" />
+              {BUSINESS_INFO.warranty} Warranty
+            </Badge>
           </div>
         </div>
-      </section>
+      </PageHero>
 
       {/* Story Section */}
       <section className="relative pt-16 pb-24 lg:pb-32">
@@ -287,47 +279,17 @@ function WhyUsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden py-24 lg:py-32">
-        <div className="absolute inset-0 bg-linear-to-br from-stripe-500 via-stripe-400 to-stripe-500" />
-        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-
-        <div className="container-section relative">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-6 font-display text-4xl font-bold text-asphalt-900">
-              Ready to work with a team
-              <br />
-              that cares?
-            </h2>
-            <p className="mb-10 text-xl text-asphalt-800">
-              Whether you're managing a commercial lot, industrial facility, or
-              residential community, you deserve quality workmanship.
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button
-                asChild
-                size="xl"
-                className="bg-asphalt-900 text-white hover:bg-asphalt-800 shadow-xl"
-              >
-                <Link to="/contact">
-                  Request a Free Quote
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="xl"
-                className="border-asphalt-900 text-asphalt-900 hover:bg-asphalt-900/10"
-              >
-                <a href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}>
-                  <Phone className="mr-2 h-5 w-5" />
-                  {BUSINESS_INFO.phone}
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        heading={
+          <>
+            Ready to work with a team
+            <br />
+            that cares?
+          </>
+        }
+        description="Whether you're managing a commercial lot, industrial facility, or residential community, you deserve quality workmanship."
+        primaryButtonText="Request a Free Quote"
+      />
     </div>
   );
 }

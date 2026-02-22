@@ -18,6 +18,7 @@ import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/ui/motion";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, SERVICE_AREAS, formatPhoneLink } from "@/lib/utils";
+import { TESTIMONIALS } from "@/lib/constants";
 
 export const Route = createLazyFileRoute("/")({
   component: HomePage,
@@ -73,29 +74,7 @@ const stats = [
   { value: "100%", label: "Satisfaction", icon: Users },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Alex is great to work with and communicates thoroughly. Will highly recommend A-line to friends and family!",
-    author: "Tori S.",
-    role: "Business Owner",
-    rating: 5,
-  },
-  {
-    quote:
-      "Professional, sincere, honest and has always done quality work for us. You will not go wrong if you give A-Line Striping a call.",
-    author: "Steven L.",
-    role: "15-Year Client",
-    rating: 5,
-  },
-  {
-    quote:
-      "Amazing team! They saved us from an unfinished job and were quick, accurate, and friendly!",
-    author: "First Baptist Church",
-    role: "Olive Branch, MS",
-    rating: 5,
-  },
-];
+const testimonials = TESTIMONIALS.slice(0, 3);
 
 function HomePage() {
   return (

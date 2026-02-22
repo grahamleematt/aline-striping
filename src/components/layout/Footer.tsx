@@ -3,6 +3,7 @@ import { Phone, MapPin, Clock, Star, ArrowUpRight } from "lucide-react";
 import {
   BUSINESS_INFO,
   SERVICE_AREAS,
+  NAV_ITEMS,
   FOOTER_LINKS,
   formatPhoneLink,
   trackPhoneClick,
@@ -21,19 +22,9 @@ const footerLinkStyles = cn(
   "active:text-stripe-400",
 );
 
-const footerServices = [
-  { label: "Parking Lot Striping", href: "/services/parking-lot-striping" },
-  {
-    label: "Warehouse Floor Striping",
-    href: "/services/warehouse-floor-striping",
-  },
-  { label: "Asphalt Sealcoating", href: "/services/asphalt-sealcoating" },
-  { label: "Layout Design", href: "/services/layout-design" },
-  {
-    label: "Precision Linework & Signage",
-    href: "/services/precision-linework-signage",
-  },
-];
+const footerServices = NAV_ITEMS.flatMap((item) =>
+  "children" in item && item.label === "Services" ? item.children : [],
+);
 
 const footerQuickLinks = [
   { label: "Home", href: "/" },
@@ -89,16 +80,25 @@ export function Footer() {
                   onClick={trackPhoneClick}
                   className="inline-flex items-center gap-3 text-white transition-colors hover:text-stripe-400"
                 >
-                  <Phone className="h-4 w-4 text-stripe-500" />
+                  <Phone
+                    className="h-4 w-4 text-stripe-500"
+                    strokeWidth={2.5}
+                  />
                   <span className="font-semibold">{BUSINESS_INFO.phone}</span>
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-stripe-500" />
+                <MapPin
+                  className="mt-0.5 h-4 w-4 shrink-0 text-stripe-500"
+                  strokeWidth={2.5}
+                />
                 <span className="text-sm">{BUSINESS_INFO.address.full}</span>
               </li>
               <li className="flex items-start gap-3">
-                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-stripe-500" />
+                <Clock
+                  className="mt-0.5 h-4 w-4 shrink-0 text-stripe-500"
+                  strokeWidth={2.5}
+                />
                 <div className="text-sm">
                   <p>{BUSINESS_INFO.hours.weekday}</p>
                   <p className="text-asphalt-400">
@@ -186,7 +186,7 @@ export function Footer() {
                   SERVICE_AREAS.arkansas.length -
                   2}{" "}
                 more
-                <ArrowUpRight className="h-3 w-3" />
+                <ArrowUpRight className="h-3 w-3" strokeWidth={2.5} />
               </Link>
             </div>
 
@@ -203,6 +203,7 @@ export function Footer() {
                     <Star
                       key={i}
                       className="h-3.5 w-3.5 fill-stripe-500 text-stripe-500"
+                      strokeWidth={2.5}
                     />
                   ))}
                 </div>

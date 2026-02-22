@@ -7,25 +7,22 @@ import {
   Ruler,
   Car,
   MapPin,
-  Star,
   Zap,
   Sparkles,
   Target,
   TrendingUp,
   Accessibility,
-  HelpCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
+import { SERVICE_FAQS } from "@/lib/constants";
+import { PageHero } from "@/components/layout/PageHero";
+import { CTASection } from "@/components/layout/CTASection";
+import { FAQSection } from "@/components/layout/FAQSection";
+import { TrustIndicators } from "@/components/layout/TrustIndicators";
 
 export const Route = createLazyFileRoute("/services/layout-design")({
   component: LayoutDesignPage,
@@ -112,104 +109,60 @@ const benefits = [
   "Create safer pedestrian pathways",
 ];
 
-const layoutFaqs = [
-  {
-    question: "Do I need a blueprint before you can design a layout?",
-    answer:
-      "No. Our team handles everything from measurements to the final design. We visit your property, assess the space, and create a custom layout from scratch — no existing blueprint required.",
-  },
-  {
-    question: "Can you redesign an existing parking lot layout?",
-    answer:
-      "Absolutely. We regularly redesign existing lots to increase capacity, improve flow, or bring them into ADA compliance. We'll evaluate your current setup and recommend the best improvements.",
-  },
-  {
-    question: "How much can a new layout increase my parking capacity?",
-    answer:
-      "Depending on the current configuration, a professionally designed layout can increase parking capacity by 10-25% without expanding the physical lot size. We optimize stall sizing, angles, and lane widths to maximize every square foot.",
-  },
-  {
-    question: "How long does the layout design process take?",
-    answer:
-      "Most projects are completed within 1-2 weeks from the initial site visit to the final design. Complex commercial properties may take slightly longer. We work with your timeline to minimize disruption.",
-  },
-];
-
 function LayoutDesignPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-asphalt-950 pb-32 pt-40">
-        <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -left-40 top-20 h-80 w-80 rounded-full bg-stripe-500/10 blur-[100px]" />
-        <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-electric-500/10 blur-[120px]" />
-        <div className="absolute inset-0 bg-spotlight opacity-50" />
-
-        <div className="container-section relative">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-8 inline-flex animate-fade-in-up">
-              <Badge variant="glass" className="px-4 py-2 text-sm">
-                <Ruler className="mr-2 h-4 w-4 text-stripe-400" />
-                <span className="text-white/90">Optimize Every Space</span>
-              </Badge>
-            </div>
-
-            <h1 className="mb-6 animate-fade-in-up stagger-1 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-              Parking Lot
-              <br />
-              <span className="gradient-text">Layout Design</span>
-            </h1>
-
-            <p className="mx-auto mb-10 max-w-2xl animate-fade-in-up stagger-2 text-lg text-asphalt-300 sm:text-xl">
-              A well-planned parking lot saves space, keeps traffic moving, and
-              makes parking easier. Our designers create layouts that balance
-              efficiency, safety, and convenience for everyone.
-            </p>
-
-            <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button asChild variant="primary" size="xl">
-                <Link to="/contact">
-                  Get a Free Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline-light" size="xl">
-                <a href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}>
-                  <Phone className="mr-2 h-5 w-5" />
-                  {BUSINESS_INFO.phone}
-                </a>
-              </Button>
-            </div>
-
-            {/* Trust indicators */}
-            <div className="mt-12 flex animate-fade-in-up stagger-4 flex-wrap items-center justify-center gap-8 text-asphalt-300">
-              <div className="flex items-center gap-2">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-stripe-500 text-stripe-500"
-                    />
-                  ))}
-                </div>
-                <span className="text-sm font-medium">
-                  {BUSINESS_INFO.googleRating} on Google
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Shield className="h-5 w-5 text-success-400" />
-                <span className="text-sm font-medium">
-                  {BUSINESS_INFO.yearsExperience}+ Years Experience
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-stripe-400" />
-                <span className="text-sm font-medium">ADA Experts</span>
-              </div>
-            </div>
+      <PageHero>
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="mb-8 inline-flex animate-fade-in-up">
+            <Badge variant="glass" className="px-4 py-2 text-sm">
+              <Ruler className="mr-2 h-4 w-4 text-stripe-400" />
+              <span className="text-white/90">Optimize Every Space</span>
+            </Badge>
           </div>
+
+          <h1 className="mb-6 animate-fade-in-up stagger-1 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            Parking Lot
+            <br />
+            <span className="gradient-text">Layout Design</span>
+          </h1>
+
+          <p className="mx-auto mb-10 max-w-2xl animate-fade-in-up stagger-2 text-lg text-asphalt-300 sm:text-xl">
+            A well-planned parking lot saves space, keeps traffic moving, and
+            makes parking easier. Our designers create layouts that balance
+            efficiency, safety, and convenience for everyone.
+          </p>
+
+          <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button asChild variant="primary" size="xl">
+              <Link to="/contact">
+                Get a Free Consultation
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline-light" size="xl">
+              <a href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}>
+                <Phone className="mr-2 h-5 w-5" />
+                {BUSINESS_INFO.phone}
+              </a>
+            </Button>
+          </div>
+
+          <TrustIndicators
+            className="animate-fade-in-up stagger-4"
+            showStars
+            items={[
+              {
+                icon: Shield,
+                text: `${BUSINESS_INFO.yearsExperience}+ Years Experience`,
+                iconClassName: "text-success-400",
+              },
+              { icon: CheckCircle2, text: "ADA Experts" },
+            ]}
+          />
         </div>
-      </section>
+      </PageHero>
 
       {/* Features Grid */}
       <section className="relative pt-16 pb-24 lg:pb-32">
@@ -373,86 +326,22 @@ function LayoutDesignPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="bg-asphalt-50 py-24 lg:py-32">
-        <div className="container-section">
-          <div className="mx-auto max-w-3xl">
-            <div className="mb-10 text-center">
-              <Badge variant="accent" className="mb-4">
-                <HelpCircle className="mr-1.5 h-3.5 w-3.5" />
-                FAQ
-              </Badge>
-              <h2 className="font-display text-4xl font-bold text-asphalt-900 sm:text-5xl">
-                Common questions about
-                <br />
-                <span className="gradient-text">layout design</span>
-              </h2>
-            </div>
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {layoutFaqs.map((faq, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`layout-faq-${index}`}
-                  className="rounded-2xl border border-asphalt-100 bg-white px-6 shadow-sm transition-shadow hover:shadow-md"
-                >
-                  <AccordionTrigger className="py-5 text-left font-semibold text-asphalt-900 hover:no-underline">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-5 text-asphalt-600">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </div>
-      </section>
+      <FAQSection
+        description="Everything you need to know about our parking lot layout design services."
+        faqs={SERVICE_FAQS.layoutDesign}
+      />
 
-      {/* CTA Section */}
-      <section className="relative overflow-hidden py-24 lg:py-32">
-        <div className="absolute inset-0 bg-linear-to-br from-stripe-500 via-stripe-400 to-stripe-500" />
-        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-        <div className="absolute left-10 top-10 h-32 w-32 rounded-full bg-white/10 blur-3xl" />
-        <div className="absolute bottom-10 right-10 h-48 w-48 rounded-full bg-asphalt-900/10 blur-3xl" />
-
-        <div className="container-section relative">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-6 font-display text-4xl font-bold text-asphalt-900 sm:text-5xl">
-              Ready to optimize
-              <br />
-              your parking lot?
-            </h2>
-            <p className="mb-10 text-xl text-asphalt-800">
-              Get a free consultation and discover how a better layout can
-              improve your property. We'll assess your space and provide expert
-              recommendations.
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button
-                asChild
-                size="xl"
-                className="bg-asphalt-900 text-white shadow-xl hover:bg-asphalt-800"
-              >
-                <Link to="/contact">
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="xl"
-                className="border-asphalt-900 text-asphalt-900 hover:bg-asphalt-900/10"
-              >
-                <a href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}>
-                  <Phone className="mr-2 h-5 w-5" />
-                  {BUSINESS_INFO.phone}
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        heading={
+          <>
+            Ready to optimize
+            <br />
+            your parking lot?
+          </>
+        }
+        description="Get a free consultation and discover how a better layout can improve your property. We'll assess your space and provide expert recommendations."
+        primaryButtonText="Get Started"
+      />
     </div>
   );
 }
