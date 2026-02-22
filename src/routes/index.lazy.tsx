@@ -128,10 +128,10 @@ function HomePage() {
             <ResponsiveImage
               src="/images/parking-lot-striping.webp"
               alt="Industrial parking lot striping in progress"
-              widths={[800, 1200]}
+              widths={[800, 1200, 1600]}
               sizes="50vw"
-              width={1200}
-              height={900}
+              width={1920}
+              height={1080}
               loading="eager"
               fetchPriority="high"
               className="absolute inset-0 h-full w-full object-cover"
@@ -147,7 +147,7 @@ function HomePage() {
               widths={[400, 800]}
               sizes="100vw"
               width={800}
-              height={400}
+              height={450}
               loading="eager"
               className="h-full w-full object-cover"
             />
