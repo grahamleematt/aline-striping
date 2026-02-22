@@ -5,6 +5,7 @@ import {
   SERVICE_AREAS,
   FOOTER_LINKS,
   formatPhoneLink,
+  trackPhoneClick,
   cn,
 } from "@/lib/utils";
 
@@ -21,7 +22,7 @@ const footerLinkStyles = cn(
   // Focus state (keyboard navigation)
   "focus-visible:text-white focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4",
   // Active/pressed state
-  "active:text-stripe-400 active:scale-[0.98]"
+  "active:text-stripe-400 active:scale-[0.98]",
 );
 
 const footerServices = [
@@ -74,22 +75,16 @@ export function Footer() {
                 "hover:opacity-90",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stripe-500 focus-visible:ring-offset-2 focus-visible:ring-offset-asphalt-950 focus-visible:rounded-lg",
                 "active:scale-[0.98]",
-                isNavigating && "pointer-events-none opacity-70"
+                isNavigating && "pointer-events-none opacity-70",
               )}
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-linear-to-br from-stripe-500 to-stripe-400">
-                <span className="font-display text-lg font-bold text-asphalt-900">
-                  A
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display text-lg font-bold text-white">
-                  A-Line Striping
-                </span>
-                <span className="text-[10px] font-medium uppercase tracking-wider text-asphalt-400">
-                  Inc.
-                </span>
-              </div>
+              <img
+                src="/images/logo-white.svg"
+                alt="A-Line Striping Inc."
+                width={180}
+                height={64}
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="mb-6 max-w-xs text-sm leading-relaxed text-asphalt-300">
               Women-owned, family-run business serving the Mid-South since{" "}
@@ -102,6 +97,7 @@ export function Footer() {
               <li>
                 <a
                   href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}
+                  onClick={trackPhoneClick}
                   className="inline-flex items-center gap-3 text-white transition-colors hover:text-stripe-400"
                 >
                   <Phone className="h-4 w-4 text-stripe-500" />
@@ -136,7 +132,7 @@ export function Footer() {
                     to={service.href}
                     className={cn(
                       footerLinkStyles,
-                      isNavigating && "pointer-events-none opacity-70"
+                      isNavigating && "pointer-events-none opacity-70",
                     )}
                   >
                     {service.label}
@@ -158,7 +154,7 @@ export function Footer() {
                     to={link.href}
                     className={cn(
                       footerLinkStyles,
-                      isNavigating && "pointer-events-none opacity-70"
+                      isNavigating && "pointer-events-none opacity-70",
                     )}
                   >
                     {link.label}
@@ -178,12 +174,13 @@ export function Footer() {
                 ...SERVICE_AREAS.mississippi.slice(0, 3),
                 ...SERVICE_AREAS.tennessee,
               ].map((area) => (
-                <span
+                <Link
                   key={area.slug}
-                  className="rounded-full bg-asphalt-800/50 px-3 py-1.5 text-xs text-asphalt-300"
+                  to="/service-areas"
+                  className="rounded-full bg-asphalt-800/50 px-3 py-1.5 text-xs text-asphalt-300 transition-colors hover:bg-asphalt-700/50 hover:text-white"
                 >
                   {area.name}
-                </span>
+                </Link>
               ))}
               <Link
                 to="/service-areas"
@@ -193,7 +190,7 @@ export function Footer() {
                   "hover:bg-stripe-500/20 hover:text-stripe-300",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stripe-500 focus-visible:ring-offset-2 focus-visible:ring-offset-asphalt-950",
                   "active:scale-[0.97] active:bg-stripe-500/30",
-                  isNavigating && "pointer-events-none opacity-70"
+                  isNavigating && "pointer-events-none opacity-70",
                 )}
               >
                 +
@@ -207,7 +204,12 @@ export function Footer() {
 
             {/* Trust badges */}
             <div className="mt-8 space-y-3">
-              <div className="flex items-center gap-2">
+              <a
+                href={BUSINESS_INFO.googleReviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 transition-opacity hover:opacity-80"
+              >
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <Star
@@ -219,12 +221,24 @@ export function Footer() {
                 <span className="text-sm font-medium text-white">
                   {BUSINESS_INFO.googleRating}/5
                 </span>
-                <span className="text-xs text-asphalt-400">on Google</span>
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-lg bg-asphalt-800/50 px-3 py-2">
-                <span className="text-xs font-bold text-asphalt-300">BBB</span>
-                <span className="text-xs text-stripe-400">A+ Accredited</span>
-              </div>
+                <span className="text-xs text-asphalt-400">
+                  Leave Us a Review
+                </span>
+              </a>
+              <a
+                href="https://www.bbb.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-asphalt-800/50 px-3 py-2 transition-colors hover:bg-asphalt-700/50"
+              >
+                <img
+                  src="/images/bbb-badge.svg"
+                  alt="BBB A+ Accredited Business"
+                  width={70}
+                  height={40}
+                  className="h-8 w-auto"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -244,7 +258,7 @@ export function Footer() {
                   "text-asphalt-400 hover:text-white",
                   "focus-visible:text-white focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4",
                   "active:text-stripe-400 active:scale-[0.98]",
-                  isNavigating && "pointer-events-none opacity-70"
+                  isNavigating && "pointer-events-none opacity-70",
                 )}
               >
                 {link.label}

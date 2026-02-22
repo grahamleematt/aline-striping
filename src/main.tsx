@@ -9,7 +9,9 @@ import "./index.css";
 const router = createRouter({
   routeTree,
   defaultPreload: "intent",
-  defaultPreloadStaleTime: 0,
+  defaultPreloadStaleTime: 30_000,
+  defaultPendingMinMs: 0,
+  defaultPendingMs: 200,
 });
 
 // Register the router instance for type safety
@@ -37,6 +39,6 @@ if (!rootElement.innerHTML) {
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>
-    </StrictMode>
+    </StrictMode>,
   );
 }

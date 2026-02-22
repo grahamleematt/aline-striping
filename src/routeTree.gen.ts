@@ -27,7 +27,7 @@ const WhyUsRoute = WhyUsRouteImport.update({
   id: '/why-us',
   path: '/why-us',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/why-us.lazy').then((d) => d.Route))
 const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
   id: '/terms-of-service',
   path: '/terms-of-service',
@@ -37,7 +37,7 @@ const ServiceAreasRoute = ServiceAreasRouteImport.update({
   id: '/service-areas',
   path: '/service-areas',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/service-areas.lazy').then((d) => d.Route))
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
@@ -47,51 +47,65 @@ const OurWorkRoute = OurWorkRouteImport.update({
   id: '/our-work',
   path: '/our-work',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/our-work.lazy').then((d) => d.Route))
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/faq.lazy').then((d) => d.Route))
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/contact.lazy').then((d) => d.Route))
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 const ServicesWarehouseFloorStripingRoute =
   ServicesWarehouseFloorStripingRouteImport.update({
     id: '/services/warehouse-floor-striping',
     path: '/services/warehouse-floor-striping',
     getParentRoute: () => rootRouteImport,
-  } as any)
+  } as any).lazy(() =>
+    import('./routes/services/warehouse-floor-striping.lazy').then(
+      (d) => d.Route,
+    ),
+  )
 const ServicesPrecisionLineworkSignageRoute =
   ServicesPrecisionLineworkSignageRouteImport.update({
     id: '/services/precision-linework-signage',
     path: '/services/precision-linework-signage',
     getParentRoute: () => rootRouteImport,
-  } as any)
+  } as any).lazy(() =>
+    import('./routes/services/precision-linework-signage.lazy').then(
+      (d) => d.Route,
+    ),
+  )
 const ServicesParkingLotStripingRoute =
   ServicesParkingLotStripingRouteImport.update({
     id: '/services/parking-lot-striping',
     path: '/services/parking-lot-striping',
     getParentRoute: () => rootRouteImport,
-  } as any)
+  } as any).lazy(() =>
+    import('./routes/services/parking-lot-striping.lazy').then((d) => d.Route),
+  )
 const ServicesLayoutDesignRoute = ServicesLayoutDesignRouteImport.update({
   id: '/services/layout-design',
   path: '/services/layout-design',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() =>
+  import('./routes/services/layout-design.lazy').then((d) => d.Route),
+)
 const ServicesAsphaltSealcoatingRoute =
   ServicesAsphaltSealcoatingRouteImport.update({
     id: '/services/asphalt-sealcoating',
     path: '/services/asphalt-sealcoating',
     getParentRoute: () => rootRouteImport,
-  } as any)
+  } as any).lazy(() =>
+    import('./routes/services/asphalt-sealcoating.lazy').then((d) => d.Route),
+  )
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute

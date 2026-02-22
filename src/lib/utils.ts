@@ -50,8 +50,18 @@ export const BUSINESS_INFO = {
   yearsExperience: new Date().getFullYear() - 2003,
   warranty: "1-Year",
   googleRating: 5.0,
-  googleReviewUrl: "https://g.page/r/YOUR_GOOGLE_REVIEW_LINK",
+  googleReviewUrl: "https://maps.app.goo.gl/bJQBiRLMoJ8UVvKF9",
 } as const;
+
+/**
+ * Track click-to-call events in GA4
+ */
+export function trackPhoneClick() {
+  window.gtag?.("event", "click_to_call", {
+    event_category: "Contact",
+    event_label: BUSINESS_INFO.phone,
+  });
+}
 
 /**
  * Service area counties
