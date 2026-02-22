@@ -194,7 +194,7 @@ function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="relative -mt-16 pb-24 lg:pb-32">
+      <section className="relative pt-16 pb-24 lg:pb-32">
         <div className="container-section">
           <div className="grid gap-8 lg:grid-cols-5">
             {/* Form */}

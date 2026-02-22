@@ -12,6 +12,7 @@ const router = createRouter({
   defaultPreloadStaleTime: 30_000,
   defaultPendingMinMs: 0,
   defaultPendingMs: 200,
+  scrollRestoration: true,
 });
 
 // Register the router instance for type safety

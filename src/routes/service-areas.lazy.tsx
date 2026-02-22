@@ -189,7 +189,7 @@ function ServiceAreasPage() {
       </section>
 
       {/* Service Areas Grid */}
-      <section className="relative -mt-16 pb-24 lg:pb-32">
+      <section className="relative pt-16 pb-24 lg:pb-32">
         <div className="container-section">
           <div className="mb-16 text-center">
             <Badge variant="accent" className="mb-4">

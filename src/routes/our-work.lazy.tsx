@@ -160,7 +160,7 @@ function OurWorkPage() {
       </section>
 
       {/* Project Gallery */}
-      <section className="relative -mt-16 pb-24 lg:pb-32">
+      <section className="relative pt-16 pb-24 lg:pb-32">
         <div className="container-section">
           {/* Category Filters */}
           <div className="mb-12 flex flex-wrap justify-center gap-3">

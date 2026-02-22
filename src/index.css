@@ -1,61 +1,51 @@
 @import "tailwindcss";
 
-/* 
-  A-Line Striping Design System v3.0
-  Modern SaaS Aesthetic - Bold, Contemporary, Premium
-  
-  Inspiration: Linear, Vercel, Stripe, Raycast
-  
+/*
+  A-Line Striping Design System v4.0
+  Premium Utilitarian / Industrial Blueprint Aesthetic
+
   Design Principles:
-  - 8dp spacing grid (8, 16, 24, 32, 48, 64, 96, 128)
-  - 1.25 modular typography scale
-  - WCAG AA+ color contrast (4.5:1 body, 3:1 large text)
-  - Consistent component sizing
+  - 8dp spacing grid
+  - Sharp 0px radii (no rounded corners)
+  - Hard brutal box-shadows
+  - WCAG AA+ contrast
+  - Mechanical, snappy transitions
 */
 
 @theme {
   /* ========================================
      TYPOGRAPHY SYSTEM
      ========================================
-     
-     MODULAR FONT STACK
-     ------------------
-     Single font family = cohesive design.
-     To change the entire site's typography, edit ONE line below.
-     
-     Current: Outfit (modern geometric, excellent optical sizing)
-     Alternatives: Inter, Manrope, DM Sans, Plus Jakarta Sans
-     
+     Display: Barlow Condensed — heavy, industrial, uppercase headings.
+     Body:    Public Sans — USWDS-grade legibility for paragraphs.
      ======================================== */
-  --font-sans: "Outfit", system-ui, -apple-system, sans-serif;
-
-  /* Semantic aliases - change behavior without touching components */
-  --font-display: var(--font-sans);
+  --font-sans: "Public Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "Barlow Condensed", system-ui, -apple-system, sans-serif;
   --font-body: var(--font-sans);
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  /* Type Scale - 1.25 ratio */
-  --text-xs: 0.75rem; /* 12px */
-  --text-sm: 0.875rem; /* 14px */
-  --text-base: 1rem; /* 16px */
-  --text-lg: 1.125rem; /* 18px */
-  --text-xl: 1.25rem; /* 20px */
-  --text-2xl: 1.5rem; /* 24px */
-  --text-3xl: 1.875rem; /* 30px */
-  --text-4xl: 2.25rem; /* 36px */
-  --text-5xl: 3rem; /* 48px */
-  --text-6xl: 3.75rem; /* 60px */
-  --text-7xl: 4.5rem; /* 72px */
+  /* Type Scale — 1.25 ratio */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
 
-  /* Line Heights - Optimized for readability */
+  /* Line Heights */
   --leading-none: 1;
-  --leading-tight: 1.15; /* Headlines */
-  --leading-snug: 1.3; /* Subheads */
-  --leading-normal: 1.5; /* Body text - Google recommends 1.5 */
-  --leading-relaxed: 1.65; /* Long-form reading */
-  --leading-loose: 2; /* Spacious text */
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+  --leading-loose: 2;
 
-  /* Font Weights - Semantic naming */
+  /* Font Weights */
   --weight-normal: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
@@ -63,143 +53,118 @@
   --weight-extrabold: 800;
 
   /* ========================================
-     COLOR SYSTEM
-     WCAG AA+ Compliant Contrast Ratios
-     Dark text on light: 7:1+ 
-     Light text on dark: 4.5:1+ (body), 3:1+ (large headings)
-     
-     Contrast tested against asphalt-950 (L=0.10):
-     - asphalt-300 (L=0.85) = 8.5:1 ✓
-     - asphalt-400 (L=0.75) = 5.6:1 ✓
-     - asphalt-500 (L=0.65) = 4.2:1 (large text only)
+     COLOR SYSTEM — Utilitarian Industrial
+     Token names preserved for backward compatibility.
+     Values updated to OSHA/ADA industrial palette.
      ======================================== */
 
-  /* Primary Brand Colors - Rich, deep palette */
-  --color-asphalt-950: oklch(0.1 0.015 260); /* Deepest - backgrounds */
-  --color-asphalt-900: oklch(0.14 0.02 260); /* Dark backgrounds */
-  --color-asphalt-800: oklch(0.22 0.025 260); /* Elevated surfaces */
-  --color-asphalt-700: oklch(0.35 0.03 260); /* Borders on dark */
-  --color-asphalt-600: oklch(0.5 0.025 260); /* Disabled/placeholder on dark */
-  --color-asphalt-500: oklch(
-    0.65 0.02 260
-  ); /* Muted text on dark - large text only */
-  --color-asphalt-400: oklch(0.75 0.015 260); /* Body text on dark - 5.6:1 ✓ */
-  --color-asphalt-300: oklch(
-    0.85 0.01 260
-  ); /* Primary text on dark - 8.5:1 ✓ */
-  --color-asphalt-200: oklch(0.92 0.005 260); /* High contrast text on dark */
-  --color-asphalt-100: oklch(0.95 0.003 260); /* Borders on light */
-  --color-asphalt-50: oklch(0.98 0.002 260); /* Subtle backgrounds */
+  /* Asphalt scale — concrete to near-black */
+  --color-asphalt-950: #18181b;
+  --color-asphalt-900: #27272a;
+  --color-asphalt-800: #3f3f46;
+  --color-asphalt-700: #52525b;
+  --color-asphalt-600: #71717a;
+  --color-asphalt-500: #a1a1aa;
+  --color-asphalt-400: #d4d4d8;
+  --color-asphalt-300: #e4e4e7;
+  --color-asphalt-200: #e4e4e7;
+  --color-asphalt-100: #f4f4f5;
+  --color-asphalt-50: #fafafa;
 
-  /* Gold/Amber Accent - Premium line marking */
-  --color-stripe-600: oklch(0.62 0.2 80);
-  --color-stripe-500: oklch(0.72 0.19 82);
-  --color-stripe-400: oklch(0.82 0.17 85);
-  --color-stripe-300: oklch(0.88 0.12 88);
+  /* Stripe / OSHA Safety Yellow */
+  --color-stripe-600: #e6bc00;
+  --color-stripe-500: #ffd100;
+  --color-stripe-400: #ffe04d;
+  --color-stripe-300: #ffeb80;
 
-  /* Electric Blue - Modern accent */
-  --color-electric-600: oklch(0.55 0.24 255);
-  --color-electric-500: oklch(0.65 0.25 255);
-  --color-electric-400: oklch(0.75 0.2 255);
+  /* Electric / ADA Compliance Blue */
+  --color-electric-600: #004a9e;
+  --color-electric-500: #0057b7;
+  --color-electric-400: #3380cc;
 
   /* Success Green */
-  --color-success-600: oklch(0.55 0.2 150);
-  --color-success-500: oklch(0.65 0.2 150);
-  --color-success-400: oklch(0.75 0.17 150);
+  --color-success-600: #15803d;
+  --color-success-500: #22c55e;
+  --color-success-400: #4ade80;
 
   /* Semantic Colors */
-  --color-background: oklch(0.99 0.002 260);
+  --color-background: #f4f4f5;
   --color-foreground: var(--color-asphalt-900);
-  --color-card: oklch(1 0 0);
+  --color-card: #ffffff;
   --color-card-foreground: var(--color-asphalt-900);
   --color-primary: var(--color-asphalt-900);
-  --color-primary-foreground: oklch(0.99 0 0);
+  --color-primary-foreground: #ffffff;
   --color-accent: var(--color-stripe-500);
   --color-accent-foreground: var(--color-asphalt-950);
   --color-muted: var(--color-asphalt-100);
   --color-muted-foreground: var(--color-asphalt-600);
-  --color-border: oklch(0.92 0.005 260);
+  --color-border: var(--color-asphalt-300);
   --color-ring: var(--color-stripe-500);
 
   /* ========================================
-     SPACING SYSTEM
-     8dp Grid (Material Design)
+     SPACING SYSTEM — 8dp Grid
      ======================================== */
   --space-0: 0;
-  --space-1: 0.25rem; /* 4px */
-  --space-2: 0.5rem; /* 8px */
-  --space-3: 0.75rem; /* 12px */
-  --space-4: 1rem; /* 16px */
-  --space-5: 1.25rem; /* 20px */
-  --space-6: 1.5rem; /* 24px */
-  --space-8: 2rem; /* 32px */
-  --space-10: 2.5rem; /* 40px */
-  --space-12: 3rem; /* 48px */
-  --space-16: 4rem; /* 64px */
-  --space-20: 5rem; /* 80px */
-  --space-24: 6rem; /* 96px */
-  --space-32: 8rem; /* 128px */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
 
-  /* Section Spacing - Consistent vertical rhythm */
-  --section-sm: 4rem; /* 64px - Compact sections */
-  --section-md: 6rem; /* 96px - Standard sections */
-  --section-lg: 8rem; /* 128px - Hero/CTA sections */
+  --section-sm: 4rem;
+  --section-md: 6rem;
+  --section-lg: 8rem;
 
   /* ========================================
-     BORDER RADIUS
+     BORDER RADIUS — All 0px (sharp industrial)
+     Exception: --radius-full for spinners.
      ======================================== */
-  --radius-sm: 0.5rem; /* 8px */
-  --radius-md: 0.75rem; /* 12px */
-  --radius-lg: 1rem; /* 16px */
-  --radius-xl: 1.5rem; /* 24px */
-  --radius-2xl: 2rem; /* 32px */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
   --radius-full: 9999px;
 
   /* ========================================
-     SHADOWS
+     SHADOWS — Hard brutal box-shadows
      ======================================== */
-  --shadow-xs: 0 1px 2px oklch(0.13 0.02 260 / 0.04);
-  --shadow-sm:
-    0 1px 3px oklch(0.13 0.02 260 / 0.06), 0 1px 2px oklch(0.13 0.02 260 / 0.04);
-  --shadow-md:
-    0 4px 6px -1px oklch(0.13 0.02 260 / 0.07),
-    0 2px 4px -2px oklch(0.13 0.02 260 / 0.04);
-  --shadow-lg:
-    0 10px 15px -3px oklch(0.13 0.02 260 / 0.08),
-    0 4px 6px -4px oklch(0.13 0.02 260 / 0.04);
-  --shadow-xl:
-    0 20px 25px -5px oklch(0.13 0.02 260 / 0.1),
-    0 8px 10px -6px oklch(0.13 0.02 260 / 0.04);
-  --shadow-2xl: 0 25px 50px -12px oklch(0.13 0.02 260 / 0.2);
-
-  /* Glow shadows for accents */
-  --shadow-glow-gold: 0 0 40px oklch(0.72 0.19 82 / 0.3);
-  --shadow-glow-blue: 0 0 40px oklch(0.65 0.25 255 / 0.3);
+  --shadow-xs: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-sm: 3px 3px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-md: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-lg: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-xl: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-2xl: 10px 10px 0px 0px rgba(0, 0, 0, 1);
 
   /* ========================================
-     ANIMATION
+     ANIMATION — Mechanical, snappy
      ======================================== */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out-expo: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0, 0, 0.2, 1);
 
-  --duration-fast: 150ms;
-  --duration-normal: 300ms;
-  --duration-slow: 500ms;
+  --duration-fast: 100ms;
+  --duration-normal: 150ms;
+  --duration-slow: 250ms;
 }
 
 /* ========================================
    BASE STYLES
    ======================================== */
 html {
-  /* Smooth scrolling with reduced motion support */
   scroll-behavior: smooth;
-  font-size: 16px; /* Base for rem calculations */
-  /* Enable GPU acceleration for smoother scrolling */
+  font-size: 16px;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -212,12 +177,10 @@ body {
   line-height: var(--leading-normal);
   background-color: var(--color-background);
   color: var(--color-foreground);
-  /* Premium text rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
-  /* Prevent layout shift during hydration */
   min-height: 100vh;
 }
 
@@ -228,7 +191,6 @@ body {
   backface-visibility: hidden;
 }
 
-/* Paragraph spacing */
 p {
   margin-bottom: var(--space-4);
 }
@@ -242,9 +204,11 @@ p:last-child {
   position: absolute;
   top: -40px;
   left: 0;
-  background: var(--color-primary);
-  color: var(--color-primary-foreground);
+  background: var(--color-stripe-500);
+  color: var(--color-asphalt-950);
   padding: var(--space-2) var(--space-4);
+  font-weight: 700;
+  text-transform: uppercase;
   z-index: 100;
   transition: top var(--duration-normal);
 }
@@ -253,7 +217,10 @@ p:last-child {
   top: 0;
 }
 
-/* Heading styles with display font */
+/* ========================================
+   HEADING STYLES — Industrial Display
+   Barlow Condensed, UPPERCASE, heavy weight
+   ======================================== */
 h1,
 h2,
 h3,
@@ -263,30 +230,27 @@ h4,
   font-weight: var(--weight-bold);
   text-wrap: balance;
   line-height: var(--leading-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-/* Heading scale with consistent sizing */
 h1 {
   font-size: var(--text-5xl);
   font-weight: var(--weight-extrabold);
-  letter-spacing: -0.025em;
 }
 
 h2 {
   font-size: var(--text-4xl);
-  letter-spacing: -0.02em;
 }
 
 h3 {
   font-size: var(--text-2xl);
-  letter-spacing: -0.01em;
 }
 
 h4 {
   font-size: var(--text-xl);
 }
 
-/* Responsive heading adjustments */
 @media (min-width: 640px) {
   h1 {
     font-size: var(--text-6xl);
@@ -302,13 +266,12 @@ h4 {
   }
 }
 
-/* Focus styles for accessibility */
+/* Focus styles — OSHA yellow ring */
 *:focus-visible {
-  outline: 2px solid var(--color-stripe-500);
+  outline: 3px solid var(--color-stripe-500);
   outline-offset: 2px;
 }
 
-/* Smooth scrolling disabled for reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -326,17 +289,14 @@ h4 {
    LAYOUT UTILITIES
    ======================================== */
 
-/* Container with consistent padding */
 @utility container-section {
   @apply mx-auto max-w-7xl px-5 sm:px-8 lg:px-12;
 }
 
-/* Narrower container for text-heavy content (600-800px ideal) */
 @utility container-prose {
   @apply mx-auto max-w-3xl px-5 sm:px-8;
 }
 
-/* Section spacing utilities - 8dp grid */
 @utility section-sm {
   padding-top: var(--section-sm);
   padding-bottom: var(--section-sm);
@@ -352,25 +312,21 @@ h4 {
   padding-bottom: var(--section-lg);
 }
 
-/* Hero section spacing */
 @utility section-hero {
-  padding-top: 10rem; /* 160px - accounts for fixed header */
+  padding-top: 10rem;
   padding-bottom: var(--section-lg);
 }
 
-/* Text utilities */
 @utility text-balance {
   text-wrap: balance;
 }
 
-/* Lead text for hero/intro paragraphs */
 @utility text-lead {
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
   color: var(--color-asphalt-400);
 }
 
-/* Responsive overrides using regular CSS */
 @media (min-width: 640px) {
   .text-lead {
     font-size: var(--text-xl);
@@ -394,239 +350,103 @@ h4 {
   }
 }
 
-/* Body text for dark backgrounds - high contrast */
+/* Text on dark backgrounds */
 @utility text-on-dark {
   color: var(--color-asphalt-300);
 }
 
-/* Muted text for dark backgrounds */
 @utility text-on-dark-muted {
   color: var(--color-asphalt-400);
 }
 
-/* Gradient text */
+/* ========================================
+   ACCENT TEXT UTILITIES
+   ======================================== */
+
+/* gradient-text: restyled to solid OSHA yellow for utilitarian aesthetic.
+   38 instances across 11 route files depend on this class name. */
 @utility gradient-text {
-  background: linear-gradient(
-    135deg,
-    var(--color-stripe-500),
-    var(--color-stripe-400),
-    var(--color-electric-400)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-stripe-500);
+  -webkit-text-fill-color: var(--color-stripe-500);
 }
 
 @utility gradient-text-light {
-  background: linear-gradient(135deg, #fff 0%, oklch(0.9 0.02 260) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
 }
 
-/* Glassmorphism */
-@utility glass {
-  background: oklch(1 0 0 / 0.7);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-}
-
-@utility glass-dark {
-  background: oklch(0.15 0.02 260 / 0.8);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-}
-
-/* Gradient border - use as a class directly, not utility */
-.gradient-border {
-  position: relative;
-  background: var(--color-card);
-  border-radius: var(--radius-xl);
-}
-
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    var(--color-stripe-500) 0%,
-    var(--color-electric-500) 50%,
-    var(--color-stripe-400) 100%
-  );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-/* Noise texture overlay - use as a class directly */
-.noise-overlay {
-  position: relative;
-}
-
-.noise-overlay::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.03;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-/* Animated gradient background */
-@utility bg-gradient-animated {
-  background: linear-gradient(
+/* ========================================
+   CAUTION STRIPE BACKGROUND
+   Diagonal black/yellow safety pattern.
+   ======================================== */
+@utility bg-caution-stripe {
+  background: repeating-linear-gradient(
     -45deg,
-    var(--color-asphalt-950),
-    var(--color-asphalt-900),
-    oklch(0.18 0.04 280),
-    var(--color-asphalt-900)
+    #ffd100,
+    #ffd100 10px,
+    #18181b 10px,
+    #18181b 20px
   );
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* glass-dark: used directly on <div> elements across route files.
+   Restyled from blur/backdrop to solid dark for utilitarian aesthetic. */
+.glass-dark {
+  background-color: rgba(24, 24, 27, 0.95);
 }
 
-/* Floating animation */
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@utility animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Subtle pulse */
-@keyframes subtle-pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@utility animate-subtle-pulse {
-  animation: subtle-pulse 3s ease-in-out infinite;
-}
-
-/* Shimmer effect - use as a class directly */
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.shimmer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    oklch(1 0 0 / 0.1) 50%,
-    transparent 100%
-  );
-  animation: shimmer 2s ease-in-out infinite;
-}
-
-/* Grid patterns */
+/* ========================================
+   GRID PATTERNS
+   ======================================== */
 @utility bg-grid-pattern {
   background-image:
-    linear-gradient(to right, oklch(0.5 0 0 / 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.5 0 0 / 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
 @utility bg-grid-pattern-light {
   background-image:
-    linear-gradient(to right, oklch(1 0 0 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(1 0 0 / 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
-/* Radial gradient spotlight */
-@utility bg-spotlight {
-  background: radial-gradient(
-    ellipse 80% 50% at 50% -20%,
-    oklch(0.72 0.19 82 / 0.15),
-    transparent
-  );
+/* ========================================
+   SECTION DIVIDER — 4px thick rule
+   ======================================== */
+@utility divider-heavy {
+  border-top: 4px solid var(--color-asphalt-950);
 }
 
-@utility bg-spotlight-blue {
-  background: radial-gradient(
-    ellipse 80% 50% at 50% -20%,
-    oklch(0.65 0.25 255 / 0.12),
-    transparent
-  );
-}
-
-/* Card hover effects - use regular CSS class */
-.card-hover {
-  transition:
-    transform 0.3s var(--ease-out-expo),
-    box-shadow 0.3s var(--ease-out-expo);
-}
-
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-}
-
-/* Stagger animation delays */
+/* ========================================
+   STAGGER ANIMATION DELAYS
+   ======================================== */
 @utility stagger-1 {
-  animation-delay: 0.1s;
+  animation-delay: 0.05s;
 }
 @utility stagger-2 {
-  animation-delay: 0.2s;
+  animation-delay: 0.1s;
 }
 @utility stagger-3 {
-  animation-delay: 0.3s;
+  animation-delay: 0.15s;
 }
 @utility stagger-4 {
-  animation-delay: 0.4s;
+  animation-delay: 0.2s;
 }
 @utility stagger-5 {
-  animation-delay: 0.5s;
+  animation-delay: 0.25s;
 }
 
-/* Fade in up animation */
+/* ========================================
+   KEYFRAME ANIMATIONS — Mechanical
+   ======================================== */
+
+/* Fade in up — snappy entrance */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -635,15 +455,15 @@ h4 {
 }
 
 @utility animate-fade-in-up {
-  animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
+  animation: fadeInUp 0.25s var(--ease-out-expo) forwards;
   opacity: 0;
 }
 
-/* Scale in animation */
+/* Scale in — mechanical pop */
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.97);
   }
   to {
     opacity: 1;
@@ -652,34 +472,35 @@ h4 {
 }
 
 @utility animate-scale-in {
-  animation: scaleIn 0.5s var(--ease-out-expo) forwards;
+  animation: scaleIn 0.2s var(--ease-out-expo) forwards;
   opacity: 0;
 }
 
-/* Blur in animation */
-@keyframes blurIn {
+/* Slide in from left */
+@keyframes slideInLeft {
   from {
     opacity: 0;
-    filter: blur(10px);
+    transform: translateX(-24px);
   }
   to {
     opacity: 1;
-    filter: blur(0);
+    transform: translateX(0);
   }
 }
 
-@utility animate-blur-in {
-  animation: blurIn 0.8s var(--ease-out-expo) forwards;
+@utility animate-slide-in-left {
+  animation: slideInLeft 0.25s var(--ease-out-expo) forwards;
   opacity: 0;
 }
 
-/* Modern selection color */
+/* ========================================
+   SELECTION & SCROLLBAR
+   ======================================== */
 ::selection {
-  background: oklch(0.72 0.19 82 / 0.3);
-  color: var(--color-asphalt-900);
+  background: rgba(255, 209, 0, 0.35);
+  color: var(--color-asphalt-950);
 }
 
-/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -690,16 +511,17 @@ h4 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-asphalt-300);
-  border-radius: 5px;
+  background: var(--color-asphalt-500);
   border: 2px solid var(--color-asphalt-100);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-asphalt-400);
+  background: var(--color-asphalt-700);
 }
 
-/* Line clamp utilities */
+/* ========================================
+   LINE CLAMP UTILITIES
+   ======================================== */
 @utility line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;

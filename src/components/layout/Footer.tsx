@@ -14,15 +14,11 @@ import {
  * Includes hover, focus, and active states for smooth transitions
  */
 const footerLinkStyles = cn(
-  "text-sm transition-all duration-200",
-  // Default state
+  "text-sm transition-colors duration-150",
   "text-asphalt-300",
-  // Hover state
-  "hover:text-white hover:translate-x-0.5",
-  // Focus state (keyboard navigation)
-  "focus-visible:text-white focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4",
-  // Active/pressed state
-  "active:text-stripe-400 active:scale-[0.98]",
+  "hover:text-stripe-500",
+  "focus-visible:text-stripe-500 focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4",
+  "active:text-stripe-400",
 );
 
 const footerServices = [
@@ -54,15 +50,8 @@ export function Footer() {
   const isNavigating = routerState.isLoading;
 
   return (
-    <footer className="relative overflow-hidden bg-asphalt-950 text-asphalt-300">
-      {/* Gradient accent */}
-      <div className="absolute left-0 right-0 top-0 h-px bg-linear-to-r from-transparent via-stripe-500/50 to-transparent" />
-
-      {/* Background elements */}
-      <div className="absolute -left-40 top-20 h-80 w-80 rounded-full bg-stripe-500/5 blur-[100px]" />
-      <div className="absolute -right-40 bottom-20 h-96 w-96 rounded-full bg-electric-500/5 blur-[120px]" />
-
-      <div className="container-section relative">
+    <footer className="border-t-4 border-stripe-500 bg-asphalt-950 text-asphalt-300">
+      <div className="container-section">
         {/* Main footer content */}
         <div className="grid gap-12 py-16 lg:grid-cols-12 lg:gap-8 lg:py-20">
           {/* Brand column */}
@@ -71,10 +60,8 @@ export function Footer() {
               to="/"
               className={cn(
                 "mb-6 inline-flex items-center gap-3",
-                "transition-all duration-200",
                 "hover:opacity-90",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stripe-500 focus-visible:ring-offset-2 focus-visible:ring-offset-asphalt-950 focus-visible:rounded-lg",
-                "active:scale-[0.98]",
+                "focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-stripe-500 focus-visible:ring-offset-2 focus-visible:ring-offset-asphalt-950",
                 isNavigating && "pointer-events-none opacity-70",
               )}
             >
@@ -124,7 +111,7 @@ export function Footer() {
 
           {/* Services column */}
           <div className="lg:col-span-3">
-            <h4 className="mb-5 text-xs font-semibold uppercase tracking-wider text-asphalt-400">
+            <h4 className="mb-5 text-xs font-black uppercase tracking-widest text-asphalt-400">
               Services
             </h4>
             <ul className="space-y-3">
@@ -146,7 +133,7 @@ export function Footer() {
 
           {/* Quick links column */}
           <div className="lg:col-span-2">
-            <h4 className="mb-5 text-xs font-semibold uppercase tracking-wider text-asphalt-400">
+            <h4 className="mb-5 text-xs font-black uppercase tracking-widest text-asphalt-400">
               Company
             </h4>
             <ul className="space-y-3">
@@ -168,7 +155,7 @@ export function Footer() {
 
           {/* Service Areas column */}
           <div className="lg:col-span-3">
-            <h4 className="mb-5 text-xs font-semibold uppercase tracking-wider text-asphalt-400">
+            <h4 className="mb-5 text-xs font-black uppercase tracking-widest text-asphalt-400">
               Service Areas
             </h4>
             <div className="flex flex-wrap gap-2">
@@ -179,7 +166,7 @@ export function Footer() {
                 <Link
                   key={area.slug}
                   to="/service-areas"
-                  className="rounded-full bg-asphalt-800/50 px-3 py-1.5 text-xs text-asphalt-300 transition-colors hover:bg-asphalt-700/50 hover:text-white"
+                  className="bg-asphalt-800 px-3 py-1.5 text-xs text-asphalt-300 transition-colors duration-150 hover:bg-asphalt-700 hover:text-white"
                 >
                   {area.name}
                 </Link>
@@ -187,11 +174,10 @@ export function Footer() {
               <Link
                 to="/service-areas"
                 className={cn(
-                  "inline-flex items-center gap-1 rounded-full bg-stripe-500/10 px-3 py-1.5 text-xs text-stripe-400",
-                  "transition-all duration-200",
-                  "hover:bg-stripe-500/20 hover:text-stripe-300",
+                  "inline-flex items-center gap-1 bg-stripe-500/15 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-stripe-400",
+                  "transition-colors duration-150",
+                  "hover:bg-stripe-500/25 hover:text-stripe-300",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stripe-500 focus-visible:ring-offset-2 focus-visible:ring-offset-asphalt-950",
-                  "active:scale-[0.97] active:bg-stripe-500/30",
                   isNavigating && "pointer-events-none opacity-70",
                 )}
               >
@@ -231,7 +217,7 @@ export function Footer() {
                 href="https://www.bbb.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-asphalt-800/50 px-3 py-2 transition-colors hover:bg-asphalt-700/50"
+                className="inline-flex items-center gap-2 bg-asphalt-800 px-3 py-2 transition-colors duration-150 hover:bg-asphalt-700"
               >
                 <img
                   src="/images/bbb-badge.svg"
@@ -248,7 +234,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-asphalt-800/50 py-6 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t-4 border-asphalt-800 py-6 sm:flex-row">
           <p className="text-sm text-asphalt-400">
             © {currentYear} {BUSINESS_INFO.name}. All rights reserved.
           </p>
@@ -258,10 +244,9 @@ export function Footer() {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  "text-xs transition-all duration-200",
-                  "text-asphalt-400 hover:text-white",
-                  "focus-visible:text-white focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4",
-                  "active:text-stripe-400 active:scale-[0.98]",
+                  "text-xs transition-colors duration-150",
+                  "text-asphalt-400 hover:text-stripe-500",
+                  "focus-visible:text-stripe-500 focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4",
                   isNavigating && "pointer-events-none opacity-70",
                 )}
               >

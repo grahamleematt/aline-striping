@@ -1,7 +1,6 @@
 import {
   createRootRoute,
   Outlet,
-  ScrollRestoration,
   useRouterState,
 } from "@tanstack/react-router";
 import { Suspense } from "react";
@@ -161,15 +160,6 @@ const serviceSchema = {
 };
 
 /**
- * Page transition configuration
- * Uses subtle fade for smooth, non-distracting navigation
- */
-const pageTransition = {
-  duration: 0.3,
-  ease: [0.16, 1, 0.3, 1] as const,
-};
-
-/**
  * Navigation Progress Indicator
  * Shows a subtle progress bar at the top during route transitions
  */
@@ -178,7 +168,7 @@ function NavigationProgress({ isNavigating }: { isNavigating: boolean }) {
     <AnimatePresence>
       {isNavigating && (
         <motion.div
-          className="fixed inset-x-0 top-0 z-100 h-0.5 bg-linear-to-r from-stripe-500 via-electric-500 to-stripe-400"
+          className="fixed inset-x-0 top-0 z-100 h-1 bg-stripe-500"
           initial={{ scaleX: 0, transformOrigin: "left" }}
           animate={{
             scaleX: 0.7,
@@ -196,17 +186,13 @@ function NavigationProgress({ isNavigating }: { isNavigating: boolean }) {
 }
 
 function RootLayout() {
-  // Get current route for AnimatePresence key
   const routerState = useRouterState();
-  const currentPath = routerState.location.pathname;
   const isNavigating = routerState.isLoading;
 
   return (
     <>
-      {/* Navigation Progress Indicator */}
       <NavigationProgress isNavigating={isNavigating} />
 
-      {/* Schema Markup for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -226,7 +212,6 @@ function RootLayout() {
         }}
       />
 
-      {/* Skip link for accessibility */}
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
@@ -234,24 +219,12 @@ function RootLayout() {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="main-content" className="flex-1">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={currentPath}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={pageTransition}
-            >
-              <Suspense fallback={<PageLoadingFallback />}>
-                <Outlet />
-              </Suspense>
-            </motion.div>
-          </AnimatePresence>
+          <Suspense fallback={<PageLoadingFallback />}>
+            <Outlet />
+          </Suspense>
         </main>
         <Footer />
       </div>
-
-      <ScrollRestoration />
     </>
   );
 }

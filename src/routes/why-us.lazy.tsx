@@ -124,7 +124,7 @@ function WhyUsPage() {
       </section>
 
       {/* Story Section */}
-      <section className="relative -mt-16 pb-24 lg:pb-32">
+      <section className="relative pt-16 pb-24 lg:pb-32">
         <div className="container-section">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <Card variant="elevated" className="p-8 lg:p-12">

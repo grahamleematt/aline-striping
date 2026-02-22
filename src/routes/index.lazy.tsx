@@ -8,16 +8,14 @@ import {
   Target,
   Star,
   MapPin,
-  Sparkles,
   Zap,
   Award,
   Users,
-  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { FadeIn, SlideIn } from "@/components/ui/motion";
+import { FadeIn } from "@/components/ui/motion";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, SERVICE_AREAS, formatPhoneLink } from "@/lib/utils";
 
@@ -102,150 +100,100 @@ const testimonials = [
 function HomePage() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section - Modern gradient mesh background */}
-      <section className="relative overflow-hidden bg-asphalt-950 px-0 pb-20 pt-24 sm:pb-28 sm:pt-32 lg:pb-40 lg:pt-40">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-animated" />
+      {/* Hero Section — Split Screen Industrial */}
+      <section className="relative min-h-screen bg-asphalt-950">
+        <div className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
+          {/* Left — Content: extra top padding clears the fixed header */}
+          <div className="flex flex-col justify-center px-6 pt-28 pb-12 sm:px-10 sm:pt-32 sm:pb-16 lg:px-16 lg:pt-36 lg:pb-20">
+            {/* Trust badges */}
+            <div className="mb-6 flex flex-wrap gap-3 animate-fade-in-up sm:mb-8">
+              <Badge variant="osha">[ OSHA COMPLIANT ]</Badge>
+              <Badge variant="ada">[ ADA EXPERTS ]</Badge>
+            </div>
 
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 bg-grid-pattern-light opacity-50" />
+            {/* Headline */}
+            <h1 className="mb-6 font-display text-4xl font-black leading-none text-white animate-fade-in-up stagger-1 sm:text-5xl md:text-6xl lg:text-7xl">
+              INDUSTRIAL
+              <br />
+              PRECISION.
+              <br />
+              <span className="text-stripe-500">ZERO DOWNTIME.</span>
+            </h1>
 
-        {/* Spotlight effect */}
-        <div className="absolute inset-0 bg-spotlight" />
+            {/* Subheading */}
+            <p className="mb-8 max-w-lg text-base leading-relaxed text-asphalt-400 animate-fade-in-up stagger-2 sm:text-lg">
+              Commercial parking lot striping, warehouse marking, and
+              sealcoating across Mississippi &amp; Memphis.{" "}
+              {BUSINESS_INFO.yearsExperience}+ years of precision craftsmanship.
+            </p>
 
-        {/* Floating orbs - hidden on mobile for performance */}
-        <div className="absolute left-10 top-20 hidden h-72 w-72 animate-float rounded-full bg-stripe-500/20 blur-[100px] sm:block" />
-        <div className="absolute bottom-20 right-10 hidden h-96 w-96 animate-float rounded-full bg-electric-500/15 blur-[120px] stagger-2 sm:block" />
-        <div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-stripe-400/10 blur-[60px] sm:h-64 sm:w-64 sm:blur-[80px]" />
-
-        <div className="container-section relative">
-          <div className="mx-auto max-w-5xl text-center">
-            {/* Announcement badge */}
-            <FadeIn delay={0.1} className="mb-6 inline-flex sm:mb-8">
-              <Badge
-                variant="glass"
-                className="px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm"
-              >
-                <Sparkles className="mr-1.5 h-3.5 w-3.5 text-stripe-400 sm:mr-2 sm:h-4 sm:w-4" />
-                <span className="text-white/90">
-                  Women-Owned Since {BUSINESS_INFO.founded}
-                </span>
-                <ChevronRight className="ml-1.5 h-3.5 w-3.5 text-white/50 sm:ml-2 sm:h-4 sm:w-4" />
-              </Badge>
-            </FadeIn>
-
-            {/* Main headline - responsive sizing */}
-            <SlideIn direction="up" delay={0.2}>
-              <h1 className="mb-6 font-display text-[2rem] font-bold leading-[1.1] tracking-tight text-white sm:mb-8 sm:text-4xl md:text-5xl lg:text-6xl">
-                Commercial Parking Lot{" "}
-                <span className="gradient-text">Striping</span>,
-                <br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>
-                Warehouse Marking &amp; Asphalt
-                <br className="hidden md:block" />
-                <span className="md:hidden"> </span>
-                Maintenance Across{" "}
-                <span className="gradient-text">Mississippi &amp; Memphis</span>
-              </h1>
-            </SlideIn>
-
-            <SlideIn direction="up" delay={0.3}>
-              <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-asphalt-200 sm:mb-12 sm:text-lg md:text-xl">
-                Transform your parking lots and warehouses with precision
-                striping, sealcoating, and pavement maintenance. Serving the
-                Mid-South with {BUSINESS_INFO.yearsExperience}+ years of
-                expertise.
-              </p>
-            </SlideIn>
-
-            {/* CTA buttons - responsive sizing */}
-            <SlideIn direction="up" delay={0.4}>
-              <div className="mb-10 flex flex-col items-center justify-center gap-3 sm:mb-16 sm:flex-row sm:gap-4">
-                <Button
-                  asChild
-                  variant="primary"
-                  size="lg"
-                  className="w-full sm:w-auto sm:size-xl"
-                >
-                  <Link to="/contact">
-                    Get a Free Quote
-                    <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline-light"
-                  size="lg"
-                  className="w-full sm:w-auto sm:size-xl"
-                >
-                  <a href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}>
-                    <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                    {BUSINESS_INFO.phone}
-                  </a>
-                </Button>
-              </div>
-            </SlideIn>
-
-            {/* Trust indicators - responsive layout */}
-            <FadeIn
-              delay={0.5}
-              className="flex flex-wrap items-center justify-center gap-3 text-asphalt-200 sm:gap-6 md:gap-8"
-            >
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <Shield className="h-4 w-4 text-success-400 sm:h-5 sm:w-5" />
-                <span className="text-xs font-medium sm:text-sm">
-                  {BUSINESS_INFO.warranty} Warranty
-                </span>
-              </div>
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-3 w-3 fill-stripe-400 text-stripe-400 sm:h-4 sm:w-4"
-                    />
-                  ))}
-                </div>
-                <span className="text-xs font-medium sm:text-sm">
-                  {BUSINESS_INFO.googleRating}/5
-                </span>
-              </div>
-              <div className="hidden items-center gap-1.5 sm:flex sm:gap-2">
-                <CheckCircle2 className="h-4 w-4 text-stripe-400 sm:h-5 sm:w-5" />
-                <span className="text-xs font-medium sm:text-sm">
-                  ADA Compliant
-                </span>
-              </div>
-            </FadeIn>
+            {/* CTAs */}
+            <div className="flex flex-col gap-3 animate-fade-in-up stagger-3 sm:flex-row sm:gap-4">
+              <Button asChild variant="primary" size="lg">
+                <Link to="/contact">
+                  REQUEST COMMERCIAL BID
+                  <ArrowRight
+                    className="ml-2 h-4 w-4 sm:h-5 sm:w-5"
+                    strokeWidth={2.5}
+                  />
+                </Link>
+              </Button>
+              <Button asChild variant="outline-light" size="lg">
+                <Link to="/service-areas">VIEW SERVICE AREAS</Link>
+              </Button>
+            </div>
           </div>
 
-          {/* Stats bar */}
-          <SlideIn
-            direction="up"
-            delay={0.6}
-            className="mx-auto mt-12 max-w-4xl sm:mt-16 lg:mt-20"
-          >
-            <div className="glass-dark rounded-2xl border border-white/10 p-1.5 sm:rounded-3xl sm:p-2">
-              <div className="grid grid-cols-2 gap-1 sm:gap-2 md:grid-cols-4">
-                {stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="group rounded-xl p-4 text-center transition-all hover:bg-white/5 sm:rounded-2xl sm:p-6"
-                  >
-                    <div className="mb-1.5 flex justify-center sm:mb-2">
-                      <stat.icon className="h-4 w-4 text-stripe-400 sm:h-5 sm:w-5" />
-                    </div>
-                    <div className="font-display text-2xl font-bold text-white sm:text-3xl">
-                      {stat.value}
-                    </div>
-                    <div className="mt-0.5 text-[10px] font-medium text-asphalt-300 sm:mt-1 sm:text-xs">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
+          {/* Right — Image */}
+          <div className="relative hidden lg:block">
+            <ResponsiveImage
+              src="/images/parking-lot-striping.webp"
+              alt="Industrial parking lot striping in progress"
+              widths={[800, 1200]}
+              sizes="50vw"
+              width={1200}
+              height={900}
+              loading="eager"
+              fetchPriority="high"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-linear-to-r from-asphalt-950/40 to-transparent" />
+          </div>
+
+          {/* Mobile hero image */}
+          <div className="relative h-64 sm:h-80 lg:hidden">
+            <ResponsiveImage
+              src="/images/parking-lot-striping.webp"
+              alt="Industrial parking lot striping in progress"
+              widths={[400, 800]}
+              sizes="100vw"
+              width={800}
+              height={400}
+              loading="eager"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Bar — OSHA Yellow */}
+      <section className="border-y-4 border-black bg-stripe-500">
+        <div className="container-section">
+          <div className="grid grid-cols-2 divide-x-2 divide-black md:grid-cols-4">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="px-4 py-6 text-center sm:px-6 sm:py-8"
+              >
+                <div className="font-display text-3xl font-black text-asphalt-950 sm:text-4xl lg:text-5xl">
+                  {stat.value}
+                </div>
+                <div className="mt-1 text-xs font-bold uppercase tracking-widest text-asphalt-900 sm:text-sm">
+                  {stat.label}
+                </div>
               </div>
-            </div>
-          </SlideIn>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -431,7 +379,7 @@ function HomePage() {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="glass-dark rounded-xl border border-white/10 p-4 sm:rounded-2xl sm:p-6"
+                  className="border-2 border-asphalt-700 bg-asphalt-900 p-4 sm:p-6"
                 >
                   <div className="mb-3 flex gap-0.5 sm:mb-4 sm:gap-1">
                     {[...Array(testimonial.rating)].map((_, i) => (

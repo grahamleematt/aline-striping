@@ -4,26 +4,25 @@ import { cn } from "@/lib/utils";
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
-    variant?: "default" | "glass" | "gradient" | "elevated";
+    variant?: "default" | "glass" | "elevated";
   }
 >(({ className, variant = "default", ...props }, ref) => {
   const variants = {
     default:
-      "bg-white border border-asphalt-100 shadow-sm hover:shadow-lg hover:border-asphalt-200",
-    glass: "bg-white/70 backdrop-blur-xl border border-white/50 shadow-lg",
-    gradient:
-      "relative bg-white overflow-hidden before:absolute before:inset-0 before:p-[1px] before:rounded-[inherit] before:bg-linear-to-br before:from-stripe-400/50 before:via-transparent before:to-electric-400/50 before:-z-10",
+      "bg-white border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]",
+    glass:
+      "bg-asphalt-900 border-2 border-asphalt-700 text-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]",
     elevated:
-      "bg-white border-0 shadow-xl shadow-asphalt-900/5 hover:shadow-2xl hover:shadow-asphalt-900/10",
+      "bg-white border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]",
   };
 
   return (
     <div
       ref={ref}
       className={cn(
-        "rounded-2xl transition-all duration-300",
+        "transition-all duration-150",
         variants[variant],
-        className
+        className,
       )}
       {...props}
     />
@@ -51,7 +50,7 @@ const CardTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "font-display text-xl font-semibold leading-tight tracking-tight text-asphalt-900",
-      className
+      className,
     )}
     {...props}
   />
