@@ -127,7 +127,7 @@ function HomePage() {
           <div className="relative hidden lg:block">
             <ResponsiveImage
               src="/images/parking-lot-striping.webp"
-              alt="Industrial parking lot striping in progress"
+              alt="Yellow crosshatch no-parking zones on freshly marked asphalt"
               widths={[800, 1200, 1600]}
               sizes="50vw"
               width={1920}
@@ -143,11 +143,11 @@ function HomePage() {
           <div className="relative h-64 sm:h-80 lg:hidden">
             <ResponsiveImage
               src="/images/parking-lot-striping.webp"
-              alt="Industrial parking lot striping in progress"
-              widths={[400, 800]}
+              alt="Yellow crosshatch no-parking zones on freshly marked asphalt"
+              widths={[800]}
               sizes="100vw"
-              width={800}
-              height={450}
+              width={1920}
+              height={1080}
               loading="eager"
               className="h-full w-full object-cover"
             />

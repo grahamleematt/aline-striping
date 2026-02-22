@@ -1,3 +1,4 @@
+import { useState, useCallback, useEffect } from "react";
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -6,6 +7,10 @@ import {
   Camera,
   Sparkles,
   CheckCircle2,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Expand,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -21,87 +26,284 @@ export const Route = createLazyFileRoute("/our-work")({
   component: OurWorkPage,
 });
 
-const projectCategories = [
+type ProjectCategory =
+  | "all"
+  | "parking"
+  | "warehouse"
+  | "sealcoating"
+  | "signage";
+
+const projectCategories: { id: ProjectCategory; label: string }[] = [
   { id: "all", label: "All Projects" },
   { id: "parking", label: "Parking Lots" },
   { id: "warehouse", label: "Warehouses" },
+  { id: "signage", label: "Signage & Linework" },
   { id: "sealcoating", label: "Sealcoating" },
 ];
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  category: Exclude<ProjectCategory, "all">;
+  services: string[];
+}
+
+const projects: Project[] = [
   {
     id: 1,
-    title: "Shopping Center Striping",
+    title: "Commercial Venue Parking Lot",
     category: "parking",
-    location: "Southaven, MS",
-    description:
-      "Complete re-striping of 400+ stall retail parking lot with ADA compliance updates.",
-    services: ["Line Striping", "ADA Markings", "Fire Lanes"],
+    services: ["Line Striping", "Layout Design"],
   },
   {
     id: 2,
-    title: "Warehouse Floor Marking",
-    category: "warehouse",
-    location: "Memphis, TN",
-    description:
-      "Industrial floor striping for 50,000 sq ft distribution center with forklift lanes.",
-    services: ["Floor Striping", "Safety Zones", "Pedestrian Paths"],
+    title: "Stop Markings & Directional Arrows",
+    category: "signage",
+    services: ["Road Markings", "Stenciling"],
   },
   {
     id: 3,
-    title: "Church Parking Lot",
+    title: "ADA Parking at Commercial Building",
     category: "parking",
-    location: "Olive Branch, MS",
-    description:
-      "Full parking lot layout design and striping for growing congregation.",
-    services: ["Layout Design", "Striping", "Handicap Signs"],
+    services: ["ADA Markings", "Line Striping"],
   },
   {
     id: 4,
-    title: "Commercial Sealcoating",
-    category: "sealcoating",
-    location: "Horn Lake, MS",
-    description:
-      "Sealcoating and crack repair for office park with 200 parking spaces.",
-    services: ["Sealcoating", "Crack Sealing", "Re-Striping"],
+    title: "Do Not Enter Crosshatch Marking",
+    category: "signage",
+    services: ["Stenciling", "Safety Zones"],
   },
   {
     id: 5,
-    title: "Industrial Facility",
-    category: "warehouse",
-    location: "West Memphis, AR",
-    description:
-      "Complete interior and exterior marking for manufacturing plant.",
-    services: ["Interior Striping", "Exterior Lot", "Safety Markings"],
+    title: "Church Parking Lot Striping",
+    category: "parking",
+    services: ["Line Striping", "Layout Design"],
   },
   {
     id: 6,
-    title: "Retail Plaza Renovation",
-    category: "parking",
-    location: "Germantown, TN",
-    description:
-      "Parking lot renovation including sealcoating and fresh striping.",
-    services: ["Sealcoating", "Striping", "Signage"],
+    title: "Warehouse Floor Zone Markings",
+    category: "warehouse",
+    services: ["Floor Striping", "Safety Zones"],
   },
   {
     id: 7,
-    title: "Distribution Center",
+    title: "Warehouse Stop Stencil",
     category: "warehouse",
-    location: "Hernando, MS",
-    description: "OSHA-compliant floor markings for large logistics facility.",
-    services: ["Floor Markings", "Hazard Zones", "Forklift Lanes"],
+    services: ["Stenciling", "Safety Markings"],
   },
   {
     id: 8,
-    title: "Driveway Sealcoating",
+    title: "School Parking Lot & Curb Paint",
+    category: "parking",
+    services: ["Line Striping", "Curb Paint", "Crosswalks"],
+  },
+  {
+    id: 9,
+    title: "Retail No-Parking Zone Markings",
+    category: "parking",
+    services: ["Safety Zones", "Crosshatch"],
+  },
+  {
+    id: 10,
+    title: "Warehouse Safety Lane Markings",
+    category: "warehouse",
+    services: ["Floor Striping", "Forklift Lanes"],
+  },
+  {
+    id: 11,
+    title: "Fresh Sealcoat with New Striping",
     category: "sealcoating",
-    location: "Collierville, TN",
-    description: "Residential driveway sealcoating with crack repair.",
-    services: ["Sealcoating", "Crack Filling", "Edge Sealing"],
+    services: ["Sealcoating", "Re-Striping"],
+  },
+  {
+    id: 12,
+    title: "ADA Handicap Crosshatch Markings",
+    category: "parking",
+    services: ["ADA Markings", "Crosshatch"],
+  },
+  {
+    id: 13,
+    title: "Loading Dock Bay Striping",
+    category: "warehouse",
+    services: ["Dock Markings", "Safety Zones"],
+  },
+  {
+    id: 14,
+    title: "Commercial ADA Parking Spaces",
+    category: "parking",
+    services: ["ADA Markings", "Line Striping"],
+  },
+  {
+    id: 15,
+    title: "Large Commercial Lot Re-Striping",
+    category: "parking",
+    services: ["Line Striping", "Re-Striping"],
+  },
+  {
+    id: 16,
+    title: "Industrial Dock Numbered Bays",
+    category: "warehouse",
+    services: ["Dock Numbering", "Safety Zones"],
+  },
+  {
+    id: 17,
+    title: "Retail Parking No-Park Zones",
+    category: "parking",
+    services: ["Safety Zones", "Crosshatch"],
+  },
+  {
+    id: 18,
+    title: "Loading Dock Bay Numbering",
+    category: "warehouse",
+    services: ["Dock Numbering", "Custom Markings"],
+  },
+  {
+    id: 19,
+    title: "ADA Crosshatch on Fresh Asphalt",
+    category: "parking",
+    services: ["ADA Markings", "Crosshatch"],
+  },
+  {
+    id: 20,
+    title: "Handicap Parking Yellow Markings",
+    category: "parking",
+    services: ["ADA Markings", "Line Striping"],
+  },
+  {
+    id: 21,
+    title: "Numbered Commercial Parking Spaces",
+    category: "parking",
+    services: ["Numbering", "Line Striping"],
+  },
+  {
+    id: 22,
+    title: "Drive-Through Parking Layout",
+    category: "parking",
+    services: ["Layout Design", "Line Striping"],
+  },
+  {
+    id: 23,
+    title: "Drive Lane Directional Arrows",
+    category: "parking",
+    services: ["Directional Arrows", "Line Striping"],
+  },
+  {
+    id: 24,
+    title: "No Parking Fire Lane Markings",
+    category: "signage",
+    services: ["Fire Lanes", "Stenciling"],
+  },
+  {
+    id: 25,
+    title: "Drive Up Directional Markings",
+    category: "signage",
+    services: ["Custom Text", "Directional Arrows"],
+  },
+  {
+    id: 26,
+    title: "ADA Handicap Symbols — Fresh Lot",
+    category: "parking",
+    services: ["ADA Markings", "Line Striping"],
+  },
+  {
+    id: 27,
+    title: "Park Area Fresh Lot Striping",
+    category: "parking",
+    services: ["Line Striping", "Layout Design"],
+  },
+  {
+    id: 28,
+    title: "Speed Bump Safety Painting",
+    category: "signage",
+    services: ["Safety Markings", "Speed Bump Paint"],
+  },
+  {
+    id: 29,
+    title: "Facility Stop Marking & Speed Bump",
+    category: "signage",
+    services: ["Stenciling", "Safety Markings"],
+  },
+  {
+    id: 30,
+    title: "Fresh Sealcoat & Line Striping",
+    category: "sealcoating",
+    services: ["Sealcoating", "Re-Striping"],
+  },
+  {
+    id: 31,
+    title: "Warehouse Green Safety Lanes",
+    category: "warehouse",
+    services: ["Floor Striping", "Pedestrian Paths"],
+  },
+  {
+    id: 32,
+    title: "Large Warehouse Floor Markings",
+    category: "warehouse",
+    services: ["Floor Striping", "Safety Zones"],
+  },
+  {
+    id: 33,
+    title: "Retail Lot Crosshatch Zones",
+    category: "parking",
+    services: ["Safety Zones", "Crosshatch"],
+  },
+  {
+    id: 34,
+    title: "Open Lot Striping in Progress",
+    category: "parking",
+    services: ["Line Striping", "Layout Design"],
+  },
+  {
+    id: 35,
+    title: "Industrial Gate Entry Markings",
+    category: "warehouse",
+    services: ["Custom Markings", "Safety Zones"],
   },
 ];
 
 function OurWorkPage() {
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const filteredProjects =
+    activeCategory === "all"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
+
+  const lightboxProject =
+    lightboxIndex !== null ? filteredProjects[lightboxIndex] : null;
+
+  const navigateLightbox = useCallback(
+    (direction: -1 | 1) => {
+      setLightboxIndex((prev) => {
+        if (prev === null) return null;
+        const next = prev + direction;
+        if (next < 0 || next >= filteredProjects.length) return prev;
+        return next;
+      });
+    },
+    [filteredProjects.length],
+  );
+
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") navigateLightbox(-1);
+      if (e.key === "ArrowRight") navigateLightbox(1);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [lightboxIndex, closeLightbox, navigateLightbox]);
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -149,20 +351,31 @@ function OurWorkPage() {
             {projectCategories.map((category) => (
               <button
                 key={category.id}
-                className="rounded-full border border-asphalt-200 bg-white px-5 py-2.5 text-sm font-medium text-asphalt-700 shadow-sm transition-all hover:border-stripe-500 hover:bg-stripe-50 hover:text-stripe-600 focus:outline-none focus:ring-2 focus:ring-stripe-500 focus:ring-offset-2"
+                onClick={() => setActiveCategory(category.id)}
+                className={`border px-5 py-2.5 text-sm font-medium shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-stripe-500 focus:ring-offset-2 ${
+                  activeCategory === category.id
+                    ? "border-stripe-500 bg-stripe-500 text-asphalt-950"
+                    : "border-asphalt-200 bg-white text-asphalt-700 hover:border-stripe-500 hover:bg-stripe-50 hover:text-stripe-600"
+                }`}
               >
                 {category.label}
+                {activeCategory === category.id && category.id !== "all" && (
+                  <span className="ml-2 text-xs font-bold">
+                    ({filteredProjects.length})
+                  </span>
+                )}
               </button>
             ))}
           </div>
 
           {/* Projects Grid */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredProjects.map((project, index) => (
               <Card
                 key={project.id}
                 variant="elevated"
-                className="group overflow-hidden"
+                className="group cursor-pointer overflow-hidden"
+                onClick={() => setLightboxIndex(index)}
               >
                 <div className="relative aspect-4/3 overflow-hidden bg-asphalt-100">
                   <ResponsiveImage
@@ -174,34 +387,31 @@ function OurWorkPage() {
                     height={480}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-asphalt-900/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                  <div className="absolute inset-0 flex items-center justify-center bg-linear-to-t from-asphalt-900/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100">
+                    <Expand className="h-8 w-8 text-white drop-shadow-lg" />
+                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
+                <div className="p-5 sm:p-6">
                   <div className="mb-2 flex items-center gap-2">
                     <Badge variant="outline" className="text-xs">
                       {project.category === "parking"
                         ? "Parking Lot"
                         : project.category === "warehouse"
                           ? "Warehouse"
-                          : "Sealcoating"}
+                          : project.category === "signage"
+                            ? "Signage"
+                            : "Sealcoating"}
                     </Badge>
-                    <span className="text-xs text-asphalt-600">
-                      {project.location}
-                    </span>
                   </div>
-                  <h3 className="mb-2 font-display text-lg font-bold text-asphalt-900">
+                  <h3 className="mb-3 font-display text-lg font-bold text-asphalt-900">
                     {project.title}
                   </h3>
-                  <p className="mb-4 text-sm text-asphalt-600">
-                    {project.description}
-                  </p>
                   <div className="flex flex-wrap gap-1.5">
                     {project.services.map((service) => (
                       <span
                         key={service}
-                        className="rounded-full bg-asphalt-100 px-2.5 py-1 text-xs font-medium text-asphalt-600"
+                        className="bg-asphalt-100 px-2.5 py-1 text-xs font-medium text-asphalt-600"
                       >
                         {service}
                       </span>
@@ -283,6 +493,93 @@ function OurWorkPage() {
         }
         description="Join our growing list of satisfied clients. Get a free, no-obligation quote today."
       />
+
+      {/* Lightbox */}
+      {lightboxProject && lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-asphalt-950/90 backdrop-blur-sm"
+          onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label={lightboxProject.title}
+        >
+          <div
+            className="relative mx-4 flex max-h-[90vh] w-full max-w-5xl flex-col border-2 border-asphalt-700 bg-asphalt-950 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between border-b-2 border-asphalt-700 px-5 py-4">
+              <div className="flex items-center gap-3">
+                <Badge variant="glass" className="text-xs">
+                  {lightboxProject.category === "parking"
+                    ? "Parking Lot"
+                    : lightboxProject.category === "warehouse"
+                      ? "Warehouse"
+                      : lightboxProject.category === "signage"
+                        ? "Signage"
+                        : "Sealcoating"}
+                </Badge>
+                <span className="text-sm text-asphalt-400">
+                  {lightboxIndex + 1} / {filteredProjects.length}
+                </span>
+              </div>
+              <button
+                onClick={closeLightbox}
+                className="border-2 border-asphalt-600 p-2 text-asphalt-400 transition-colors hover:border-white hover:bg-white hover:text-asphalt-950 focus:outline-none focus:ring-2 focus:ring-stripe-500"
+                aria-label="Close lightbox"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Image */}
+            <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden bg-asphalt-900 p-4">
+              <img
+                src={`/images/projects/${lightboxProject.id}.webp`}
+                alt={lightboxProject.title}
+                className="max-h-[65vh] w-auto max-w-full object-contain"
+              />
+
+              {/* Prev/Next buttons */}
+              {lightboxIndex > 0 && (
+                <button
+                  onClick={() => navigateLightbox(-1)}
+                  className="absolute left-3 border-2 border-asphalt-600 bg-asphalt-950/80 p-2 text-asphalt-300 transition-colors hover:border-stripe-500 hover:bg-stripe-500 hover:text-asphalt-950 focus:outline-none focus:ring-2 focus:ring-stripe-500"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+              )}
+              {lightboxIndex < filteredProjects.length - 1 && (
+                <button
+                  onClick={() => navigateLightbox(1)}
+                  className="absolute right-3 border-2 border-asphalt-600 bg-asphalt-950/80 p-2 text-asphalt-300 transition-colors hover:border-stripe-500 hover:bg-stripe-500 hover:text-asphalt-950 focus:outline-none focus:ring-2 focus:ring-stripe-500"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              )}
+            </div>
+
+            {/* Footer */}
+            <div className="border-t-2 border-asphalt-700 px-5 py-4">
+              <h3 className="mb-2 font-display text-lg font-bold text-white">
+                {lightboxProject.title}
+              </h3>
+              <div className="flex flex-wrap gap-1.5">
+                {lightboxProject.services.map((service) => (
+                  <span
+                    key={service}
+                    className="border border-asphalt-600 bg-asphalt-800 px-2.5 py-1 text-xs font-medium text-asphalt-300"
+                  >
+                    {service}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
