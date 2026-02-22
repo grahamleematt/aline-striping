@@ -1,0 +1,12 @@
+# Robots.txt for A-Line Striping Inc.
+# https://www.alinestripinginc.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.alinestripinginc.com/sitemap.xml
+
+# Disallow admin or private paths (if any)
+# Disallow: /admin/
+
