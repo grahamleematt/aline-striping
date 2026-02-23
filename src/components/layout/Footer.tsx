@@ -54,11 +54,19 @@ export function Footer() {
     select: (s) => s.isLoading,
   });
 
+  const handleSamePageClick = (e: React.MouseEvent, href: string) => {
+    if (window.location.pathname === href) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
-    <footer className="border-t-4 border-stripe-500 bg-asphalt-950 text-asphalt-300">
+    <footer className="bg-asphalt-950 text-asphalt-300">
+      <div className="h-1.5 bg-caution-stripe" />
       <div className="container-section">
         {/* Main footer content */}
-        <div className="grid gap-12 py-16 lg:grid-cols-12 lg:gap-8 lg:py-20">
+        <div className="grid gap-8 py-12 sm:py-16 lg:grid-cols-12 lg:gap-8 lg:py-20">
           {/* Brand column */}
           <div className="lg:col-span-4">
             <Link
@@ -147,6 +155,7 @@ export function Footer() {
                 <li key={service.href}>
                   <Link
                     to={service.href}
+                    onClick={(e) => handleSamePageClick(e, service.href)}
                     className={cn(
                       footerLinkStyles,
                       isNavigating && "pointer-events-none opacity-70",
@@ -169,6 +178,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
+                    onClick={(e) => handleSamePageClick(e, link.href)}
                     className={cn(
                       footerLinkStyles,
                       isNavigating && "pointer-events-none opacity-70",
@@ -192,6 +202,7 @@ export function Footer() {
                   key={area.slug}
                   to="/service-areas/$slug"
                   params={{ slug: area.slug }}
+                  onClick={(e) => handleSamePageClick(e, `/service-areas/${area.slug}`)}
                   className="bg-asphalt-800 px-3 py-1.5 text-xs text-asphalt-300 transition-colors duration-150 hover:bg-asphalt-700 hover:text-white"
                 >
                   {area.name}
@@ -199,6 +210,7 @@ export function Footer() {
               ))}
               <Link
                 to="/service-areas"
+                onClick={(e) => handleSamePageClick(e, "/service-areas")}
                 className={cn(
                   "inline-flex items-center gap-1 bg-stripe-500/15 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-stripe-400",
                   "transition-colors duration-150",

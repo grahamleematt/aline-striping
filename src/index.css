@@ -405,6 +405,14 @@ h4 {
   background-size: 60px 60px;
 }
 
+@utility bg-spotlight {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    rgba(255, 209, 0, 0.06) 0%,
+    transparent 70%
+  );
+}
+
 @utility bg-grid-pattern-light {
   background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
@@ -417,6 +425,21 @@ h4 {
    ======================================== */
 @utility divider-heavy {
   border-top: 4px solid var(--color-asphalt-950);
+}
+
+/* ========================================
+   STENCIL LABEL — Industrial section markers
+   Evokes stenciled text on warehouse floors.
+   ======================================== */
+@utility stencil-label {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-family: var(--font-display);
+  border-bottom: 3px solid currentColor;
+  padding-bottom: 0.25rem;
+  display: inline-block;
+  font-size: var(--text-xs);
 }
 
 /* ========================================

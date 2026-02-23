@@ -178,8 +178,6 @@ function ServiceAreaPage() {
       {/* Services Available */}
       <section className="relative overflow-hidden bg-asphalt-950 py-24 lg:py-32">
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -right-40 top-1/4 h-96 w-96 rounded-full bg-stripe-500/10 blur-[120px]" />
-
         <div className="container-section relative">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <Badge variant="glass" className="mb-4">
@@ -202,7 +200,7 @@ function ServiceAreaPage() {
               <Link
                 key={service.title}
                 to={service.href}
-                className="glass-dark border border-white/10 p-8 transition-all hover:border-stripe-500/50 hover:bg-white/5"
+                className="glass-dark border-2 border-asphalt-700 p-5 sm:p-6 md:p-8 transition-all duration-150 hover:border-stripe-500 hover:bg-asphalt-800"
               >
                 <service.icon className="mb-4 h-9 w-9 text-stripe-400" />
                 <h3 className="mb-3 font-display text-xl font-bold text-white">
@@ -224,7 +222,7 @@ function ServiceAreaPage() {
       {/* Why Choose A-Line */}
       <section className="py-24 lg:py-32">
         <div className="container-section">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="grid items-center gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-2">
             <div>
               <Badge variant="accent" className="mb-6">
                 <Shield className="mr-1.5 h-3.5 w-3.5" />
@@ -251,7 +249,7 @@ function ServiceAreaPage() {
               </div>
             </div>
 
-            <Card variant="elevated" className="p-8">
+            <Card variant="elevated" className="p-5 sm:p-6 md:p-8">
               <CardContent className="p-0">
                 <h3 className="mb-6 font-display text-2xl font-bold text-asphalt-900">
                   Get a Free Quote in {area.name}

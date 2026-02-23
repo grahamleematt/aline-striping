@@ -118,8 +118,8 @@ function WhyUsPage() {
       {/* Story Section */}
       <section className="relative pt-16 pb-24 lg:pb-32">
         <div className="container-section">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <Card variant="elevated" className="p-8 lg:p-12">
+          <div className="grid items-center gap-6 sm:gap-8 lg:gap-12 lg:grid-cols-2">
+            <Card variant="elevated" className="p-5 sm:p-8 lg:p-12">
               <h2 className="mb-6 font-display text-3xl font-bold text-asphalt-900">
                 Our Story
               </h2>
@@ -146,7 +146,7 @@ function WhyUsPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               {differentiators.map((item) => (
                 <Card key={item.title} variant="elevated" className="group p-6">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-stripe-500/10 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center bg-stripe-500/20 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white">
                     <item.icon className="h-6 w-6" />
                   </div>
                   <h3 className="mb-2 font-display text-lg font-bold text-asphalt-900">
@@ -163,7 +163,7 @@ function WhyUsPage() {
       {/* Quality Standards Section */}
       <section className="bg-asphalt-50 py-24 lg:py-32">
         <div className="container-section">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="grid items-center gap-6 sm:gap-8 lg:gap-12 lg:grid-cols-2">
             <div>
               <Badge variant="accent" className="mb-6">
                 <Zap className="mr-1.5 h-3.5 w-3.5" />
@@ -189,7 +189,7 @@ function WhyUsPage() {
               </ul>
             </div>
 
-            <Card variant="elevated" className="p-8 lg:p-12">
+            <Card variant="elevated" className="p-5 sm:p-8 lg:p-12">
               <div className="flex items-center gap-3 mb-6">
                 <Paintbrush className="h-8 w-8 text-stripe-500" />
                 <h3 className="font-display text-2xl font-bold text-asphalt-900">
@@ -203,7 +203,7 @@ function WhyUsPage() {
                 and alignment to consistent line thickness and crisp edges.
               </p>
               <div className="mt-8 flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br from-stripe-500 to-stripe-400">
+                <div className="flex h-16 w-16 items-center justify-center bg-linear-to-br from-stripe-500 to-stripe-400">
                   <span className="font-display text-2xl font-bold text-asphalt-900">
                     {BUSINESS_INFO.yearsExperience}+
                   </span>
@@ -225,8 +225,6 @@ function WhyUsPage() {
       {/* Testimonials Section */}
       <section className="relative overflow-hidden bg-asphalt-950 py-24 lg:py-32">
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -right-40 top-1/4 h-96 w-96 rounded-full bg-stripe-500/10 blur-[120px]" />
-
         <div className="container-section relative">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <div className="mb-4 flex items-center justify-center gap-1">
@@ -250,7 +248,7 @@ function WhyUsPage() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="glass-dark rounded-2xl border border-white/10 p-6"
+                className="glass-dark border-2 border-asphalt-700 border-t-4 border-t-stripe-500 p-6"
               >
                 <div className="mb-4 flex gap-1">
                   {[...Array(testimonial.rating)].map((_, i) => (

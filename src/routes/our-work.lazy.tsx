@@ -349,10 +349,10 @@ function OurWorkPage() {
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`border px-5 py-2.5 text-sm font-medium shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-stripe-500 focus:ring-offset-2 ${
+                className={`border-2 px-5 py-2.5 text-sm font-bold uppercase tracking-wide transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-stripe-500 focus:ring-offset-2 ${
                   activeCategory === category.id
                     ? "border-stripe-500 bg-stripe-500 text-asphalt-950"
-                    : "border-asphalt-200 bg-white text-asphalt-700 hover:border-stripe-500 hover:bg-stripe-50 hover:text-stripe-600"
+                    : "border-asphalt-300 bg-white text-asphalt-700 hover:border-stripe-500 hover:bg-stripe-50 hover:text-stripe-600"
                 }`}
               >
                 {category.label}
@@ -382,10 +382,10 @@ function OurWorkPage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     width={640}
                     height={480}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-150 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-linear-to-t from-asphalt-900/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100">
-                    <Expand className="h-8 w-8 text-white drop-shadow-lg" />
+                    <Expand className="h-8 w-8 text-white" />
                   </div>
                 </div>
 
@@ -438,8 +438,6 @@ function OurWorkPage() {
       {/* Testimonials Section */}
       <section className="relative overflow-hidden bg-asphalt-950 py-24 lg:py-32">
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -right-40 top-1/4 h-96 w-96 rounded-full bg-stripe-500/10 blur-[120px]" />
-
         <div className="container-section relative">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <Badge variant="glass" className="mb-4">
@@ -457,7 +455,7 @@ function OurWorkPage() {
             {TESTIMONIALS.slice(0, 3).map((testimonial, index) => (
               <div
                 key={index}
-                className="glass-dark rounded-2xl border border-white/10 p-6"
+                className="glass-dark border-2 border-asphalt-700 border-t-4 border-t-stripe-500 p-6"
               >
                 <div className="mb-4 flex gap-1">
                   {[...Array(5)].map((_, i) => (
@@ -494,7 +492,7 @@ function OurWorkPage() {
       {/* Lightbox */}
       {lightboxProject && lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-asphalt-950/90 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-asphalt-950/95"
           onClick={closeLightbox}
           role="dialog"
           aria-modal="true"
@@ -567,7 +565,7 @@ function OurWorkPage() {
                 {lightboxProject.services.map((service) => (
                   <span
                     key={service}
-                    className="border border-asphalt-600 bg-asphalt-800 px-2.5 py-1 text-xs font-medium text-asphalt-300"
+                    className="border-2 border-asphalt-600 bg-asphalt-800 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-asphalt-300"
                   >
                     {service}
                   </span>

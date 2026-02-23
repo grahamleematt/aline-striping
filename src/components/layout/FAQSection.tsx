@@ -32,7 +32,7 @@ export function FAQSection({ description, faqs }: FAQSectionProps) {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="rounded-2xl border border-asphalt-100 bg-white px-6 shadow-sm transition-shadow hover:shadow-md"
+                className="border-2 border-asphalt-200 bg-white px-6 shadow-sm transition-shadow hover:shadow-md"
               >
                 <AccordionTrigger className="py-5 text-left font-semibold text-asphalt-900 hover:no-underline">
                   {faq.question}

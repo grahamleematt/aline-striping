@@ -18,8 +18,6 @@ export function CTASection({
     <section className="relative overflow-hidden py-24 lg:py-32">
       <div className="absolute inset-0 bg-linear-to-br from-stripe-500 via-stripe-400 to-stripe-500" />
       <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-      <div className="absolute left-10 top-10 h-32 w-32 rounded-full bg-white/10 blur-3xl" />
-      <div className="absolute bottom-10 right-10 h-48 w-48 rounded-full bg-asphalt-900/10 blur-3xl" />
 
       <div className="container-section relative">
         <div className="mx-auto max-w-3xl text-center">

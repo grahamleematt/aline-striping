@@ -30,40 +30,40 @@ const services = [
     description:
       "Improve safety and traffic flow with professional parking lot striping. We deliver clear, long-lasting lines for commercial lots of every size.",
     href: "/services/parking-lot-striping",
-    gradient: "from-blue-500/20 to-cyan-500/20",
     image: "/images/parking-lot-striping.webp",
+    imageWidths: [800, 1200, 1600],
   },
   {
     title: "Warehouse Floor Striping",
     description:
       "A-Line Striping, Inc. provides tailored warehouse striping solutions to define work zones, improve safety, and keep operations efficient and compliant.",
     href: "/services/warehouse-floor-striping",
-    gradient: "from-purple-500/20 to-pink-500/20",
     image: "/images/warehouse-floor-striping.webp",
+    imageWidths: [400],
   },
   {
     title: "Asphalt Sealcoating",
     description:
       "Our sealcoating protects parking lots, commercial properties, and driveways from cracks, fading, and weather damage with a smooth, durable finish.",
     href: "/services/asphalt-sealcoating",
-    gradient: "from-orange-500/20 to-red-500/20",
     image: "/images/asphalt-sealcoating.webp",
+    imageWidths: [400, 800],
   },
   {
     title: "Layout Design",
     description:
       "Our designers develop organized, high-efficiency parking lot layouts that maximize space, improve traffic flow, and ensure ADA compliance.",
     href: "/services/layout-design",
-    gradient: "from-green-500/20 to-emerald-500/20",
     image: "/images/layout-design.webp",
+    imageWidths: [400, 800],
   },
   {
     title: "Precision Linework & Signage",
     description:
       "Our signage designers enhance the organization of parking lots with clear traffic signs, custom striping layouts, fire lanes, pedestrian crossings, and no-parking zones.",
     href: "/services/precision-linework-signage",
-    gradient: "from-yellow-500/20 to-amber-500/20",
     image: "/images/precision-signage.webp",
+    imageWidths: [400, 800],
   },
 ];
 
@@ -81,7 +81,7 @@ function HomePage() {
     <div className="flex flex-col">
       {/* Hero Section — Split Screen Industrial */}
       <section className="relative min-h-screen bg-asphalt-950">
-        <div className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
+        <div className="grid grid-cols-1 lg:min-h-screen lg:grid-cols-2">
           {/* Left — Content: extra top padding clears the fixed header */}
           <div className="flex flex-col justify-center px-6 pt-28 pb-12 sm:px-10 sm:pt-32 sm:pb-16 lg:px-16 lg:pt-36 lg:pb-20">
             {/* Trust badges */}
@@ -176,6 +176,8 @@ function HomePage() {
         </div>
       </section>
 
+      <div className="h-1.5 bg-caution-stripe" />
+
       {/* Services Section - Bento Grid */}
       <section className="relative pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-32">
         <div className="container-section">
@@ -208,16 +210,14 @@ function HomePage() {
                   <ResponsiveImage
                     src={services[0].image}
                     alt={services[0].title}
-                    widths={[400, 800]}
+                    widths={services[0].imageWidths}
                     sizes="(max-width: 640px) 100vw, 40vw"
                     width={500}
                     height={350}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-150 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-linear-to-r from-transparent to-white/10" />
                 </div>
                 <div className="relative flex flex-1 flex-col justify-between p-6 sm:p-8 lg:p-10">
-                  <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-linear-to-br from-stripe-500/20 to-stripe-400/5 blur-3xl transition-transform group-hover:scale-150 sm:h-64 sm:w-64" />
                   <div>
                     <h3 className="mb-2 font-display text-xl font-bold text-asphalt-900 sm:mb-3 sm:text-2xl lg:text-3xl">
                       {services[0].title}
@@ -248,18 +248,14 @@ function HomePage() {
                   <ResponsiveImage
                     src={service.image}
                     alt={service.title}
-                    widths={[400, 800]}
+                    widths={service.imageWidths}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     width={400}
                     height={200}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-150 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-white/20 to-transparent" />
                 </div>
                 <div className="relative flex h-full flex-col justify-between p-5 sm:p-6 md:p-8">
-                  <div
-                    className={`absolute -right-10 -top-10 h-24 w-24 rounded-full bg-linear-to-br ${service.gradient} blur-2xl transition-transform group-hover:scale-150 sm:h-32 sm:w-32`}
-                  />
                   <div>
                     <h3 className="mb-1.5 font-display text-lg font-bold text-asphalt-900 sm:mb-2 sm:text-xl">
                       {service.title}
@@ -286,8 +282,6 @@ function HomePage() {
       <section className="relative overflow-hidden bg-asphalt-950 py-24 lg:py-32">
         {/* Background elements - hidden on mobile for performance */}
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -left-40 top-1/2 hidden h-80 w-80 -translate-y-1/2 rounded-full bg-stripe-500/10 blur-[100px] sm:block" />
-        <div className="absolute -right-40 top-1/4 hidden h-96 w-96 rounded-full bg-electric-500/10 blur-[120px] sm:block" />
 
         <div className="container-section relative">
           <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
@@ -335,9 +329,9 @@ function HomePage() {
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="group flex items-start gap-3 rounded-lg p-3 transition-all hover:bg-white/5 sm:gap-4 sm:rounded-xl sm:p-4"
+                    className="group flex items-start gap-3 p-3 transition-all hover:bg-asphalt-800 sm:gap-4 sm:p-4"
                   >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-stripe-500/20 text-stripe-400 transition-colors group-hover:bg-stripe-500 group-hover:text-asphalt-900 sm:h-10 sm:w-10 sm:rounded-xl">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-stripe-500/20 text-stripe-400 transition-colors group-hover:bg-stripe-500 group-hover:text-asphalt-900 sm:h-10 sm:w-10">
                       <item.icon className="h-4 w-4 sm:h-5 sm:w-5" />
                     </div>
                     <div>
@@ -358,7 +352,7 @@ function HomePage() {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="border-2 border-asphalt-700 bg-asphalt-900 p-4 sm:p-6"
+                  className="border-2 border-asphalt-700 border-t-4 border-t-stripe-500 bg-asphalt-900 p-4 sm:p-6"
                 >
                   <div className="mb-3 flex gap-0.5 sm:mb-4 sm:gap-1">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -389,6 +383,8 @@ function HomePage() {
         </div>
       </section>
 
+      <div className="h-1.5 bg-caution-stripe" />
+
       {/* Service Areas Section */}
       <section className="py-16 sm:py-20 lg:py-32">
         <div className="container-section">
@@ -414,17 +410,14 @@ function HomePage() {
               {
                 state: "Mississippi",
                 areas: SERVICE_AREAS.mississippi,
-                color: "from-blue-500 to-cyan-500",
               },
               {
                 state: "Tennessee",
                 areas: SERVICE_AREAS.tennessee,
-                color: "from-orange-500 to-red-500",
               },
               {
                 state: "Arkansas",
                 areas: SERVICE_AREAS.arkansas,
-                color: "from-purple-500 to-pink-500",
               },
             ].map((region) => (
               <Card
@@ -433,9 +426,6 @@ function HomePage() {
                 className="group overflow-hidden"
               >
                 <div className="relative p-5 sm:p-6 md:p-8">
-                  <div
-                    className={`absolute -right-10 -top-10 h-24 w-24 rounded-full bg-linear-to-br ${region.color} opacity-20 blur-2xl transition-transform group-hover:scale-150 sm:h-32 sm:w-32`}
-                  />
                   <div className="relative">
                     <div className="mb-3 flex items-center gap-1.5 sm:mb-4 sm:gap-2">
                       <MapPin className="h-4 w-4 text-stripe-500 sm:h-5 sm:w-5" />
@@ -483,10 +473,6 @@ function HomePage() {
         {/* Gradient background */}
         <div className="absolute inset-0 bg-linear-to-br from-stripe-500 via-stripe-400 to-stripe-500" />
         <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-
-        {/* Floating elements - hidden on mobile */}
-        <div className="absolute left-10 top-10 hidden h-32 w-32 rounded-full bg-white/10 blur-3xl sm:block" />
-        <div className="absolute bottom-10 right-10 hidden h-48 w-48 rounded-full bg-asphalt-900/10 blur-3xl sm:block" />
 
         <div className="container-section relative">
           <div className="mx-auto max-w-3xl text-center">

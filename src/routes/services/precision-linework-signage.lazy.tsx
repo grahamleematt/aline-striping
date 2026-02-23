@@ -37,42 +37,36 @@ const services = [
     title: "Clear Traffic Signs",
     description:
       "Stop signs, yield signs, speed limit signs, and directional signage that keeps traffic flowing safely.",
-    gradient: "from-red-500/20 to-orange-500/20",
   },
   {
     icon: ArrowUpDown,
     title: "Custom Striping Layout",
     description:
       "Tailored markings including arrows, turn lanes, crosshatching, and specialty stencils for your property.",
-    gradient: "from-blue-500/20 to-cyan-500/20",
   },
   {
     icon: Footprints,
     title: "Pedestrian Crossings",
     description:
       "High-visibility crosswalks and walkway markings that protect pedestrians and meet safety codes.",
-    gradient: "from-green-500/20 to-emerald-500/20",
   },
   {
     icon: Flame,
     title: "Fire Lanes",
     description:
       "Properly marked fire lanes with correct coloring and signage to meet fire code requirements.",
-    gradient: "from-orange-500/20 to-red-500/20",
   },
   {
     icon: Ban,
     title: "No-Parking Zones",
     description:
       "Clear no-parking markings, hatching, and signs for restricted areas, loading zones, and emergency access.",
-    gradient: "from-purple-500/20 to-pink-500/20",
   },
   {
     icon: ParkingCircle,
     title: "ADA Signage",
     description:
       "Compliant accessible parking signs, van accessible markers, and access aisle signage.",
-    gradient: "from-indigo-500/20 to-violet-500/20",
   },
 ];
 
@@ -206,12 +200,9 @@ function PrecisionLineworkSignagePage() {
                 variant="elevated"
                 className="group overflow-hidden"
               >
-                <CardContent className="relative p-8">
-                  <div
-                    className={`absolute -right-10 -top-10 h-32 w-32 rounded-full bg-linear-to-br ${service.gradient} blur-2xl transition-transform group-hover:scale-150`}
-                  />
+                <CardContent className="relative p-5 sm:p-6 md:p-8">
                   <div className="relative">
-                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-stripe-500/10 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white">
+                    <div className="mb-4 flex h-14 w-14 items-center justify-center bg-stripe-500/20 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white">
                       <service.icon className="h-7 w-7" />
                     </div>
                     <h3 className="mb-2 font-display text-xl font-bold text-asphalt-900">
@@ -229,7 +220,6 @@ function PrecisionLineworkSignagePage() {
       {/* Signage Types Section */}
       <section className="relative overflow-hidden bg-asphalt-950 py-24 lg:py-32">
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -right-40 top-1/4 h-96 w-96 rounded-full bg-stripe-500/10 blur-[120px]" />
 
         <div className="container-section relative">
           <div className="mx-auto mb-16 max-w-3xl text-center">
@@ -252,7 +242,7 @@ function PrecisionLineworkSignagePage() {
             {signageTypes.map((type) => (
               <div
                 key={type.category}
-                className="glass-dark rounded-2xl border border-white/10 p-6"
+                className="glass-dark border-2 border-asphalt-700 p-6"
               >
                 <h3 className="mb-4 font-display text-lg font-bold text-white">
                   {type.category}
@@ -277,11 +267,10 @@ function PrecisionLineworkSignagePage() {
       {/* Benefits Section */}
       <section className="py-24 lg:py-32">
         <div className="container-section">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="grid items-center gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-2">
             <div className="order-2 lg:order-1">
-              <Card variant="elevated" className="overflow-hidden p-8">
-                <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-stripe-500/20 to-stripe-400/5 blur-3xl" />
-                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-asphalt-100">
+              <Card variant="elevated" className="overflow-hidden p-5 sm:p-6 md:p-8">
+                <div className="relative aspect-4/3 overflow-hidden bg-asphalt-100">
                   <ResponsiveImage
                     src="/images/precision-signage.webp"
                     alt="Custom parking lot signage and markings by A-Line Striping"

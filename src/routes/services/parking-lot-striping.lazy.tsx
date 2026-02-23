@@ -38,42 +38,36 @@ const services = [
     title: "New Line Striping",
     description:
       "Crisp, clean lines for newly paved lots or full resurfacing projects.",
-    gradient: "from-blue-500/20 to-cyan-500/20",
   },
   {
     icon: Ruler,
     title: "Re-Striping / Maintenance",
     description:
       "Refresh faded lines and markings to restore visibility and safety.",
-    gradient: "from-purple-500/20 to-pink-500/20",
   },
   {
     icon: AlertTriangle,
     title: "Fire Lanes & Safety Zones",
     description:
       "Marked fire lanes, loading zones, directional markings, and safety-conscious layouts.",
-    gradient: "from-orange-500/20 to-red-500/20",
   },
   {
     icon: Shield,
     title: "ADA-Compliant Markings",
     description:
       "Clearly defined accessible parking stalls and van-accessible spaces with proper signage.",
-    gradient: "from-green-500/20 to-emerald-500/20",
   },
   {
     icon: Eye,
     title: "Reflective & High-Visibility",
     description:
       "Enhanced visibility for low-light, nighttime, or high-traffic conditions.",
-    gradient: "from-yellow-500/20 to-amber-500/20",
   },
   {
     icon: Truck,
     title: "Custom Lot Layouts",
     description:
       "Tailored striping plans to maximize parking capacity and optimize traffic flow.",
-    gradient: "from-indigo-500/20 to-violet-500/20",
   },
 ];
 
@@ -119,90 +113,87 @@ function ParkingLotStripingPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <PageHero
-        hideBlursOnMobile
-        className="px-0 pb-16 pt-24 sm:pb-24 sm:pt-32 lg:pb-32 lg:pt-40"
-      >
+      <PageHero className="px-0 pb-16 pt-24 sm:pb-24 sm:pt-32 lg:pb-32 lg:pt-40">
         <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-6 inline-flex animate-fade-in-up sm:mb-8">
-              <Badge
-                variant="glass"
-                className="px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm"
-              >
-                <Shield className="mr-1.5 h-3.5 w-3.5 text-stripe-400 sm:mr-2 sm:h-4 sm:w-4" />
-                <span className="text-white/90">
-                  {BUSINESS_INFO.warranty} Warranty
-                </span>
-              </Badge>
+          <div className="mb-6 inline-flex animate-fade-in-up sm:mb-8">
+            <Badge
+              variant="glass"
+              className="px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm"
+            >
+              <Shield className="mr-1.5 h-3.5 w-3.5 text-stripe-400 sm:mr-2 sm:h-4 sm:w-4" />
+              <span className="text-white/90">
+                {BUSINESS_INFO.warranty} Warranty
+              </span>
+            </Badge>
+          </div>
+
+          <h1 className="mb-4 animate-fade-in-up stagger-1 font-display text-[2.5rem] font-bold leading-[1.1] tracking-tight text-white sm:mb-6 sm:text-5xl md:text-6xl lg:text-7xl">
+            Parking Lot
+            <br />
+            <span className="gradient-text">Striping Services</span>
+          </h1>
+
+          <p className="mx-auto mb-8 max-w-2xl animate-fade-in-up stagger-2 text-base leading-relaxed text-asphalt-300 sm:mb-10 sm:text-lg md:text-xl">
+            A faded, poorly marked parking lot can cause confusion, reduce
+            efficiency, and pose safety risks. We create precise, long-lasting
+            striping for commercial lots, retail centers, and industrial
+            properties.
+          </p>
+
+          <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+            <Button
+              asChild
+              variant="primary"
+              size="lg"
+              className="w-full sm:w-auto sm:size-xl"
+            >
+              <Link to="/contact">
+                Request a Free Quote
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline-light"
+              size="lg"
+              className="w-full sm:w-auto sm:size-xl"
+            >
+              <a href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}>
+                <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                {BUSINESS_INFO.phone}
+              </a>
+            </Button>
+          </div>
+
+          {/* Trust indicators */}
+          <div className="mt-8 flex animate-fade-in-up stagger-4 flex-wrap items-center justify-center gap-4 text-asphalt-300 sm:mt-12 sm:gap-6 lg:gap-8">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="h-3 w-3 fill-stripe-500 text-stripe-500 sm:h-4 sm:w-4"
+                  />
+                ))}
+              </div>
+              <span className="text-xs font-medium sm:text-sm">
+                {BUSINESS_INFO.googleRating}/5
+              </span>
             </div>
-
-            <h1 className="mb-4 animate-fade-in-up stagger-1 font-display text-[2.5rem] font-bold leading-[1.1] tracking-tight text-white sm:mb-6 sm:text-5xl md:text-6xl lg:text-7xl">
-              Parking Lot
-              <br />
-              <span className="gradient-text">Striping Services</span>
-            </h1>
-
-            <p className="mx-auto mb-8 max-w-2xl animate-fade-in-up stagger-2 text-base leading-relaxed text-asphalt-300 sm:mb-10 sm:text-lg md:text-xl">
-              A faded, poorly marked parking lot can cause confusion, reduce
-              efficiency, and pose safety risks. We create precise, long-lasting
-              striping for commercial lots, retail centers, and industrial
-              properties.
-            </p>
-
-            <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-              <Button
-                asChild
-                variant="primary"
-                size="lg"
-                className="w-full sm:w-auto sm:size-xl"
-              >
-                <Link to="/contact">
-                  Request a Free Quote
-                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline-light"
-                size="lg"
-                className="w-full sm:w-auto sm:size-xl"
-              >
-                <a href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}>
-                  <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  {BUSINESS_INFO.phone}
-                </a>
-              </Button>
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <CheckCircle2 className="h-4 w-4 text-stripe-400 sm:h-5 sm:w-5" />
+              <span className="text-xs font-medium sm:text-sm">
+                ADA Compliant
+              </span>
             </div>
-
-            {/* Trust indicators */}
-            <div className="mt-8 flex animate-fade-in-up stagger-4 flex-wrap items-center justify-center gap-4 text-asphalt-300 sm:mt-12 sm:gap-6 lg:gap-8">
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-3 w-3 fill-stripe-500 text-stripe-500 sm:h-4 sm:w-4"
-                    />
-                  ))}
-                </div>
-                <span className="text-xs font-medium sm:text-sm">
-                  {BUSINESS_INFO.googleRating}/5
-                </span>
-              </div>
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <CheckCircle2 className="h-4 w-4 text-stripe-400 sm:h-5 sm:w-5" />
-                <span className="text-xs font-medium sm:text-sm">
-                  ADA Compliant
-                </span>
-              </div>
-              <div className="hidden items-center gap-1.5 sm:flex sm:gap-2">
-                <Clock className="h-4 w-4 text-stripe-400 sm:h-5 sm:w-5" />
-                <span className="text-xs font-medium sm:text-sm">
-                  Fast Turnaround
-                </span>
-              </div>
+            <div className="hidden items-center gap-1.5 sm:flex sm:gap-2">
+              <Clock className="h-4 w-4 text-stripe-400 sm:h-5 sm:w-5" />
+              <span className="text-xs font-medium sm:text-sm">
+                Fast Turnaround
+              </span>
             </div>
           </div>
+        </div>
       </PageHero>
 
       {/* Services Grid */}
@@ -233,11 +224,8 @@ function ParkingLotStripingPage() {
                 className="group overflow-hidden"
               >
                 <CardContent className="relative p-5 sm:p-6 md:p-8">
-                  <div
-                    className={`absolute -right-10 -top-10 h-24 w-24 rounded-full bg-linear-to-br ${service.gradient} blur-2xl transition-transform group-hover:scale-150 sm:h-32 sm:w-32`}
-                  />
                   <div className="relative">
-                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-stripe-500/10 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white sm:mb-4 sm:h-14 sm:w-14 sm:rounded-2xl">
+                    <div className="mb-3 flex h-12 w-12 items-center justify-center bg-stripe-500/20 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white sm:mb-4 sm:h-14 sm:w-14">
                       <service.icon className="h-6 w-6 sm:h-7 sm:w-7" />
                     </div>
                     <h3 className="mb-1.5 font-display text-lg font-bold text-asphalt-900 sm:mb-2 sm:text-xl">
@@ -257,7 +245,6 @@ function ParkingLotStripingPage() {
       {/* Benefits Section */}
       <section className="relative overflow-hidden bg-asphalt-950 py-16 sm:py-20 lg:py-32">
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -right-40 top-1/4 hidden h-96 w-96 rounded-full bg-stripe-500/10 blur-[120px] sm:block" />
 
         <div className="container-section relative">
           <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12 lg:mb-16">
@@ -282,9 +269,9 @@ function ParkingLotStripingPage() {
             {benefits.map((benefit) => (
               <div
                 key={benefit.title}
-                className="glass-dark rounded-xl border border-white/10 p-5 sm:rounded-2xl sm:p-6"
+                className="glass-dark border-2 border-asphalt-700 p-5 sm:p-6"
               >
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-stripe-500/20 text-stripe-400 sm:mb-4 sm:h-12 sm:w-12 sm:rounded-xl">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center bg-stripe-500/20 text-stripe-400 sm:mb-4 sm:h-12 sm:w-12">
                   <benefit.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
                 <h3 className="mb-1.5 font-display text-base font-bold text-white sm:mb-2 sm:text-lg">
@@ -340,7 +327,7 @@ function ParkingLotStripingPage() {
                   },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-4">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-success-500/10 text-success-500">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center bg-success-500/20 text-success-500">
                       <CheckCircle2 className="h-5 w-5" />
                     </div>
                     <div>
@@ -355,13 +342,12 @@ function ParkingLotStripingPage() {
             </div>
 
             <div className="relative">
-              <Card variant="elevated" className="overflow-hidden p-8">
-                <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-stripe-500/20 to-stripe-400/5 blur-3xl" />
-                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-asphalt-100">
+              <Card variant="elevated" className="overflow-hidden p-5 sm:p-6 md:p-8">
+                <div className="relative aspect-4/3 overflow-hidden bg-asphalt-100">
                   <ResponsiveImage
                     src="/images/parking-lot-striping.webp"
                     alt="Professional parking lot striping project by A-Line Striping"
-                    widths={[400, 800]}
+                    widths={[800, 1200, 1600]}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     width={800}
                     height={369}
@@ -412,7 +398,7 @@ function ParkingLotStripingPage() {
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="rounded-xl border border-asphalt-100 bg-white px-4 shadow-sm transition-shadow hover:shadow-md sm:rounded-2xl sm:px-6"
+                  className="border-2 border-asphalt-200 bg-white px-4 shadow-sm transition-shadow hover:shadow-md sm:px-6"
                 >
                   <AccordionTrigger className="py-4 text-left text-sm font-semibold text-asphalt-900 hover:no-underline sm:py-5 sm:text-base">
                     {faq.question}
@@ -431,8 +417,6 @@ function ParkingLotStripingPage() {
       <section className="relative overflow-hidden py-16 sm:py-20 lg:py-32">
         <div className="absolute inset-0 bg-linear-to-br from-stripe-500 via-stripe-400 to-stripe-500" />
         <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-        <div className="absolute left-10 top-10 hidden h-32 w-32 rounded-full bg-white/10 blur-3xl sm:block" />
-        <div className="absolute bottom-10 right-10 hidden h-48 w-48 rounded-full bg-asphalt-900/10 blur-3xl sm:block" />
 
         <div className="container-section relative">
           <div className="mx-auto max-w-3xl text-center">

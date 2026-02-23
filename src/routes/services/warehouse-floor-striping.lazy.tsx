@@ -36,42 +36,42 @@ const services = [
     title: "Aisle & Work Zone Markings",
     description:
       "Clearly marked aisles, storage zones, forklift lanes, and operational zones to optimize workflow and safety.",
-    gradient: "from-blue-500/20 to-cyan-500/20",
+
   },
   {
     icon: Layers,
     title: "Custom Floor Layouts",
     description:
       "Tailored layouts based on your warehouse footprint, traffic flow, and usage to improve efficiency.",
-    gradient: "from-purple-500/20 to-pink-500/20",
+
   },
   {
     icon: AlertTriangle,
     title: "Safety & Hazard Markings",
     description:
       "Hazard zones, safety lanes, restricted areas, and forklift-only lanes to meet compliance and protect staff.",
-    gradient: "from-orange-500/20 to-red-500/20",
+
   },
   {
     icon: Users,
     title: "Pedestrian Walkways",
     description:
       "Clear pedestrian paths that separate foot traffic from equipment zones for enhanced safety.",
-    gradient: "from-green-500/20 to-emerald-500/20",
+
   },
   {
     icon: Factory,
     title: "High-Durability Coatings",
     description:
       "Industrial-grade paints that resist wear from heavy equipment, foot traffic, and warehouse operations.",
-    gradient: "from-yellow-500/20 to-amber-500/20",
+
   },
   {
     icon: Eye,
     title: "Interior & Exterior Striping",
     description:
       "From warehouse floors to loading docks and exterior lot markings — full coverage for all your needs.",
-    gradient: "from-indigo-500/20 to-violet-500/20",
+
   },
 ];
 
@@ -197,12 +197,9 @@ function WarehouseFloorStripingPage() {
                 variant="elevated"
                 className="group overflow-hidden"
               >
-                <CardContent className="relative p-8">
-                  <div
-                    className={`absolute -right-10 -top-10 h-32 w-32 rounded-full bg-linear-to-br ${service.gradient} blur-2xl transition-transform group-hover:scale-150`}
-                  />
+                <CardContent className="relative p-5 sm:p-6 md:p-8">
                   <div className="relative">
-                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-stripe-500/10 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white">
+                    <div className="mb-4 flex h-14 w-14 items-center justify-center bg-stripe-500/20 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white">
                       <service.icon className="h-7 w-7" />
                     </div>
                     <h3 className="mb-2 font-display text-xl font-bold text-asphalt-900">
@@ -220,7 +217,7 @@ function WarehouseFloorStripingPage() {
       {/* Benefits Section */}
       <section className="relative overflow-hidden bg-asphalt-950 py-24 lg:py-32">
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -right-40 top-1/4 h-96 w-96 rounded-full bg-stripe-500/10 blur-[120px]" />
+
 
         <div className="container-section relative">
           <div className="mx-auto mb-16 max-w-3xl text-center">
@@ -243,9 +240,9 @@ function WarehouseFloorStripingPage() {
             {benefits.map((benefit) => (
               <div
                 key={benefit.title}
-                className="glass-dark rounded-2xl border border-white/10 p-6"
+                className="glass-dark border-2 border-asphalt-700 p-6"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-stripe-500/20 text-stripe-400">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center bg-stripe-500/20 text-stripe-400">
                   <benefit.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mb-2 font-display text-lg font-bold text-white">
@@ -263,11 +260,10 @@ function WarehouseFloorStripingPage() {
       {/* Why Choose Us */}
       <section className="py-24 lg:py-32">
         <div className="container-section">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="grid items-center gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-2">
             <div className="order-2 lg:order-1">
-              <Card variant="elevated" className="overflow-hidden p-8">
-                <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-stripe-500/20 to-stripe-400/5 blur-3xl" />
-                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-asphalt-100">
+              <Card variant="elevated" className="overflow-hidden p-5 sm:p-6 md:p-8">
+                <div className="relative aspect-4/3 overflow-hidden bg-asphalt-100">
                   <ResponsiveImage
                     src="/images/warehouse-floor-striping.webp"
                     alt="Warehouse floor striping with safety zone markings by A-Line Striping"
@@ -331,7 +327,7 @@ function WarehouseFloorStripingPage() {
                   },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-4">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-success-500/10 text-success-500">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center bg-success-500/20 text-success-500">
                       <CheckCircle2 className="h-5 w-5" />
                     </div>
                     <div>

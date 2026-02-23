@@ -23,22 +23,19 @@ import { type ReactNode, type ComponentPropsWithoutRef } from "react";
  * Use consistent easing across all animations
  */
 export const easings = {
-  // Smooth deceleration - great for entrances
-  easeOut: [0.16, 1, 0.3, 1] as const,
-  // Natural spring-like motion
-  spring: { type: "spring", stiffness: 400, damping: 30 } as const,
-  // Bouncy for playful elements
-  bounce: { type: "spring", stiffness: 500, damping: 15 } as const,
+  easeOut: [0, 0, 0.2, 1] as const,
+  spring: { type: "spring", stiffness: 500, damping: 35 } as const,
 } as const;
 
 /**
- * Duration presets (in seconds)
+ * Duration presets (seconds) — aligned with CSS token system:
+ * --duration-fast: 100ms, --duration-normal: 150ms, --duration-slow: 250ms
+ * Entrance animations use slightly longer durations for perceptibility.
  */
 export const durations = {
-  fast: 0.2,
-  normal: 0.4,
-  slow: 0.6,
-  slower: 0.8,
+  fast: 0.1,
+  normal: 0.2,
+  slow: 0.25,
 } as const;
 
 // ============================================
@@ -308,7 +305,7 @@ export function Parallax({ children, offset = 50, className }: ParallaxProps) {
       whileInView={{ y: 0 }}
       viewport={{ once: false, margin: "0px 0px -200px 0px" }}
       transition={{
-        duration: durations.slower,
+        duration: durations.slow,
         ease: easings.easeOut,
       }}
     >

@@ -34,42 +34,36 @@ const features = [
     title: "Smarter Space Use",
     description:
       "Maximize parking capacity without overcrowding, using optimal stall sizing and efficient lane configurations.",
-    gradient: "from-blue-500/20 to-cyan-500/20",
   },
   {
     icon: Car,
     title: "Safer Traffic Flow",
     description:
       "Clear lanes, directional planning, and logical entry/exit points that reduce congestion and accidents.",
-    gradient: "from-purple-500/20 to-pink-500/20",
   },
   {
     icon: Accessibility,
     title: "ADA-Friendly Layout",
     description:
       "Compliant accessible parking spaces, access aisles, and pathways that meet federal requirements.",
-    gradient: "from-green-500/20 to-emerald-500/20",
   },
   {
     icon: MapPin,
     title: "No Blueprint Needed",
     description:
       "We design from scratch or improve existing layouts. Our team handles all measurements and planning.",
-    gradient: "from-orange-500/20 to-red-500/20",
   },
   {
     icon: Target,
     title: "Optimized for Your Needs",
     description:
       "Tailored designs for retail, office, industrial, or multi-use properties with specific traffic patterns.",
-    gradient: "from-yellow-500/20 to-amber-500/20",
   },
   {
     icon: TrendingUp,
     title: "Future-Ready Design",
     description:
       "Layouts that accommodate growth, EV charging stations, and changing traffic patterns.",
-    gradient: "from-indigo-500/20 to-violet-500/20",
   },
 ];
 
@@ -190,12 +184,9 @@ function LayoutDesignPage() {
                 variant="elevated"
                 className="group overflow-hidden"
               >
-                <CardContent className="relative p-8">
-                  <div
-                    className={`absolute -right-10 -top-10 h-32 w-32 rounded-full bg-linear-to-br ${feature.gradient} blur-2xl transition-transform group-hover:scale-150`}
-                  />
+                <CardContent className="relative p-5 sm:p-6 md:p-8">
                   <div className="relative">
-                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-stripe-500/10 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white">
+                    <div className="mb-4 flex h-14 w-14 items-center justify-center bg-stripe-500/20 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white">
                       <feature.icon className="h-7 w-7" />
                     </div>
                     <h3 className="mb-2 font-display text-xl font-bold text-asphalt-900">
@@ -213,7 +204,6 @@ function LayoutDesignPage() {
       {/* Process Section */}
       <section className="relative overflow-hidden bg-asphalt-950 py-24 lg:py-32">
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -right-40 top-1/4 h-96 w-96 rounded-full bg-stripe-500/10 blur-[120px]" />
 
         <div className="container-section relative">
           <div className="mx-auto mb-16 max-w-3xl text-center">
@@ -236,7 +226,7 @@ function LayoutDesignPage() {
             {processSteps.map((item, index) => (
               <div
                 key={item.step}
-                className="relative glass-dark rounded-2xl border border-white/10 p-6"
+                className="relative glass-dark border-2 border-asphalt-700 p-6"
               >
                 <span className="mb-4 inline-block font-display text-5xl font-bold text-stripe-500/30">
                   {item.step}
@@ -259,7 +249,7 @@ function LayoutDesignPage() {
       {/* Benefits Section */}
       <section className="py-24 lg:py-32">
         <div className="container-section">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="grid items-center gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-2">
             <div>
               <Badge variant="accent" className="mb-6">
                 <TrendingUp className="mr-1.5 h-3.5 w-3.5" />
@@ -287,9 +277,8 @@ function LayoutDesignPage() {
             </div>
 
             <div className="relative">
-              <Card variant="elevated" className="overflow-hidden p-8">
-                <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-stripe-500/20 to-stripe-400/5 blur-3xl" />
-                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-asphalt-100">
+              <Card variant="elevated" className="overflow-hidden p-5 sm:p-6 md:p-8">
+                <div className="relative aspect-4/3 overflow-hidden bg-asphalt-100">
                   <ResponsiveImage
                     src="/images/layout-design.webp"
                     alt="Parking lot layout design plan by A-Line Striping"

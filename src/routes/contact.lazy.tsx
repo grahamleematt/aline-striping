@@ -1,5 +1,6 @@
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import {
   Phone,
   MapPin,
@@ -35,6 +36,22 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
+const zodV4Resolver =
+  (schema: z.ZodType<ContactFormData>) =>
+  async (values: Record<string, unknown>) => {
+    const result = schema.safeParse(values);
+    if (result.success) return { values: result.data, errors: {} };
+    return {
+      values: {},
+      errors: Object.fromEntries(
+        result.error.issues.map((issue) => [
+          issue.path[0],
+          { type: "validation", message: issue.message },
+        ]),
+      ),
+    };
+  };
+
 const serviceOptions = [
   "Parking Lot Striping",
   "Warehouse Floor Striping",
@@ -51,49 +68,26 @@ const trustSignals = [
 ];
 
 function ContactPage() {
-  const [formData, setFormData] = useState<Partial<ContactFormData>>({});
-  const [errors, setErrors] = useState<
-    Partial<Record<keyof ContactFormData, string>>
-  >({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name as keyof ContactFormData]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    setError,
+  } = useForm<ContactFormData>({
+    resolver: zodV4Resolver(contactSchema),
+    mode: "onBlur",
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    const result = contactSchema.safeParse(formData);
-    if (!result.success) {
-      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
-      result.error.issues.forEach((issue) => {
-        if (issue.path[0]) {
-          fieldErrors[issue.path[0] as keyof ContactFormData] = issue.message;
-        }
-      });
-      setErrors(fieldErrors);
-      setIsSubmitting(false);
-      return;
-    }
-
+  const handleFormSubmit = async (data: ContactFormData) => {
     try {
       const payload = {
         access_key: "YOUR_WEB3FORMS_ACCESS_KEY",
-        subject: `New Quote Request from ${result.data.firstName} ${result.data.lastName}`,
-        from_name: `${result.data.firstName} ${result.data.lastName}`,
+        subject: `New Quote Request from ${data.firstName} ${data.lastName}`,
+        from_name: `${data.firstName} ${data.lastName}`,
         botcheck: "",
-        ...result.data,
+        ...data,
       };
 
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -109,22 +103,20 @@ function ContactPage() {
       if (json.success) {
         window.gtag?.("event", "generate_lead", {
           event_category: "Contact",
-          event_label: result.data.service,
+          event_label: data.service,
           value: 1,
         });
         setIsSubmitted(true);
       } else {
-        setErrors({
+        setError("message", {
           message:
             "Something went wrong. Please try again or call us directly.",
         });
       }
     } catch {
-      setErrors({
+      setError("message", {
         message: "Network error. Please try again or call us directly.",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -133,11 +125,10 @@ function ContactPage() {
       <div className="relative min-h-screen overflow-hidden bg-asphalt-950 pt-40">
         {/* Background elements */}
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-success-500/20 blur-[120px]" />
 
         <div className="container-section relative flex min-h-[60vh] flex-col items-center justify-center py-20">
           <div className="mx-auto max-w-md text-center">
-            <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-linear-to-br from-success-500 to-success-400 shadow-lg shadow-success-500/30">
+            <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center border-2 border-success-600 bg-success-500">
               <CheckCircle2 className="h-10 w-10 text-white" />
             </div>
             <h1 className="mb-4 font-display text-4xl font-bold text-white">
@@ -190,14 +181,14 @@ function ContactPage() {
       {/* Contact Form Section */}
       <section className="relative pt-16 pb-24 lg:pb-32">
         <div className="container-section">
-          <div className="grid gap-8 lg:grid-cols-5">
+          <div className="grid gap-6 lg:gap-8 lg:grid-cols-5">
             {/* Form */}
             <div className="lg:col-span-3">
               <Card variant="elevated" className="overflow-hidden">
-                <CardContent className="p-8 lg:p-10">
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                <CardContent className="p-5 sm:p-6 lg:p-8">
+                  <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4 sm:space-y-6">
                     {/* Name fields */}
-                    <div className="grid gap-6 sm:grid-cols-2">
+                    <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
                       <div>
                         <label
                           htmlFor="firstName"
@@ -208,20 +199,19 @@ function ContactPage() {
                         <input
                           type="text"
                           id="firstName"
-                          name="firstName"
-                          value={formData.firstName || ""}
-                          onChange={handleChange}
+                          {...register("firstName")}
+                          aria-describedby={errors.firstName ? "firstName-error" : undefined}
                           className={cn(
-                            "w-full rounded-xl border-2 bg-asphalt-50/50 px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-4 focus:ring-stripe-500/10",
+                            "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.firstName
-                              ? "border-red-400"
-                              : "border-asphalt-200",
+                              ? "border-red-500"
+                              : "border-asphalt-300",
                           )}
                           placeholder="John"
                         />
                         {errors.firstName && (
-                          <p className="mt-2 text-sm text-red-500">
-                            {errors.firstName}
+                          <p id="firstName-error" className="mt-2 text-sm text-red-500">
+                            {errors.firstName.message}
                           </p>
                         )}
                       </div>
@@ -235,27 +225,26 @@ function ContactPage() {
                         <input
                           type="text"
                           id="lastName"
-                          name="lastName"
-                          value={formData.lastName || ""}
-                          onChange={handleChange}
+                          {...register("lastName")}
+                          aria-describedby={errors.lastName ? "lastName-error" : undefined}
                           className={cn(
-                            "w-full rounded-xl border-2 bg-asphalt-50/50 px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-4 focus:ring-stripe-500/10",
+                            "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.lastName
-                              ? "border-red-400"
-                              : "border-asphalt-200",
+                              ? "border-red-500"
+                              : "border-asphalt-300",
                           )}
                           placeholder="Smith"
                         />
                         {errors.lastName && (
-                          <p className="mt-2 text-sm text-red-500">
-                            {errors.lastName}
+                          <p id="lastName-error" className="mt-2 text-sm text-red-500">
+                            {errors.lastName.message}
                           </p>
                         )}
                       </div>
                     </div>
 
                     {/* Contact fields */}
-                    <div className="grid gap-6 sm:grid-cols-2">
+                    <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
                       <div>
                         <label
                           htmlFor="email"
@@ -266,20 +255,19 @@ function ContactPage() {
                         <input
                           type="email"
                           id="email"
-                          name="email"
-                          value={formData.email || ""}
-                          onChange={handleChange}
+                          {...register("email")}
+                          aria-describedby={errors.email ? "email-error" : undefined}
                           className={cn(
-                            "w-full rounded-xl border-2 bg-asphalt-50/50 px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-4 focus:ring-stripe-500/10",
+                            "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.email
-                              ? "border-red-400"
-                              : "border-asphalt-200",
+                              ? "border-red-500"
+                              : "border-asphalt-300",
                           )}
                           placeholder="john@company.com"
                         />
                         {errors.email && (
-                          <p className="mt-2 text-sm text-red-500">
-                            {errors.email}
+                          <p id="email-error" className="mt-2 text-sm text-red-500">
+                            {errors.email.message}
                           </p>
                         )}
                       </div>
@@ -293,27 +281,26 @@ function ContactPage() {
                         <input
                           type="tel"
                           id="phone"
-                          name="phone"
-                          value={formData.phone || ""}
-                          onChange={handleChange}
+                          {...register("phone")}
+                          aria-describedby={errors.phone ? "phone-error" : undefined}
                           className={cn(
-                            "w-full rounded-xl border-2 bg-asphalt-50/50 px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-4 focus:ring-stripe-500/10",
+                            "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.phone
-                              ? "border-red-400"
-                              : "border-asphalt-200",
+                              ? "border-red-500"
+                              : "border-asphalt-300",
                           )}
                           placeholder="(901) 555-0123"
                         />
                         {errors.phone && (
-                          <p className="mt-2 text-sm text-red-500">
-                            {errors.phone}
+                          <p id="phone-error" className="mt-2 text-sm text-red-500">
+                            {errors.phone.message}
                           </p>
                         )}
                       </div>
                     </div>
 
                     {/* Zip and Service */}
-                    <div className="grid gap-6 sm:grid-cols-2">
+                    <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
                       <div>
                         <label
                           htmlFor="zipCode"
@@ -324,20 +311,19 @@ function ContactPage() {
                         <input
                           type="text"
                           id="zipCode"
-                          name="zipCode"
-                          value={formData.zipCode || ""}
-                          onChange={handleChange}
+                          {...register("zipCode")}
+                          aria-describedby={errors.zipCode ? "zipCode-error" : undefined}
                           className={cn(
-                            "w-full rounded-xl border-2 bg-asphalt-50/50 px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-4 focus:ring-stripe-500/10",
+                            "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.zipCode
-                              ? "border-red-400"
-                              : "border-asphalt-200",
+                              ? "border-red-500"
+                              : "border-asphalt-300",
                           )}
                           placeholder="38637"
                         />
                         {errors.zipCode && (
-                          <p className="mt-2 text-sm text-red-500">
-                            {errors.zipCode}
+                          <p id="zipCode-error" className="mt-2 text-sm text-red-500">
+                            {errors.zipCode.message}
                           </p>
                         )}
                       </div>
@@ -350,14 +336,13 @@ function ContactPage() {
                         </label>
                         <select
                           id="service"
-                          name="service"
-                          value={formData.service || ""}
-                          onChange={handleChange}
+                          {...register("service")}
+                          aria-describedby={errors.service ? "service-error" : undefined}
                           className={cn(
-                            "w-full rounded-xl border-2 bg-asphalt-50/50 px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-4 focus:ring-stripe-500/10",
+                            "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.service
-                              ? "border-red-400"
-                              : "border-asphalt-200",
+                              ? "border-red-500"
+                              : "border-asphalt-300",
                           )}
                         >
                           <option value="">Select a service...</option>
@@ -368,8 +353,8 @@ function ContactPage() {
                           ))}
                         </select>
                         {errors.service && (
-                          <p className="mt-2 text-sm text-red-500">
-                            {errors.service}
+                          <p id="service-error" className="mt-2 text-sm text-red-500">
+                            {errors.service.message}
                           </p>
                         )}
                       </div>
@@ -385,21 +370,20 @@ function ContactPage() {
                       </label>
                       <textarea
                         id="message"
-                        name="message"
-                        value={formData.message || ""}
-                        onChange={handleChange}
+                        {...register("message")}
+                        aria-describedby={errors.message ? "message-error" : undefined}
                         rows={5}
                         className={cn(
-                          "w-full rounded-xl border-2 bg-asphalt-50/50 px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-4 focus:ring-stripe-500/10",
+                          "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                           errors.message
-                            ? "border-red-400"
-                            : "border-asphalt-200",
+                            ? "border-red-500"
+                            : "border-asphalt-300",
                         )}
                         placeholder="Tell us about your project, including lot size, current condition, and any specific requirements..."
                       />
                       {errors.message && (
-                        <p className="mt-2 text-sm text-red-500">
-                          {errors.message}
+                        <p id="message-error" className="mt-2 text-sm text-red-500">
+                          {errors.message.message}
                         </p>
                       )}
                     </div>
@@ -462,7 +446,7 @@ function ContactPage() {
                         key={signal.text}
                         className="flex items-center gap-3"
                       >
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-stripe-500/10">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-stripe-500/20">
                           <signal.icon className="h-5 w-5 text-stripe-600" />
                         </div>
                         <span className="text-sm font-medium text-asphalt-700">
@@ -486,7 +470,7 @@ function ContactPage() {
                         href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}
                         className="flex items-center gap-3 text-asphalt-700 transition-colors hover:text-stripe-600"
                       >
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-stripe-500/10">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-stripe-500/20">
                           <Phone className="h-5 w-5 text-stripe-600" />
                         </div>
                         <span className="font-semibold">
@@ -495,7 +479,7 @@ function ContactPage() {
                       </a>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-stripe-500/10">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-stripe-500/20">
                         <MapPin className="h-5 w-5 text-stripe-600" />
                       </div>
                       <span className="text-sm text-asphalt-600">
@@ -503,12 +487,12 @@ function ContactPage() {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-stripe-500/10">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-stripe-500/20">
                         <Clock className="h-5 w-5 text-stripe-600" />
                       </div>
                       <div className="text-sm text-asphalt-600">
                         <p>{BUSINESS_INFO.hours.weekday}</p>
-                        <p className="text-asphalt-300">
+                        <p className="text-asphalt-500">
                           {BUSINESS_INFO.hours.weekend}
                         </p>
                       </div>
@@ -518,7 +502,7 @@ function ContactPage() {
               </Card>
 
               {/* Call Now CTA */}
-              <div className="rounded-2xl bg-linear-to-br from-asphalt-900 to-asphalt-800 p-6 text-center">
+              <div className="border-2 border-asphalt-700 bg-asphalt-900 p-6 text-center">
                 <p className="mb-4 text-asphalt-300">Prefer to talk?</p>
                 <Button asChild variant="primary" size="lg" className="w-full">
                   <a href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}>

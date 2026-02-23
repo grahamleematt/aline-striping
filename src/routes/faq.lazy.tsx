@@ -194,7 +194,7 @@ function FAQPage() {
                     <AccordionItem
                       key={index}
                       value={`${category.title}-${index}`}
-                      className="rounded-2xl border border-asphalt-100 bg-white px-6 shadow-sm transition-shadow hover:shadow-md"
+                      className="border-2 border-asphalt-200 bg-white px-6 shadow-sm transition-shadow hover:shadow-md"
                     >
                       <AccordionTrigger className="text-left font-semibold text-asphalt-900 hover:no-underline py-5">
                         {faq.question}
@@ -214,11 +214,9 @@ function FAQPage() {
       {/* CTA Section */}
       <section className="relative overflow-hidden bg-asphalt-950 py-24 lg:py-32">
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-stripe-500/10 blur-[120px]" />
-
         <div className="container-section relative">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-stripe-500/20">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center bg-stripe-500/20">
               <MessageCircle className="h-8 w-8 text-stripe-400" />
             </div>
             <h2 className="mb-4 font-display text-3xl font-bold text-white sm:text-4xl">

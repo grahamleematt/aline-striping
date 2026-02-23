@@ -192,9 +192,8 @@ function ServiceAreasPage() {
           <div className="grid gap-6 lg:grid-cols-3">
             {/* Mississippi */}
             <Card variant="elevated" className="group overflow-hidden">
-              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-blue-500/10 to-cyan-500/10 blur-3xl transition-transform group-hover:scale-150" />
               <CardHeader className="relative">
-                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600">
+                <div className="mb-2 flex h-12 w-12 items-center justify-center bg-stripe-500/20 text-stripe-600">
                   <MapPin className="h-6 w-6" />
                 </div>
                 <CardTitle className="font-display text-2xl">
@@ -208,7 +207,7 @@ function ServiceAreasPage() {
                       key={area.slug}
                       to="/service-areas/$slug"
                       params={{ slug: area.slug }}
-                      className="flex items-center justify-between rounded-lg px-3 py-2 text-asphalt-700 transition-colors hover:bg-stripe-50 hover:text-stripe-600"
+                      className="flex items-center justify-between px-3 py-2 text-asphalt-700 transition-colors hover:bg-stripe-50 hover:text-stripe-600"
                     >
                       {area.name}
                       <ArrowRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
@@ -228,9 +227,8 @@ function ServiceAreasPage() {
 
             {/* Tennessee */}
             <Card variant="elevated" className="group overflow-hidden">
-              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-orange-500/10 to-red-500/10 blur-3xl transition-transform group-hover:scale-150" />
               <CardHeader className="relative">
-                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600">
+                <div className="mb-2 flex h-12 w-12 items-center justify-center bg-stripe-500/20 text-stripe-600">
                   <MapPin className="h-6 w-6" />
                 </div>
                 <CardTitle className="font-display text-2xl">
@@ -244,7 +242,7 @@ function ServiceAreasPage() {
                       key={area.slug}
                       to="/service-areas/$slug"
                       params={{ slug: area.slug }}
-                      className="flex items-center justify-between rounded-lg px-3 py-2 text-asphalt-700 transition-colors hover:bg-stripe-50 hover:text-stripe-600"
+                      className="flex items-center justify-between px-3 py-2 text-asphalt-700 transition-colors hover:bg-stripe-50 hover:text-stripe-600"
                     >
                       {area.name}
                       <ArrowRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
@@ -264,9 +262,8 @@ function ServiceAreasPage() {
 
             {/* Arkansas */}
             <Card variant="elevated" className="group overflow-hidden">
-              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-purple-500/10 to-pink-500/10 blur-3xl transition-transform group-hover:scale-150" />
               <CardHeader className="relative">
-                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-purple-600">
+                <div className="mb-2 flex h-12 w-12 items-center justify-center bg-stripe-500/20 text-stripe-600">
                   <MapPin className="h-6 w-6" />
                 </div>
                 <CardTitle className="font-display text-2xl">
@@ -280,7 +277,7 @@ function ServiceAreasPage() {
                       key={area.slug}
                       to="/service-areas/$slug"
                       params={{ slug: area.slug }}
-                      className="flex items-center justify-between rounded-lg px-3 py-2 text-asphalt-700 transition-colors hover:bg-stripe-50 hover:text-stripe-600"
+                      className="flex items-center justify-between px-3 py-2 text-asphalt-700 transition-colors hover:bg-stripe-50 hover:text-stripe-600"
                     >
                       {area.name}
                       <ArrowRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
@@ -315,8 +312,6 @@ function ServiceAreasPage() {
       {/* Industries Section */}
       <section className="relative overflow-hidden bg-asphalt-950 py-24 lg:py-32">
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -right-40 top-1/4 h-96 w-96 rounded-full bg-stripe-500/10 blur-[120px]" />
-
         <div className="container-section relative">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <Badge variant="glass" className="mb-4">
@@ -338,9 +333,9 @@ function ServiceAreasPage() {
             {industries.map((industry) => (
               <div
                 key={industry.label}
-                className="glass-dark rounded-2xl border border-white/10 p-6 text-center transition-all hover:border-stripe-500/30"
+                className="glass-dark border-2 border-asphalt-700 p-6 text-center transition-all hover:border-stripe-500/30"
               >
-                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-stripe-500/20 text-stripe-400">
+                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center bg-stripe-500/20 text-stripe-400">
                   <industry.icon className="h-6 w-6" />
                 </div>
                 <p className="text-sm font-medium text-white">
@@ -378,7 +373,7 @@ function ServiceAreasPage() {
                 variant="elevated"
                 className="group overflow-hidden"
               >
-                <CardContent className="p-8">
+                <CardContent className="p-5 sm:p-6 md:p-8">
                   <h3 className="mb-4 font-display text-xl font-bold text-asphalt-900">
                     {service.title}
                   </h3>
@@ -407,7 +402,7 @@ function ServiceAreasPage() {
       {/* Why Choose Us */}
       <section className="bg-asphalt-50 py-24 lg:py-32">
         <div className="container-section">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="grid items-center gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-2">
             <div>
               <Badge variant="accent" className="mb-6">
                 <Sparkles className="mr-1.5 h-3.5 w-3.5" />
@@ -434,13 +429,12 @@ function ServiceAreasPage() {
             </div>
 
             <div className="relative">
-              <Card variant="elevated" className="overflow-hidden p-8">
-                <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-stripe-500/20 to-stripe-400/5 blur-3xl" />
-                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-asphalt-100">
+              <Card variant="elevated" className="overflow-hidden p-5 sm:p-6 md:p-8">
+                <div className="relative aspect-4/3 overflow-hidden bg-asphalt-100">
                   <ResponsiveImage
                     src="/images/service-area-map.webp"
                     alt="A-Line Striping service area map covering Mississippi, Tennessee, and Arkansas"
-                    widths={[600, 1200]}
+                    widths={[600]}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     width={1200}
                     height={594}
@@ -474,7 +468,13 @@ function ServiceAreasPage() {
       </section>
 
       <CTASection
-        heading={<>Need professional services<br />in your area?</>}
+        heading={
+          <>
+            Need professional services
+            <br />
+            in your area?
+          </>
+        }
         description="A-Line Striping, Inc. is ready to serve your commercial or industrial property with fast, reliable, and professional results."
         primaryButtonText="Request a Free Quote"
       />

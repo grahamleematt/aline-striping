@@ -36,25 +36,21 @@ const benefits = [
     icon: Droplets,
     title: "Prevents Moisture",
     description: "Seals cracks and prevents water intrusion that causes damage",
-    gradient: "from-blue-500/20 to-cyan-500/20",
   },
   {
     icon: Sun,
     title: "UV Protection",
     description: "Shields against oxidation and fading from sun exposure",
-    gradient: "from-orange-500/20 to-yellow-500/20",
   },
   {
     icon: Clock,
     title: "Extends Lifespan",
     description: "Adds 5-10+ years to your pavement's life expectancy",
-    gradient: "from-green-500/20 to-emerald-500/20",
   },
   {
     icon: Sparkles,
     title: "Curb Appeal",
     description: "Restores a deep black, smooth finish that looks brand new",
-    gradient: "from-purple-500/20 to-pink-500/20",
   },
 ];
 
@@ -175,12 +171,9 @@ function AsphaltSealcoatingPage() {
                 variant="elevated"
                 className="group overflow-hidden"
               >
-                <CardContent className="relative p-8 text-center">
-                  <div
-                    className={`absolute -right-10 -top-10 h-32 w-32 rounded-full bg-linear-to-br ${benefit.gradient} blur-2xl transition-transform group-hover:scale-150`}
-                  />
+                <CardContent className="relative p-5 sm:p-6 md:p-8 text-center">
                   <div className="relative">
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-stripe-500/10 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white">
+                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center bg-stripe-500/20 text-stripe-600 transition-colors group-hover:bg-stripe-500 group-hover:text-white">
                       <benefit.icon className="h-8 w-8" />
                     </div>
                     <h3 className="mb-2 font-display text-xl font-bold text-asphalt-900">
@@ -196,7 +189,7 @@ function AsphaltSealcoatingPage() {
           </div>
 
           {/* Benefits list */}
-          <Card variant="elevated" className="mt-12 p-8">
+          <Card variant="elevated" className="mt-12 p-5 sm:p-6 md:p-8">
             <h3 className="mb-6 font-display text-2xl font-bold text-asphalt-900">
               Complete Protection Benefits
             </h3>
@@ -222,7 +215,6 @@ function AsphaltSealcoatingPage() {
       {/* Services Section */}
       <section className="relative overflow-hidden bg-asphalt-950 py-24 lg:py-32">
         <div className="absolute inset-0 bg-grid-pattern-light opacity-30" />
-        <div className="absolute -right-40 top-1/4 h-96 w-96 rounded-full bg-stripe-500/10 blur-[120px]" />
 
         <div className="container-section relative">
           <div className="mx-auto mb-16 max-w-3xl text-center">
@@ -245,7 +237,7 @@ function AsphaltSealcoatingPage() {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="glass-dark rounded-2xl border border-white/10 p-8"
+                className="glass-dark border-2 border-asphalt-700 p-8"
               >
                 <service.icon className="mb-4 h-9 w-9 text-stripe-400" />
                 <h3 className="mb-3 font-display text-xl font-bold text-white">
@@ -261,7 +253,7 @@ function AsphaltSealcoatingPage() {
       {/* Why Choose Us */}
       <section className="py-24 lg:py-32">
         <div className="container-section">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="grid items-center gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-2">
             <div>
               <Badge variant="accent" className="mb-6">
                 <Shield className="mr-1.5 h-3.5 w-3.5" />
@@ -287,7 +279,7 @@ function AsphaltSealcoatingPage() {
               </div>
 
               <div className="mt-8 flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br from-stripe-500 to-stripe-400">
+                <div className="flex h-16 w-16 items-center justify-center bg-linear-to-br from-stripe-500 to-stripe-400">
                   <CircleDollarSign className="h-8 w-8 text-asphalt-900" />
                 </div>
                 <div>
@@ -302,9 +294,8 @@ function AsphaltSealcoatingPage() {
             </div>
 
             <div className="relative">
-              <Card variant="elevated" className="overflow-hidden p-8">
-                <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-linear-to-br from-stripe-500/20 to-stripe-400/5 blur-3xl" />
-                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-asphalt-100">
+              <Card variant="elevated" className="overflow-hidden p-5 sm:p-6 md:p-8">
+                <div className="relative aspect-4/3 overflow-hidden bg-asphalt-100">
                   <ResponsiveImage
                     src="/images/asphalt-sealcoating.webp"
                     alt="Freshly sealcoated parking lot by A-Line Striping"

@@ -18,7 +18,7 @@ const buttonVariants = cva(
           "text-asphalt-700 hover:bg-asphalt-100 hover:text-asphalt-900 font-medium",
         link: "text-asphalt-900 underline-offset-4 hover:underline font-medium",
         glass:
-          "bg-asphalt-900/80 border-2 border-white/20 text-white hover:bg-asphalt-900 hover:border-white/40",
+          "bg-asphalt-900 border-2 border-asphalt-600 text-white hover:bg-asphalt-800 hover:border-asphalt-400",
         "outline-light":
           "bg-transparent border-2 border-white text-white hover:bg-white hover:text-asphalt-950",
       },
