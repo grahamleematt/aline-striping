@@ -39,6 +39,20 @@ export const TESTIMONIALS: readonly Testimonial[] = [
     role: "Verified Customer",
     rating: 5,
   },
+  {
+    quote:
+      "Amazing team! They saved us from an unfinished job and were quick, accurate, and friendly! Thank you!!",
+    author: "Michael Carpenter",
+    role: "First Baptist Church, Olive Branch",
+    rating: 5,
+  },
+  {
+    quote:
+      "A-Line Striping did an awesome job for Creekwood Town Homes! Quality Work. Highly recommend.",
+    author: "Trudy Rush H.",
+    role: "HOA Property Manager",
+    rating: 5,
+  },
 ] as const;
 
 export interface FAQ {

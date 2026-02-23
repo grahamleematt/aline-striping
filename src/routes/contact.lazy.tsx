@@ -170,21 +170,21 @@ function ContactPage() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <PageHero showSpotlight={false}>
-          <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="glass" className="mb-6">
-              <Sparkles className="mr-1.5 h-3.5 w-3.5" />
-              Free Estimates
-            </Badge>
-            <h1 className="mb-6 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">
-              Request a Free Quote for Your
-              <br />
-              <span className="gradient-text">Parking Lot or Facility</span>
-            </h1>
-            <p className="text-xl text-asphalt-300">
-              Get a free, no-obligation quote for your parking lot or facility.
-              Our team responds within 24 hours.
-            </p>
-          </div>
+        <div className="mx-auto max-w-3xl text-center">
+          <Badge variant="glass" className="mb-6">
+            <Sparkles className="mr-1.5 h-3.5 w-3.5" />
+            Free Estimates
+          </Badge>
+          <h1 className="mb-6 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">
+            Request a Free Quote for Your
+            <br />
+            <span className="gradient-text">Parking Lot or Facility</span>
+          </h1>
+          <p className="text-xl text-asphalt-300">
+            Get a free, no-obligation quote for your parking lot or facility.
+            Our team responds within 24 hours.
+          </p>
+        </div>
       </PageHero>
 
       {/* Contact Form Section */}
@@ -528,6 +528,27 @@ function ContactPage() {
                 </Button>
               </div>
             </div>
+          </div>
+
+          {/* Google Maps */}
+          <div className="mt-12">
+            <h3 className="mb-4 font-display text-lg font-bold text-asphalt-900">
+              Find Us
+            </h3>
+            <Card variant="elevated" className="overflow-hidden">
+              <div className="aspect-video w-full lg:aspect-21/9">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.5!2d-90.2401265!3d34.485458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887f8ff17713b329%3A0xd06b41b566ec9cfe!2sA-Line%20Striping%2C%20Inc.!5e0!3m2!1sen!2sus!4v1700000000000"
+                  width="100%"
+                  height="100%"
+                  className="border-0"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="A-Line Striping location on Google Maps"
+                />
+              </div>
+            </Card>
           </div>
         </div>
       </section>

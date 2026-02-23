@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -273,19 +273,16 @@ function OurWorkPage() {
   const lightboxProject =
     lightboxIndex !== null ? filteredProjects[lightboxIndex] : null;
 
-  const navigateLightbox = useCallback(
-    (direction: -1 | 1) => {
-      setLightboxIndex((prev) => {
-        if (prev === null) return null;
-        const next = prev + direction;
-        if (next < 0 || next >= filteredProjects.length) return prev;
-        return next;
-      });
-    },
-    [filteredProjects.length],
-  );
+  const navigateLightbox = (direction: -1 | 1) => {
+    setLightboxIndex((prev) => {
+      if (prev === null) return null;
+      const next = prev + direction;
+      if (next < 0 || next >= filteredProjects.length) return prev;
+      return next;
+    });
+  };
 
-  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const closeLightbox = () => setLightboxIndex(null);
 
   useEffect(() => {
     if (lightboxIndex === null) return;

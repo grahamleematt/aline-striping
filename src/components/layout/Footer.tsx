@@ -1,5 +1,12 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Phone, MapPin, Clock, Star, ArrowUpRight } from "lucide-react";
+import {
+  Phone,
+  MapPin,
+  Clock,
+  Star,
+  ArrowUpRight,
+  Facebook,
+} from "lucide-react";
 import {
   BUSINESS_INFO,
   SERVICE_AREAS,
@@ -35,10 +42,17 @@ const footerQuickLinks = [
   { label: "Contact Us", href: "/contact" },
 ];
 
+const allServiceAreas = [
+  ...SERVICE_AREAS.mississippi,
+  ...SERVICE_AREAS.tennessee,
+  ...SERVICE_AREAS.arkansas,
+];
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const routerState = useRouterState();
-  const isNavigating = routerState.isLoading;
+  const isNavigating = useRouterState({
+    select: (s) => s.isLoading,
+  });
 
   return (
     <footer className="border-t-4 border-stripe-500 bg-asphalt-950 text-asphalt-300">
@@ -107,6 +121,20 @@ export function Footer() {
                 </div>
               </li>
             </ul>
+
+            {/* Social */}
+            <div className="mt-6">
+              <a
+                href={BUSINESS_INFO.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-asphalt-400 transition-colors hover:text-stripe-500"
+                aria-label="A-Line Striping on Facebook"
+              >
+                <Facebook className="h-5 w-5" strokeWidth={2} />
+                <span className="text-sm">Follow us on Facebook</span>
+              </a>
+            </div>
           </div>
 
           {/* Services column */}
@@ -159,13 +187,11 @@ export function Footer() {
               Service Areas
             </h4>
             <div className="flex flex-wrap gap-2">
-              {[
-                ...SERVICE_AREAS.mississippi.slice(0, 3),
-                ...SERVICE_AREAS.tennessee,
-              ].map((area) => (
+              {allServiceAreas.map((area) => (
                 <Link
                   key={area.slug}
-                  to="/service-areas"
+                  to="/service-areas/$slug"
+                  params={{ slug: area.slug }}
                   className="bg-asphalt-800 px-3 py-1.5 text-xs text-asphalt-300 transition-colors duration-150 hover:bg-asphalt-700 hover:text-white"
                 >
                   {area.name}
@@ -181,11 +207,7 @@ export function Footer() {
                   isNavigating && "pointer-events-none opacity-70",
                 )}
               >
-                +
-                {SERVICE_AREAS.mississippi.length +
-                  SERVICE_AREAS.arkansas.length -
-                  2}{" "}
-                more
+                View All
                 <ArrowUpRight className="h-3 w-3" strokeWidth={2.5} />
               </Link>
             </div>

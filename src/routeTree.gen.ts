@@ -17,11 +17,13 @@ import { Route as OurWorkRouteImport } from './routes/our-work'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServiceAreasIndexRouteImport } from './routes/service-areas/index'
 import { Route as ServicesWarehouseFloorStripingRouteImport } from './routes/services/warehouse-floor-striping'
 import { Route as ServicesPrecisionLineworkSignageRouteImport } from './routes/services/precision-linework-signage'
 import { Route as ServicesParkingLotStripingRouteImport } from './routes/services/parking-lot-striping'
 import { Route as ServicesLayoutDesignRouteImport } from './routes/services/layout-design'
 import { Route as ServicesAsphaltSealcoatingRouteImport } from './routes/services/asphalt-sealcoating'
+import { Route as ServiceAreasSlugRouteImport } from './routes/service-areas/$slug'
 
 const WhyUsRoute = WhyUsRouteImport.update({
   id: '/why-us',
@@ -37,7 +39,7 @@ const ServiceAreasRoute = ServiceAreasRouteImport.update({
   id: '/service-areas',
   path: '/service-areas',
   getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/service-areas.lazy').then((d) => d.Route))
+} as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
@@ -63,6 +65,13 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+const ServiceAreasIndexRoute = ServiceAreasIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServiceAreasRoute,
+} as any).lazy(() =>
+  import('./routes/service-areas/index.lazy').then((d) => d.Route),
+)
 const ServicesWarehouseFloorStripingRoute =
   ServicesWarehouseFloorStripingRouteImport.update({
     id: '/services/warehouse-floor-striping',
@@ -106,6 +115,13 @@ const ServicesAsphaltSealcoatingRoute =
   } as any).lazy(() =>
     import('./routes/services/asphalt-sealcoating.lazy').then((d) => d.Route),
   )
+const ServiceAreasSlugRoute = ServiceAreasSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ServiceAreasRoute,
+} as any).lazy(() =>
+  import('./routes/service-areas/$slug.lazy').then((d) => d.Route),
+)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -113,14 +129,16 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/our-work': typeof OurWorkRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/service-areas': typeof ServiceAreasRoute
+  '/service-areas': typeof ServiceAreasRouteWithChildren
   '/terms-of-service': typeof TermsOfServiceRoute
   '/why-us': typeof WhyUsRoute
+  '/service-areas/$slug': typeof ServiceAreasSlugRoute
   '/services/asphalt-sealcoating': typeof ServicesAsphaltSealcoatingRoute
   '/services/layout-design': typeof ServicesLayoutDesignRoute
   '/services/parking-lot-striping': typeof ServicesParkingLotStripingRoute
   '/services/precision-linework-signage': typeof ServicesPrecisionLineworkSignageRoute
   '/services/warehouse-floor-striping': typeof ServicesWarehouseFloorStripingRoute
+  '/service-areas/': typeof ServiceAreasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -128,14 +146,15 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/our-work': typeof OurWorkRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/service-areas': typeof ServiceAreasRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/why-us': typeof WhyUsRoute
+  '/service-areas/$slug': typeof ServiceAreasSlugRoute
   '/services/asphalt-sealcoating': typeof ServicesAsphaltSealcoatingRoute
   '/services/layout-design': typeof ServicesLayoutDesignRoute
   '/services/parking-lot-striping': typeof ServicesParkingLotStripingRoute
   '/services/precision-linework-signage': typeof ServicesPrecisionLineworkSignageRoute
   '/services/warehouse-floor-striping': typeof ServicesWarehouseFloorStripingRoute
+  '/service-areas': typeof ServiceAreasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -144,14 +163,16 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/our-work': typeof OurWorkRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/service-areas': typeof ServiceAreasRoute
+  '/service-areas': typeof ServiceAreasRouteWithChildren
   '/terms-of-service': typeof TermsOfServiceRoute
   '/why-us': typeof WhyUsRoute
+  '/service-areas/$slug': typeof ServiceAreasSlugRoute
   '/services/asphalt-sealcoating': typeof ServicesAsphaltSealcoatingRoute
   '/services/layout-design': typeof ServicesLayoutDesignRoute
   '/services/parking-lot-striping': typeof ServicesParkingLotStripingRoute
   '/services/precision-linework-signage': typeof ServicesPrecisionLineworkSignageRoute
   '/services/warehouse-floor-striping': typeof ServicesWarehouseFloorStripingRoute
+  '/service-areas/': typeof ServiceAreasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -164,11 +185,13 @@ export interface FileRouteTypes {
     | '/service-areas'
     | '/terms-of-service'
     | '/why-us'
+    | '/service-areas/$slug'
     | '/services/asphalt-sealcoating'
     | '/services/layout-design'
     | '/services/parking-lot-striping'
     | '/services/precision-linework-signage'
     | '/services/warehouse-floor-striping'
+    | '/service-areas/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -176,14 +199,15 @@ export interface FileRouteTypes {
     | '/faq'
     | '/our-work'
     | '/privacy-policy'
-    | '/service-areas'
     | '/terms-of-service'
     | '/why-us'
+    | '/service-areas/$slug'
     | '/services/asphalt-sealcoating'
     | '/services/layout-design'
     | '/services/parking-lot-striping'
     | '/services/precision-linework-signage'
     | '/services/warehouse-floor-striping'
+    | '/service-areas'
   id:
     | '__root__'
     | '/'
@@ -194,11 +218,13 @@ export interface FileRouteTypes {
     | '/service-areas'
     | '/terms-of-service'
     | '/why-us'
+    | '/service-areas/$slug'
     | '/services/asphalt-sealcoating'
     | '/services/layout-design'
     | '/services/parking-lot-striping'
     | '/services/precision-linework-signage'
     | '/services/warehouse-floor-striping'
+    | '/service-areas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -207,7 +233,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   OurWorkRoute: typeof OurWorkRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
-  ServiceAreasRoute: typeof ServiceAreasRoute
+  ServiceAreasRoute: typeof ServiceAreasRouteWithChildren
   TermsOfServiceRoute: typeof TermsOfServiceRoute
   WhyUsRoute: typeof WhyUsRoute
   ServicesAsphaltSealcoatingRoute: typeof ServicesAsphaltSealcoatingRoute
@@ -275,6 +301,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/service-areas/': {
+      id: '/service-areas/'
+      path: '/'
+      fullPath: '/service-areas/'
+      preLoaderRoute: typeof ServiceAreasIndexRouteImport
+      parentRoute: typeof ServiceAreasRoute
+    }
     '/services/warehouse-floor-striping': {
       id: '/services/warehouse-floor-striping'
       path: '/services/warehouse-floor-striping'
@@ -310,8 +343,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesAsphaltSealcoatingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/service-areas/$slug': {
+      id: '/service-areas/$slug'
+      path: '/$slug'
+      fullPath: '/service-areas/$slug'
+      preLoaderRoute: typeof ServiceAreasSlugRouteImport
+      parentRoute: typeof ServiceAreasRoute
+    }
   }
 }
+
+interface ServiceAreasRouteChildren {
+  ServiceAreasSlugRoute: typeof ServiceAreasSlugRoute
+  ServiceAreasIndexRoute: typeof ServiceAreasIndexRoute
+}
+
+const ServiceAreasRouteChildren: ServiceAreasRouteChildren = {
+  ServiceAreasSlugRoute: ServiceAreasSlugRoute,
+  ServiceAreasIndexRoute: ServiceAreasIndexRoute,
+}
+
+const ServiceAreasRouteWithChildren = ServiceAreasRoute._addFileChildren(
+  ServiceAreasRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -319,7 +373,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   OurWorkRoute: OurWorkRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
-  ServiceAreasRoute: ServiceAreasRoute,
+  ServiceAreasRoute: ServiceAreasRouteWithChildren,
   TermsOfServiceRoute: TermsOfServiceRoute,
   WhyUsRoute: WhyUsRoute,
   ServicesAsphaltSealcoatingRoute: ServicesAsphaltSealcoatingRoute,

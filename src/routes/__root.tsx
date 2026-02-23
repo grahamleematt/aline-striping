@@ -186,8 +186,9 @@ function NavigationProgress({ isNavigating }: { isNavigating: boolean }) {
 }
 
 function RootLayout() {
-  const routerState = useRouterState();
-  const isNavigating = routerState.isLoading;
+  const isNavigating = useRouterState({
+    select: (s) => s.isLoading,
+  });
 
   return (
     <>

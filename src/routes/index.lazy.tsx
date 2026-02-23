@@ -447,7 +447,8 @@ function HomePage() {
                       {region.areas.map((area) => (
                         <li key={area.slug}>
                           <Link
-                            to="/service-areas"
+                            to="/service-areas/$slug"
+                            params={{ slug: area.slug }}
                             className="text-sm text-asphalt-600 transition-colors hover:text-stripe-600 sm:text-base"
                           >
                             {area.name}

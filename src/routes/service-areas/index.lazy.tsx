@@ -23,7 +23,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { CTASection } from "@/components/layout/CTASection";
 import { TrustIndicators } from "@/components/layout/TrustIndicators";
 
-export const Route = createLazyFileRoute("/service-areas")({
+export const Route = createLazyFileRoute("/service-areas/")({
   component: ServiceAreasPage,
 });
 
@@ -204,12 +204,15 @@ function ServiceAreasPage() {
               <CardContent className="relative">
                 <div className="mb-4 space-y-2">
                   {SERVICE_AREAS.mississippi.map((area) => (
-                    <div
+                    <Link
                       key={area.slug}
-                      className="rounded-lg px-3 py-2 text-asphalt-700 transition-colors hover:bg-asphalt-50"
+                      to="/service-areas/$slug"
+                      params={{ slug: area.slug }}
+                      className="flex items-center justify-between rounded-lg px-3 py-2 text-asphalt-700 transition-colors hover:bg-stripe-50 hover:text-stripe-600"
                     >
                       {area.name}
-                    </div>
+                      <ArrowRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
+                    </Link>
                   ))}
                 </div>
                 <div className="border-t border-asphalt-100 pt-4">
@@ -237,12 +240,15 @@ function ServiceAreasPage() {
               <CardContent className="relative">
                 <div className="mb-4 space-y-2">
                   {SERVICE_AREAS.tennessee.map((area) => (
-                    <div
+                    <Link
                       key={area.slug}
-                      className="rounded-lg px-3 py-2 text-asphalt-700 transition-colors hover:bg-asphalt-50"
+                      to="/service-areas/$slug"
+                      params={{ slug: area.slug }}
+                      className="flex items-center justify-between rounded-lg px-3 py-2 text-asphalt-700 transition-colors hover:bg-stripe-50 hover:text-stripe-600"
                     >
                       {area.name}
-                    </div>
+                      <ArrowRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
+                    </Link>
                   ))}
                 </div>
                 <div className="border-t border-asphalt-100 pt-4">
@@ -270,12 +276,15 @@ function ServiceAreasPage() {
               <CardContent className="relative">
                 <div className="mb-4 space-y-2">
                   {SERVICE_AREAS.arkansas.map((area) => (
-                    <div
+                    <Link
                       key={area.slug}
-                      className="rounded-lg px-3 py-2 text-asphalt-700 transition-colors hover:bg-asphalt-50"
+                      to="/service-areas/$slug"
+                      params={{ slug: area.slug }}
+                      className="flex items-center justify-between rounded-lg px-3 py-2 text-asphalt-700 transition-colors hover:bg-stripe-50 hover:text-stripe-600"
                     >
                       {area.name}
-                    </div>
+                      <ArrowRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
+                    </Link>
                   ))}
                 </div>
                 <div className="border-t border-asphalt-100 pt-4">
