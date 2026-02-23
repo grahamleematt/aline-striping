@@ -1,5 +1,6 @@
 import {
   createRootRoute,
+  HeadContent,
   Outlet,
   useRouterState,
 } from "@tanstack/react-router";
@@ -192,6 +193,7 @@ function RootLayout() {
 
   return (
     <>
+      <HeadContent />
       <NavigationProgress isNavigating={isNavigating} />
 
       <script

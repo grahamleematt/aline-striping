@@ -1,5 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { SERVICE_AREA_DATA } from "@/lib/utils";
+import { buildSeoMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/service-areas/$slug")({
   beforeLoad: ({ params }) => {
@@ -14,11 +15,10 @@ export const Route = createFileRoute("/service-areas/$slug")({
     const description = area
       ? `Professional parking lot striping, sealcoating, and warehouse marking services in ${area.name}, ${area.state}. Serving ${area.cities.join(", ")} and surrounding areas.`
       : "";
-    return {
-      meta: [
-        { title },
-        { name: "description", content: description },
-      ],
-    };
+    return buildSeoMeta({
+      title,
+      description,
+      path: `/service-areas/${params.slug}`,
+    });
   },
 });

@@ -6,21 +6,17 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BUSINESS_INFO } from "@/lib/utils";
+import { buildSeoMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/privacy-policy")({
   component: PrivacyPolicyPage,
-  head: () => ({
-    meta: [
-      {
-        title: "Privacy Policy | A-Line Striping Inc.",
-      },
-      {
-        name: "description",
-        content:
-          "Privacy policy for A-Line Striping Inc. Learn how we collect, use, and protect your personal information.",
-      },
-    ],
-  }),
+  head: () =>
+    buildSeoMeta({
+      title: "Privacy Policy | A-Line Striping Inc.",
+      description:
+        "Privacy policy for A-Line Striping Inc. Learn how we collect, use, and protect your personal information.",
+      path: "/privacy-policy",
+    }),
 });
 
 function PrivacyPolicyPage() {

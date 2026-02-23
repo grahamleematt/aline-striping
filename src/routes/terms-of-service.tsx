@@ -6,21 +6,17 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BUSINESS_INFO } from "@/lib/utils";
+import { buildSeoMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/terms-of-service")({
   component: TermsOfServicePage,
-  head: () => ({
-    meta: [
-      {
-        title: "Terms of Service | A-Line Striping Inc.",
-      },
-      {
-        name: "description",
-        content:
-          "Terms of service for A-Line Striping Inc. Review the terms and conditions for using our services.",
-      },
-    ],
-  }),
+  head: () =>
+    buildSeoMeta({
+      title: "Terms of Service | A-Line Striping Inc.",
+      description:
+        "Terms of service for A-Line Striping Inc. Review the terms and conditions for using our services.",
+      path: "/terms-of-service",
+    }),
 });
 
 function TermsOfServicePage() {
