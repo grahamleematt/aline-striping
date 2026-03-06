@@ -17,7 +17,12 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/ui/motion";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
-import { BUSINESS_INFO, SERVICE_AREAS, formatPhoneLink } from "@/lib/utils";
+import {
+  BUSINESS_INFO,
+  SERVICE_AREAS,
+  SERVICE_AREA_DATA,
+  formatPhoneLink,
+} from "@/lib/utils";
 import { TESTIMONIALS } from "@/lib/constants";
 
 export const Route = createLazyFileRoute("/")({
@@ -110,7 +115,7 @@ function HomePage() {
             <div className="flex flex-col gap-3 animate-fade-in-up stagger-3 sm:flex-row sm:gap-4">
               <Button asChild variant="primary" size="lg">
                 <Link to="/contact">
-                  REQUEST COMMERCIAL BID
+                  REQUEST A FREE QUOTE
                   <ArrowRight
                     className="ml-2 h-4 w-4 sm:h-5 sm:w-5"
                     strokeWidth={2.5}
@@ -228,7 +233,7 @@ function HomePage() {
                   </div>
                   <Link
                     to={services[0].href}
-                    className="group/link inline-flex items-center text-sm font-semibold text-asphalt-900"
+                    className="group/link inline-flex items-center text-sm font-bold text-stripe-600 transition-colors hover:text-stripe-700"
                   >
                     Learn more
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
@@ -239,40 +244,36 @@ function HomePage() {
 
             {/* Regular service cards */}
             {services.slice(1).map((service) => (
-              <Card
-                key={service.title}
-                variant="elevated"
-                className="group overflow-hidden"
-              >
-                <div className="relative h-36 w-full overflow-hidden sm:h-40">
-                  <ResponsiveImage
-                    src={service.image}
-                    alt={service.title}
-                    widths={service.imageWidths}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    width={400}
-                    height={200}
-                    className="h-full w-full object-cover transition-transform duration-150 group-hover:scale-105"
-                  />
-                </div>
-                <div className="relative flex h-full flex-col justify-between p-5 sm:p-6 md:p-8">
-                  <div>
+              <Link key={service.title} to={service.href} className="group">
+                <Card
+                  variant="elevated"
+                  className="h-full overflow-hidden transition-shadow group-hover:shadow-lg"
+                >
+                  <div className="relative h-36 w-full overflow-hidden sm:h-40">
+                    <ResponsiveImage
+                      src={service.image}
+                      alt={service.title}
+                      widths={service.imageWidths}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      width={400}
+                      height={200}
+                      className="h-full w-full object-cover transition-transform duration-150 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-5 sm:p-6 md:p-8">
                     <h3 className="mb-1.5 font-display text-lg font-bold text-asphalt-900 sm:mb-2 sm:text-xl">
                       {service.title}
                     </h3>
                     <p className="mb-3 text-xs text-asphalt-600 line-clamp-2 sm:mb-4 sm:text-sm">
                       {service.description}
                     </p>
+                    <span className="inline-flex items-center text-sm font-bold text-stripe-600 transition-colors group-hover:text-stripe-700">
+                      Learn more
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
                   </div>
-                  <Link
-                    to={service.href}
-                    className="group/link inline-flex items-center text-sm font-semibold text-asphalt-900"
-                  >
-                    Learn more
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-                  </Link>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
@@ -394,10 +395,11 @@ function HomePage() {
               Service Areas
             </Badge>
             <h2 className="mb-3 font-display text-3xl font-bold text-asphalt-900 sm:mb-4 sm:text-4xl lg:text-5xl">
-              Serving the entire
+              Based in the Mid-South.
               <br className="hidden sm:block" />
               <span className="sm:hidden"> </span>
-              <span className="gradient-text">Mid-South region</span>
+              Trusted for projects{" "}
+              <span className="gradient-text">across the region</span>
             </h2>
             <p className="mx-auto max-w-2xl text-base text-asphalt-600 sm:text-lg">
               Based in Horn Lake, MS — proudly serving Mississippi, Tennessee,
@@ -419,37 +421,60 @@ function HomePage() {
                 state: "Arkansas",
                 areas: SERVICE_AREAS.arkansas,
               },
-            ].map((region) => (
-              <Card
-                key={region.state}
-                variant="elevated"
-                className="group overflow-hidden"
-              >
-                <div className="relative p-5 sm:p-6 md:p-8">
-                  <div className="relative">
-                    <div className="mb-3 flex items-center gap-1.5 sm:mb-4 sm:gap-2">
-                      <MapPin className="h-4 w-4 text-stripe-500 sm:h-5 sm:w-5" />
-                      <h3 className="font-display text-lg font-bold text-asphalt-900 sm:text-xl">
-                        {region.state}
-                      </h3>
+            ].map((region) => {
+              const showCities =
+                region.state === "Tennessee" || region.state === "Arkansas";
+              return (
+                <Card
+                  key={region.state}
+                  variant="elevated"
+                  className="group flex h-full flex-col overflow-hidden"
+                >
+                  <div className="relative flex flex-1 flex-col p-5 sm:p-6 md:p-8">
+                    <div className="relative flex flex-1 flex-col">
+                      <div className="mb-4 flex items-center gap-2 border-b-2 border-asphalt-100 pb-3 sm:mb-5">
+                        <MapPin className="h-5 w-5 text-stripe-500" />
+                        <h3 className="font-display text-lg font-bold uppercase tracking-wide text-asphalt-900 sm:text-xl">
+                          {region.state}
+                        </h3>
+                      </div>
+                      <ul className="flex flex-1 flex-col space-y-4">
+                        {region.areas.map((area) => {
+                          const areaData = showCities
+                            ? SERVICE_AREA_DATA.find(
+                                (d) => d.slug === area.slug,
+                              )
+                            : undefined;
+                          return (
+                            <li key={area.slug} className="flex flex-col">
+                              <Link
+                                to="/service-areas/$slug"
+                                params={{ slug: area.slug }}
+                                className="inline-flex items-center text-sm font-bold text-asphalt-900 transition-colors hover:text-stripe-600 sm:text-base"
+                              >
+                                {area.name}
+                              </Link>
+                              {areaData && (
+                                <div className="mt-2 flex flex-wrap gap-1.5">
+                                  {areaData.cities.map((city) => (
+                                    <span
+                                      key={city}
+                                      className="border border-asphalt-200 bg-asphalt-50 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-asphalt-600"
+                                    >
+                                      {city}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
                     </div>
-                    <ul className="space-y-1.5 sm:space-y-2">
-                      {region.areas.map((area) => (
-                        <li key={area.slug}>
-                          <Link
-                            to="/service-areas/$slug"
-                            params={{ slug: area.slug }}
-                            className="text-sm text-asphalt-600 transition-colors hover:text-stripe-600 sm:text-base"
-                          >
-                            {area.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
-                </div>
-              </Card>
-            ))}
+                </Card>
+              );
+            })}
           </div>
 
           <div className="mt-8 text-center sm:mt-10">

@@ -7,6 +7,8 @@ import {
   ParkingSquare,
   Shield,
   Factory,
+  LayoutGrid,
+  PenLine,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -98,6 +100,59 @@ const faqCategories = [
     ],
   },
   {
+    title: "Layout Design",
+    icon: LayoutGrid,
+    questions: [
+      {
+        question: "Do I need a blueprint before you can design a layout?",
+        answer:
+          "No. Our team handles everything from measurements to the final design. We visit your property, assess the space, and create a custom layout from scratch — no existing blueprint required.",
+      },
+      {
+        question: "Can you redesign an existing parking lot layout?",
+        answer:
+          "Absolutely. We regularly redesign existing lots to increase capacity, improve flow, or bring them into ADA compliance. We'll evaluate your current setup and recommend the best improvements.",
+      },
+      {
+        question: "How much can a new layout increase my parking capacity?",
+        answer:
+          "Depending on the current configuration, a professionally designed layout can increase parking capacity by 10-25% without expanding the physical lot size. We optimize stall sizing, angles, and lane widths to maximize every square foot.",
+      },
+      {
+        question: "How long does the layout design process take?",
+        answer:
+          "Most projects are completed within 1-2 weeks from the initial site visit to the final design. Complex commercial properties may take slightly longer. We work with your timeline to minimize disruption.",
+      },
+    ],
+  },
+  {
+    title: "Precision Linework & Signage",
+    icon: PenLine,
+    questions: [
+      {
+        question: "What types of signage do you install?",
+        answer:
+          "We install a full range of parking lot signage including stop signs, speed limit signs, directional arrows, ADA accessible parking signs, fire lane markers, reserved parking signs, and custom stenciled markings like company logos and numbered stalls.",
+      },
+      {
+        question:
+          "Are your signs compliant with local fire and building codes?",
+        answer:
+          "Yes. All our signage and markings are installed to meet local, state, and federal regulations, including ADA requirements, fire code specifications, and DOT standards. We stay current with code changes to ensure full compliance.",
+      },
+      {
+        question: "How long do painted markings and signs last?",
+        answer:
+          "With DOT-approved, commercial-grade materials, our painted markings typically last 1-3 years depending on traffic volume and weather exposure. Thermoplastic markings and metal signs last significantly longer. We back all work with our 1-Year warranty.",
+      },
+      {
+        question: "Can you add custom logos or specialty markings?",
+        answer:
+          "Absolutely. We create custom stencils for company logos, numbered parking stalls, reserved/VIP spaces, EV charging spots, and any other specialty marking you need. Our team works with you to design markings that match your brand and property requirements.",
+      },
+    ],
+  },
+  {
     title: "General Questions",
     icon: HelpCircle,
     questions: [
@@ -151,23 +206,21 @@ function FAQPage() {
 
       {/* Hero Section */}
       <PageHero showSpotlight={false} className="pb-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="glass" className="mb-6">
-              <HelpCircle className="mr-1.5 h-3.5 w-3.5" />
-              Frequently Asked Questions
-            </Badge>
-            <h1 className="mb-6 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">
-              FAQs About Striping,
-              <br />
-              <span className="gradient-text">
-                Sealcoating &amp; Warehouse Marking
-              </span>
-            </h1>
-            <p className="text-xl text-asphalt-300">
-              Find answers to common questions about our services, process, and
-              what to expect when working with A-Line Striping.
-            </p>
-          </div>
+        <div className="mx-auto max-w-3xl text-center">
+          <Badge variant="glass" className="mb-6">
+            <HelpCircle className="mr-1.5 h-3.5 w-3.5" />
+            Frequently Asked Questions
+          </Badge>
+          <h1 className="mb-6 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">
+            FAQs About Striping,
+            <br />
+            <span className="gradient-text">Sealcoating &amp; More</span>
+          </h1>
+          <p className="text-xl text-asphalt-300">
+            Find answers to common questions about our services, process, and
+            what to expect when working with A-Line Striping.
+          </p>
+        </div>
       </PageHero>
 
       {/* FAQ Content */}

@@ -186,7 +186,10 @@ function ContactPage() {
             <div className="lg:col-span-3">
               <Card variant="elevated" className="overflow-hidden">
                 <CardContent className="p-5 sm:p-6 lg:p-8">
-                  <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4 sm:space-y-6">
+                  <form
+                    onSubmit={handleSubmit(handleFormSubmit)}
+                    className="space-y-4 sm:space-y-6"
+                  >
                     {/* Name fields */}
                     <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
                       <div>
@@ -200,7 +203,9 @@ function ContactPage() {
                           type="text"
                           id="firstName"
                           {...register("firstName")}
-                          aria-describedby={errors.firstName ? "firstName-error" : undefined}
+                          aria-describedby={
+                            errors.firstName ? "firstName-error" : undefined
+                          }
                           className={cn(
                             "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.firstName
@@ -210,7 +215,10 @@ function ContactPage() {
                           placeholder="John"
                         />
                         {errors.firstName && (
-                          <p id="firstName-error" className="mt-2 text-sm text-red-500">
+                          <p
+                            id="firstName-error"
+                            className="mt-2 text-sm text-red-500"
+                          >
                             {errors.firstName.message}
                           </p>
                         )}
@@ -226,7 +234,9 @@ function ContactPage() {
                           type="text"
                           id="lastName"
                           {...register("lastName")}
-                          aria-describedby={errors.lastName ? "lastName-error" : undefined}
+                          aria-describedby={
+                            errors.lastName ? "lastName-error" : undefined
+                          }
                           className={cn(
                             "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.lastName
@@ -236,7 +246,10 @@ function ContactPage() {
                           placeholder="Smith"
                         />
                         {errors.lastName && (
-                          <p id="lastName-error" className="mt-2 text-sm text-red-500">
+                          <p
+                            id="lastName-error"
+                            className="mt-2 text-sm text-red-500"
+                          >
                             {errors.lastName.message}
                           </p>
                         )}
@@ -256,7 +269,9 @@ function ContactPage() {
                           type="email"
                           id="email"
                           {...register("email")}
-                          aria-describedby={errors.email ? "email-error" : undefined}
+                          aria-describedby={
+                            errors.email ? "email-error" : undefined
+                          }
                           className={cn(
                             "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.email
@@ -266,7 +281,10 @@ function ContactPage() {
                           placeholder="john@company.com"
                         />
                         {errors.email && (
-                          <p id="email-error" className="mt-2 text-sm text-red-500">
+                          <p
+                            id="email-error"
+                            className="mt-2 text-sm text-red-500"
+                          >
                             {errors.email.message}
                           </p>
                         )}
@@ -282,7 +300,9 @@ function ContactPage() {
                           type="tel"
                           id="phone"
                           {...register("phone")}
-                          aria-describedby={errors.phone ? "phone-error" : undefined}
+                          aria-describedby={
+                            errors.phone ? "phone-error" : undefined
+                          }
                           className={cn(
                             "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.phone
@@ -292,7 +312,10 @@ function ContactPage() {
                           placeholder="(901) 555-0123"
                         />
                         {errors.phone && (
-                          <p id="phone-error" className="mt-2 text-sm text-red-500">
+                          <p
+                            id="phone-error"
+                            className="mt-2 text-sm text-red-500"
+                          >
                             {errors.phone.message}
                           </p>
                         )}
@@ -312,7 +335,9 @@ function ContactPage() {
                           type="text"
                           id="zipCode"
                           {...register("zipCode")}
-                          aria-describedby={errors.zipCode ? "zipCode-error" : undefined}
+                          aria-describedby={
+                            errors.zipCode ? "zipCode-error" : undefined
+                          }
                           className={cn(
                             "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.zipCode
@@ -322,7 +347,10 @@ function ContactPage() {
                           placeholder="38637"
                         />
                         {errors.zipCode && (
-                          <p id="zipCode-error" className="mt-2 text-sm text-red-500">
+                          <p
+                            id="zipCode-error"
+                            className="mt-2 text-sm text-red-500"
+                          >
                             {errors.zipCode.message}
                           </p>
                         )}
@@ -337,7 +365,9 @@ function ContactPage() {
                         <select
                           id="service"
                           {...register("service")}
-                          aria-describedby={errors.service ? "service-error" : undefined}
+                          aria-describedby={
+                            errors.service ? "service-error" : undefined
+                          }
                           className={cn(
                             "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
                             errors.service
@@ -353,7 +383,10 @@ function ContactPage() {
                           ))}
                         </select>
                         {errors.service && (
-                          <p id="service-error" className="mt-2 text-sm text-red-500">
+                          <p
+                            id="service-error"
+                            className="mt-2 text-sm text-red-500"
+                          >
                             {errors.service.message}
                           </p>
                         )}
@@ -371,7 +404,9 @@ function ContactPage() {
                       <textarea
                         id="message"
                         {...register("message")}
-                        aria-describedby={errors.message ? "message-error" : undefined}
+                        aria-describedby={
+                          errors.message ? "message-error" : undefined
+                        }
                         rows={5}
                         className={cn(
                           "w-full border-2 bg-white px-4 py-3.5 text-asphalt-900 transition-all focus:bg-white focus:border-stripe-500 focus:outline-none focus:ring-2 focus:ring-stripe-500/20",
@@ -382,7 +417,10 @@ function ContactPage() {
                         placeholder="Tell us about your project, including lot size, current condition, and any specific requirements..."
                       />
                       {errors.message && (
-                        <p id="message-error" className="mt-2 text-sm text-red-500">
+                        <p
+                          id="message-error"
+                          className="mt-2 text-sm text-red-500"
+                        >
                           {errors.message.message}
                         </p>
                       )}
@@ -426,25 +464,27 @@ function ContactPage() {
             <div className="space-y-6 lg:col-span-2">
               {/* Trust Signals */}
               <Card variant="elevated">
-                <CardContent className="p-6">
-                  <div className="mb-5 flex items-center gap-2">
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-4 w-4 fill-stripe-500 text-stripe-500"
-                        />
-                      ))}
+                <CardContent className="p-7 sm:p-8">
+                  <div className="mb-6 border-b border-asphalt-200 pb-6">
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="h-5 w-5 fill-stripe-500 text-stripe-500"
+                          />
+                        ))}
+                      </div>
+                      <span className="text-base font-bold text-asphalt-900">
+                        {BUSINESS_INFO.googleRating}/5 Rating
+                      </span>
                     </div>
-                    <span className="text-sm font-semibold text-asphalt-900">
-                      {BUSINESS_INFO.googleRating}/5 Rating
-                    </span>
                   </div>
-                  <div className="space-y-4">
+                  <div className="space-y-5">
                     {trustSignals.map((signal) => (
                       <div
                         key={signal.text}
-                        className="flex items-center gap-3"
+                        className="flex items-center gap-4"
                       >
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-stripe-500/20">
                           <signal.icon className="h-5 w-5 text-stripe-600" />

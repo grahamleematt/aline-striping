@@ -252,13 +252,13 @@ export function Footer() {
                 href="https://www.bbb.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-asphalt-800 px-3 py-2 transition-colors duration-150 hover:bg-asphalt-700"
+                className="inline-flex items-center gap-2 transition-opacity duration-150 hover:opacity-80"
               >
                 <img
-                  src="/images/bbb-badge.svg"
+                  src="/images/bbb-badge.png"
                   alt="BBB A+ Accredited Business"
-                  width={70}
-                  height={40}
+                  width={85}
+                  height={32}
                   loading="lazy"
                   decoding="async"
                   className="h-8 w-auto"

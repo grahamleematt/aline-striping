@@ -2,7 +2,6 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { Menu, Phone, ChevronDown, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ResponsiveImage } from "@/components/ui/responsive-image";
 import {
   cn,
   BUSINESS_INFO,
@@ -46,8 +45,8 @@ export function Header() {
       <nav className="container-section" aria-label="Main navigation">
         <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
-          <Link to="/" className="group flex items-center gap-2.5 md:gap-3">
-            <ResponsiveImage
+          <Link to="/" className="group relative flex items-center gap-2.5 md:gap-3">
+            <img
               src="/images/logo.webp"
               alt="A-Line Striping Inc."
               width={320}
@@ -55,7 +54,21 @@ export function Header() {
               loading="eager"
               fetchPriority="high"
               decoding="sync"
-              className="h-9 w-auto md:h-11"
+              className={cn(
+                "h-9 w-auto transition-opacity duration-150 md:h-11",
+                isScrolled ? "opacity-100" : "opacity-0",
+              )}
+            />
+            <img
+              src="/images/logo-white.svg"
+              alt=""
+              width={320}
+              height={114}
+              aria-hidden="true"
+              className={cn(
+                "absolute inset-0 h-9 w-auto transition-opacity duration-150 md:h-11",
+                isScrolled ? "opacity-0" : "opacity-100",
+              )}
             />
           </Link>
 
@@ -143,8 +156,22 @@ export function Header() {
             ))}
           </div>
 
-          {/* Right side — CALL NOW CTA + Mobile menu */}
+          {/* Right side — BBB badge + CALL NOW CTA + Mobile menu */}
           <div className="flex items-center gap-2 md:gap-3">
+            <div
+              className={cn(
+                "hidden items-center px-3 py-2 bg-white border-b-4 border-black md:flex",
+              )}
+            >
+              <img
+                src="/images/bbb-badge.png"
+                alt="BBB Accredited Business A+ Rating"
+                width={85}
+                height={32}
+                className="h-7 w-auto"
+              />
+            </div>
+
             {/* CALL NOW — massive CTA */}
             <a
               href={formatPhoneLink(BUSINESS_INFO.phoneRaw)}
