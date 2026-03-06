@@ -28,9 +28,13 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = isMobileMenuOpen
+      ? "hidden"
+      : previousOverflow;
+
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
   }, [isMobileMenuOpen]);
 
@@ -45,7 +49,10 @@ export function Header() {
       <nav className="container-section" aria-label="Main navigation">
         <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
-          <Link to="/" className="group relative flex items-center gap-2.5 md:gap-3">
+          <Link
+            to="/"
+            className="group relative flex items-center gap-2.5 md:gap-3"
+          >
             <img
               src="/images/logo.webp"
               alt="A-Line Striping Inc."
