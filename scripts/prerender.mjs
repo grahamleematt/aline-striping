@@ -115,6 +115,11 @@ async function prerender() {
   console.log(`Pre-rendered ${rendered}/${ROUTES.length} routes`);
 }
 
+if (process.env.VERCEL) {
+  console.log("Skipping pre-render on Vercel (Puppeteer requires system Chrome libs)");
+  process.exit(0);
+}
+
 prerender().catch((err) => {
   console.error("Pre-render failed:", err);
   process.exit(1);
