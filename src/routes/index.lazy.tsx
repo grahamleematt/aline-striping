@@ -97,18 +97,19 @@ function HomePage() {
 
             {/* Headline */}
             <h1 className="mb-6 font-display text-4xl font-black leading-none text-white animate-fade-in-up stagger-1 sm:text-5xl md:text-6xl lg:text-7xl">
-              INDUSTRIAL
+              COMMERCIAL
               <br />
-              PRECISION.
+              STRIPING &
               <br />
-              <span className="text-stripe-500">ZERO DOWNTIME.</span>
+              <span className="text-stripe-500">SEALCOATING.</span>
             </h1>
 
             {/* Subheading */}
             <p className="mb-8 max-w-lg text-base leading-relaxed text-asphalt-400 animate-fade-in-up stagger-2 sm:text-lg">
-              Commercial parking lot striping, warehouse marking, and
-              sealcoating across Mississippi &amp; Memphis.{" "}
-              {BUSINESS_INFO.yearsExperience}+ years of precision craftsmanship.
+              Parking lot striping, warehouse marking, and asphalt maintenance
+              for commercial properties across Horn Lake, Memphis, and the
+              Mid-South. {BUSINESS_INFO.yearsExperience}+ years of precision
+              craftsmanship with zero guesswork.
             </p>
 
             {/* CTAs */}

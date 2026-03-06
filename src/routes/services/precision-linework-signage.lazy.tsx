@@ -20,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
 import { SERVICE_FAQS } from "@/lib/constants";
+import { createBreadcrumbSchema, createServiceSchema } from "@/lib/seo";
 import { PageHero } from "@/components/layout/PageHero";
 import { CTASection } from "@/components/layout/CTASection";
 import { FAQSection } from "@/components/layout/FAQSection";
@@ -120,8 +121,31 @@ const benefits = [
 ];
 
 function PrecisionLineworkSignagePage() {
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    {
+      name: "Precision Linework & Signage",
+      path: "/services/precision-linework-signage",
+    },
+  ]);
+  const serviceSchema = createServiceSchema({
+    name: "Precision Linework and Signage Services",
+    description:
+      "Custom traffic signs, directional markings, fire lanes, warehouse linework, and compliance-focused signage services across Horn Lake, Memphis, and the Mid-South.",
+    path: "/services/precision-linework-signage",
+    areaServed: ["Horn Lake, Mississippi", "Memphis, Tennessee", "Mid-South"],
+  });
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* Hero Section */}
       <PageHero>
         <div className="mx-auto max-w-4xl text-center">
@@ -333,6 +357,7 @@ function PrecisionLineworkSignagePage() {
       <FAQSection
         description="Everything you need to know about our precision linework and signage design services."
         faqs={SERVICE_FAQS.precisionLinework}
+        includeSchema
       />
 
       <CTASection

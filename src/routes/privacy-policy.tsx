@@ -16,6 +16,7 @@ export const Route = createFileRoute("/privacy-policy")({
       description:
         "Privacy policy for A-Line Striping Inc. Learn how we collect, use, and protect your personal information.",
       path: "/privacy-policy",
+      robots: "noindex, follow",
     }),
 });
 

@@ -19,6 +19,7 @@ import { Badge } from "@/components/ui/badge";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
 import { SERVICE_FAQS } from "@/lib/constants";
+import { createBreadcrumbSchema, createServiceSchema } from "@/lib/seo";
 import { PageHero } from "@/components/layout/PageHero";
 import { CTASection } from "@/components/layout/CTASection";
 import { FAQSection } from "@/components/layout/FAQSection";
@@ -103,8 +104,28 @@ const benefits = [
 ];
 
 function LayoutDesignPage() {
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Layout Design", path: "/services/layout-design" },
+  ]);
+  const serviceSchema = createServiceSchema({
+    name: "Parking Lot Layout Design Services",
+    description:
+      "Custom parking lot layout design, traffic flow planning, stall optimization, and ADA-focused commercial site planning across Horn Lake, Memphis, and the Mid-South.",
+    path: "/services/layout-design",
+    areaServed: ["Horn Lake, Mississippi", "Memphis, Tennessee", "Mid-South"],
+  });
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* Hero Section */}
       <PageHero>
         <div className="mx-auto max-w-4xl text-center">
@@ -320,6 +341,7 @@ function LayoutDesignPage() {
       <FAQSection
         description="Everything you need to know about our parking lot layout and design services."
         faqs={SERVICE_FAQS.layoutDesign}
+        includeSchema
       />
 
       <CTASection

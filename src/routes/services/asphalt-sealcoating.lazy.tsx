@@ -22,6 +22,7 @@ import { Badge } from "@/components/ui/badge";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
 import { SERVICE_FAQS } from "@/lib/constants";
+import { createBreadcrumbSchema, createServiceSchema } from "@/lib/seo";
 import { PageHero } from "@/components/layout/PageHero";
 import { CTASection } from "@/components/layout/CTASection";
 import { FAQSection } from "@/components/layout/FAQSection";
@@ -91,8 +92,31 @@ const whyChooseUs = [
 ];
 
 function AsphaltSealcoatingPage() {
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    {
+      name: "Asphalt Sealcoating",
+      path: "/services/asphalt-sealcoating",
+    },
+  ]);
+  const serviceSchema = createServiceSchema({
+    name: "Asphalt Sealcoating Services",
+    description:
+      "Professional asphalt sealcoating, crack sealing, and pavement protection services for commercial properties across Horn Lake, Memphis, and the Mid-South.",
+    path: "/services/asphalt-sealcoating",
+    areaServed: ["Horn Lake, Mississippi", "Memphis, Tennessee", "Mid-South"],
+  });
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* Hero Section */}
       <PageHero>
         <div className="mx-auto max-w-4xl text-center">
@@ -334,6 +358,7 @@ function AsphaltSealcoatingPage() {
       <FAQSection
         description="Everything you need to know about our asphalt sealcoating services."
         faqs={SERVICE_FAQS.asphaltSealcoating}
+        includeSchema
       />
 
       <CTASection

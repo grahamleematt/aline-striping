@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BUSINESS_INFO } from "@/lib/utils";
+import { TESTIMONIALS } from "@/lib/constants";
 
 export const Route = createRootRoute({
   component: RootLayout,
@@ -18,9 +19,10 @@ export const Route = createRootRoute({
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://www.alinestripinginc.com/#organization",
   name: BUSINESS_INFO.name,
   url: "https://www.alinestripinginc.com",
-  logo: "https://www.alinestripinginc.com/logo.png",
+  logo: "https://www.alinestripinginc.com/images/logo.png",
   contactPoint: {
     "@type": "ContactPoint",
     telephone: `+1${BUSINESS_INFO.phoneRaw}`,
@@ -39,7 +41,7 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   "@id": "https://www.alinestripinginc.com/#business",
   name: BUSINESS_INFO.name,
-  image: "https://www.alinestripinginc.com/images/storefront.jpg",
+  image: "https://www.alinestripinginc.com/images/parking-lot-striping.webp",
   url: "https://www.alinestripinginc.com",
   telephone: `+1${BUSINESS_INFO.phoneRaw}`,
   priceRange: "$$",
@@ -79,85 +81,35 @@ const localBusinessSchema = {
   },
   areaServed: [
     {
-      "@type": "State",
+      "@type": "AdministrativeArea",
       name: "Mississippi",
     },
     {
-      "@type": "State",
+      "@type": "AdministrativeArea",
       name: "Tennessee",
     },
     {
-      "@type": "State",
+      "@type": "AdministrativeArea",
       name: "Arkansas",
     },
   ],
+  review: TESTIMONIALS.slice(0, 3).map((t) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: t.author },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: t.rating,
+      bestRating: 5,
+    },
+    reviewBody: t.quote,
+  })),
 };
 
-const serviceSchema = {
+const websiteSchema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  serviceType: "Parking Lot Striping and Pavement Maintenance",
-  provider: {
-    "@type": "LocalBusiness",
-    name: BUSINESS_INFO.name,
-  },
-  areaServed: {
-    "@type": "GeoCircle",
-    geoMidpoint: {
-      "@type": "GeoCoordinates",
-      latitude: 34.9537,
-      longitude: -90.0346,
-    },
-    geoRadius: "100 mi",
-  },
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Striping and Sealcoating Services",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Parking Lot Striping",
-          description:
-            "Professional parking lot line striping and re-striping services",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Warehouse Floor Striping",
-          description: "Industrial floor marking and safety zone striping",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Asphalt Sealcoating",
-          description: "Protective sealcoating to extend pavement life",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Layout Design",
-          description:
-            "Custom parking lot layout design and traffic flow planning",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Precision Linework & Signage",
-          description: "Custom signage and precision marking services",
-        },
-      },
-    ],
-  },
+  "@type": "WebSite",
+  name: BUSINESS_INFO.name,
+  url: "https://www.alinestripinginc.com",
 };
 
 /**
@@ -211,7 +163,7 @@ function RootLayout() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceSchema),
+          __html: JSON.stringify(websiteSchema),
         }}
       />
 

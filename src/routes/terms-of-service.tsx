@@ -16,6 +16,7 @@ export const Route = createFileRoute("/terms-of-service")({
       description:
         "Terms of service for A-Line Striping Inc. Review the terms and conditions for using our services.",
       path: "/terms-of-service",
+      robots: "noindex, follow",
     }),
 });
 

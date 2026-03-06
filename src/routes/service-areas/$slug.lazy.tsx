@@ -20,6 +20,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { CTASection } from "@/components/layout/CTASection";
 import { TrustIndicators } from "@/components/layout/TrustIndicators";
 import { BUSINESS_INFO, SERVICE_AREA_DATA, formatPhoneLink } from "@/lib/utils";
+import { createBreadcrumbSchema, createServiceSchema } from "@/lib/seo";
 
 export const Route = createLazyFileRoute("/service-areas/$slug")({
   component: ServiceAreaPage,
@@ -78,8 +79,32 @@ function ServiceAreaPage() {
 
   if (!area) return null;
 
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Service Areas", path: "/service-areas" },
+    { name: area.name, path: `/service-areas/${area.slug}` },
+  ]);
+  const serviceSchema = createServiceSchema({
+    name: `Parking Lot Striping, Sealcoating & Warehouse Marking in ${area.name}, ${area.stateAbbr}`,
+    description: `Commercial parking lot striping, asphalt sealcoating, warehouse marking, layout design, and signage services for properties across ${area.name}, ${area.state}.`,
+    path: `/service-areas/${area.slug}`,
+    areaServed: [
+      area.name,
+      ...area.cities.map((city) => `${city}, ${area.stateAbbr}`),
+    ],
+  });
+  const nearbyCitiesText = area.cities.slice(0, 3).join(", ");
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <PageHero>
         <div className="mx-auto max-w-4xl text-center">
           <div className="mb-4 flex animate-fade-in-up justify-center">
@@ -146,6 +171,43 @@ function ServiceAreaPage() {
         </div>
       </PageHero>
 
+      {/* Local SEO Answer Block */}
+      <section className="relative pt-16">
+        <div className="container-section">
+          <Card variant="elevated" className="p-5 sm:p-6 md:p-8">
+            <Badge variant="accent" className="mb-4">
+              <Sparkles className="mr-1.5 h-3.5 w-3.5" />
+              Local Service Coverage
+            </Badge>
+            <h2 className="mb-4 font-display text-3xl font-bold text-asphalt-900 sm:text-4xl">
+              Do you provide parking lot striping and sealcoating in {area.name}
+              ?
+            </h2>
+            <p className="max-w-3xl text-lg text-asphalt-600">
+              Yes. A-Line Striping provides commercial parking lot striping,
+              asphalt sealcoating, warehouse floor marking, layout design, and
+              signage support throughout {area.name}, including{" "}
+              {nearbyCitiesText}
+              {area.cities.length > 3 ? ", and nearby communities." : "."}
+            </p>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {[
+                `Commercial lots, office parks, schools, churches, and municipal properties across ${area.name}`,
+                `Phased scheduling to reduce disruption for active properties in ${area.stateAbbr}`,
+                `ADA-conscious layouts, safety markings, and durable materials designed for Mid-South traffic and weather`,
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="border-2 border-asphalt-200 bg-asphalt-50 p-4"
+                >
+                  <p className="text-sm font-medium text-asphalt-700">{item}</p>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+      </section>
+
       {/* Cities We Serve */}
       <section className="relative pt-16 pb-24">
         <div className="container-section">
@@ -165,13 +227,58 @@ function ServiceAreaPage() {
             {area.cities.map((city) => (
               <div
                 key={city}
-                className="flex items-center gap-2 border-2 border-asphalt-200 bg-white px-5 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                className="flex items-center gap-2 border-2 border-asphalt-200 bg-white px-5 py-3 shadow-md"
               >
                 <MapPin className="h-4 w-4 text-stripe-500" />
                 <span className="font-display font-bold text-asphalt-900">
                   {city}, {area.stateAbbr}
                 </span>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Routes */}
+      <section className="pb-24">
+        <div className="container-section">
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: `See striping answers for ${area.name}`,
+                description:
+                  "Review the shared service FAQs covering timelines, materials, layout planning, and project disruption.",
+                href: "/faq",
+                label: "View FAQs",
+              },
+              {
+                title: `See completed Mid-South projects`,
+                description:
+                  "Explore parking lot, warehouse, sealcoating, and signage examples to understand finish quality and scope.",
+                href: "/our-work",
+                label: "View Our Work",
+              },
+              {
+                title: "Browse all service areas",
+                description:
+                  "Compare county coverage, nearby cities, and the full Mid-South footprint we support.",
+                href: "/service-areas",
+                label: "View All Service Areas",
+              },
+            ].map((item) => (
+              <Card key={item.title} variant="elevated" className="p-5 sm:p-6">
+                <h2 className="mb-3 font-display text-2xl font-bold text-asphalt-900">
+                  {item.title}
+                </h2>
+                <p className="mb-5 text-asphalt-600">{item.description}</p>
+                <Link
+                  to={item.href}
+                  className="inline-flex items-center font-semibold text-stripe-600 transition-colors hover:text-stripe-700"
+                >
+                  {item.label}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Card>
             ))}
           </div>
         </div>
@@ -236,10 +343,10 @@ function ServiceAreaPage() {
                 <span className="gradient-text">A-Line in {area.name}</span>
               </h2>
               <p className="mb-8 text-lg text-asphalt-600">
-                We understand the needs of commercial properties across {area.name} and
-                are committed to delivering long-lasting results you can depend
-                on, backed by durable materials, code-compliant layouts, and
-                flexible scheduling.
+                We understand the needs of commercial properties across{" "}
+                {area.name} and are committed to delivering long-lasting results
+                you can depend on, backed by durable materials, code-compliant
+                layouts, and flexible scheduling.
               </p>
               <div className="space-y-3">
                 {whyChoose.map((reason) => (

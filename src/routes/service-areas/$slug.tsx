@@ -10,10 +10,10 @@ export const Route = createFileRoute("/service-areas/$slug")({
   head: ({ params }) => {
     const area = SERVICE_AREA_DATA.find((a) => a.slug === params.slug);
     const title = area
-      ? `Parking Lot Striping & Sealcoating in ${area.name}, ${area.stateAbbr} | A-Line Striping`
+      ? `Parking Lot Striping, Sealcoating & Warehouse Marking in ${area.name}, ${area.stateAbbr} | A-Line Striping`
       : "Service Area | A-Line Striping";
     const description = area
-      ? `Professional parking lot striping, sealcoating, and warehouse marking services in ${area.name}, ${area.state}. Serving ${area.cities.join(", ")} and surrounding areas.`
+      ? `Commercial parking lot striping, asphalt sealcoating, warehouse marking, layout design, and signage services in ${area.name}, ${area.state}. Serving ${area.cities.join(", ")} and surrounding areas.`
       : "";
     return buildSeoMeta({
       title,

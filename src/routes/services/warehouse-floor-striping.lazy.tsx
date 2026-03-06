@@ -21,6 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
 import { SERVICE_FAQS } from "@/lib/constants";
+import { createBreadcrumbSchema, createServiceSchema } from "@/lib/seo";
 import { PageHero } from "@/components/layout/PageHero";
 import { CTASection } from "@/components/layout/CTASection";
 import { FAQSection } from "@/components/layout/FAQSection";
@@ -115,8 +116,31 @@ const benefits = [
 ];
 
 function WarehouseFloorStripingPage() {
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    {
+      name: "Warehouse Floor Striping",
+      path: "/services/warehouse-floor-striping",
+    },
+  ]);
+  const serviceSchema = createServiceSchema({
+    name: "Warehouse Floor Striping Services",
+    description:
+      "Professional warehouse floor striping, forklift lane marking, pedestrian walkway striping, and OSHA-focused safety markings across Horn Lake, Memphis, and the Mid-South.",
+    path: "/services/warehouse-floor-striping",
+    areaServed: ["Horn Lake, Mississippi", "Memphis, Tennessee", "Mid-South"],
+  });
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* Hero Section */}
       <PageHero>
         <div className="mx-auto max-w-4xl text-center">
@@ -355,6 +379,7 @@ function WarehouseFloorStripingPage() {
       <FAQSection
         description="Everything you need to know about our warehouse and line striping services."
         faqs={SERVICE_FAQS.warehouseFloorStriping}
+        includeSchema
       />
 
       <CTASection

@@ -6,15 +6,29 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import type { FAQ } from "@/lib/constants";
+import { createFaqSchema } from "@/lib/seo";
 
 interface FAQSectionProps {
   description: string;
   faqs: readonly FAQ[];
+  includeSchema?: boolean;
 }
 
-export function FAQSection({ description, faqs }: FAQSectionProps) {
+export function FAQSection({
+  description,
+  faqs,
+  includeSchema = false,
+}: FAQSectionProps) {
+  const faqSchema = includeSchema ? createFaqSchema(faqs) : null;
+
   return (
     <section className="bg-asphalt-50 py-24 lg:py-32">
+      {faqSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      ) : null}
       <div className="container-section">
         <div className="mx-auto max-w-3xl">
           <div className="mb-12 text-center">

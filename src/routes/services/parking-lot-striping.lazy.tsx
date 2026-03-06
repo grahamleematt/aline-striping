@@ -26,6 +26,11 @@ import { Badge } from "@/components/ui/badge";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { BUSINESS_INFO, formatPhoneLink } from "@/lib/utils";
 import { SERVICE_FAQS } from "@/lib/constants";
+import {
+  createBreadcrumbSchema,
+  createFaqSchema,
+  createServiceSchema,
+} from "@/lib/seo";
 import { PageHero } from "@/components/layout/PageHero";
 
 export const Route = createLazyFileRoute("/services/parking-lot-striping")({
@@ -122,8 +127,33 @@ const benefits = [
 const faqs = SERVICE_FAQS.parkingLotStriping;
 
 function ParkingLotStripingPage() {
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Parking Lot Striping", path: "/services/parking-lot-striping" },
+  ]);
+  const serviceSchema = createServiceSchema({
+    name: "Parking Lot Striping Services",
+    description:
+      "Professional parking lot striping, re-striping, ADA markings, fire lanes, and layout services for commercial properties across Horn Lake, Memphis, and the Mid-South.",
+    path: "/services/parking-lot-striping",
+    areaServed: ["Horn Lake, Mississippi", "Memphis, Tennessee", "Mid-South"],
+  });
+  const faqSchema = createFaqSchema(faqs);
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* Hero Section */}
       <PageHero className="px-0 pb-16 pt-24 sm:pb-24 sm:pt-32 lg:pb-32 lg:pt-40">
         <div className="mx-auto max-w-4xl text-center">

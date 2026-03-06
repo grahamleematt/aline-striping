@@ -6,7 +6,9 @@
   "description": "A-Line Striping Inc. - Professional Parking Lot Striping & Sealcoating Services",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "prerender": "node scripts/prerender.mjs",
+    "build": "node scripts/generate-sitemap.mjs && tsc -b && vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "images": "node scripts/generate-images.mjs"
@@ -45,6 +47,7 @@
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^10.0.1",
     "globals": "^17.3.0",
+    "puppeteer": "^24.38.0",
     "sharp": "^0.34.5",
     "svgo": "^4.0.0",
     "typescript": "^5.9.3",
