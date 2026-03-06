@@ -7,7 +7,6 @@ import {
   Star,
   Heart,
   Target,
-  Clock,
   Zap,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -30,25 +29,28 @@ const qualityStandards = [
 
 const differentiators = [
   {
-    icon: Shield,
-    title: "1-Year Warranty",
+    icon: Paintbrush,
+    title: "Industry-Leading Quality",
     description:
-      "Every project backed by our comprehensive workmanship guarantee",
+      "DOT-approved, commercial-grade paints, thermoplastics, and surface prep products selected for high visibility, adhesion, and weather resistance.",
   },
   {
     icon: Target,
-    title: "Precision Work",
-    description: "Expert craftsmanship with DOT-approved materials",
-  },
-  {
-    icon: Clock,
-    title: "Flexible Scheduling",
-    description: "Evenings and weekends available to minimize disruption",
+    title: "Professional Craftsmanship",
+    description:
+      "Exact measurements, consistent line thickness, crisp edges, and reliable execution from a team that treats every project like our reputation depends on it.",
   },
   {
     icon: CheckCircle2,
-    title: "ADA Compliant",
-    description: "Full accessibility compliance on every project",
+    title: "Safety & ADA Compliance",
+    description:
+      "ADA-compliant layouts, traffic flow planning, fire lanes, crosswalks, loading zones, and high-visibility markings completed with safety first.",
+  },
+  {
+    icon: Shield,
+    title: "Long-Term Partnership",
+    description:
+      "A partner committed to durability, compliance, aesthetics, clear communication, and the long-term success of your property.",
   },
 ];
 
@@ -90,12 +92,14 @@ function WhyUsPage() {
           <h1 className="mb-6 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">
             Built on trust,
             <br />
-            <span className="gradient-text">driven by quality</span>
+            <span className="gradient-text">driven by craftsmanship</span>
           </h1>
 
           <p className="mx-auto max-w-2xl text-xl text-asphalt-300">
-            For over {BUSINESS_INFO.yearsExperience} years, our simple promise
-            has guided our growth: deliver quality work with honesty and care.
+            Founded in {BUSINESS_INFO.founded}, our company began as a small
+            striping operation driven by a simple promise: deliver quality work
+            with honesty and care. For over {BUSINESS_INFO.yearsExperience}{" "}
+            years, that promise has guided everything we do.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -127,18 +131,24 @@ function WhyUsPage() {
                 <p>
                   Founded in {BUSINESS_INFO.founded}, our company began as a
                   small striping operation driven by a simple promise: deliver
-                  quality work with honesty and care.
+                  quality work with honesty and care. For over 20 years, that
+                  promise has guided our growth into a trusted provider of
+                  parking lot striping, sealcoating, and pavement maintenance
+                  services.
                 </p>
                 <p>
                   As a women-owned, family-run business, our work is personal.
                   We pride ourselves on the craftsmanship we bring to every
                   project and the relationships we build with the communities we
-                  serve.
+                  serve. Based in Horn Lake, MS, we understand how much a safe,
+                  well-marked parking lot means for a business.
                 </p>
                 <p>
-                  Based in Horn Lake, MS, we understand how much a safe,
-                  well-marked parking lot means for a business. It shapes first
-                  impressions and protects everyone who uses it.
+                  Our story is rooted in dedication and strengthened by the
+                  customers who trust us. Even as we&apos;ve grown, our mission
+                  has remained the same: deliver reliable, high-quality
+                  solutions that make every property safer, cleaner, and more
+                  welcoming.
                 </p>
               </div>
             </Card>
@@ -167,17 +177,22 @@ function WhyUsPage() {
             <div>
               <Badge variant="accent" className="mb-6">
                 <Zap className="mr-1.5 h-3.5 w-3.5" />
-                Quality Standards
+                Why Choose A-Line
               </Badge>
               <h2 className="mb-6 font-display text-4xl font-bold text-asphalt-900">
-                We only use
+                More than pavement.
                 <br />
-                <span className="gradient-text">premium materials</span>
+                <span className="gradient-text">
+                  An investment worth protecting.
+                </span>
               </h2>
               <p className="mb-8 text-lg text-asphalt-600">
-                We proudly use DOT-approved, commercial-grade paints, pre-formed
-                thermoplastics, and surface preparation products designed for
-                high-traffic environments and varied weather conditions.
+                At A-Line Striping Inc., we believe your pavement is more than a
+                surface. It&apos;s an investment in safety, accessibility, and
+                the lasting value of your property. Our mission is to deliver
+                reliable, long-lasting striping, layout, and maintenance
+                solutions backed by our 1-year workmanship warranty, clear
+                communication, and premium materials.
               </p>
               <ul className="space-y-3">
                 {qualityStandards.map((standard) => (
@@ -193,14 +208,14 @@ function WhyUsPage() {
               <div className="flex items-center gap-3 mb-6">
                 <Paintbrush className="h-8 w-8 text-stripe-500" />
                 <h3 className="font-display text-2xl font-bold text-asphalt-900">
-                  Expert Craftsmanship
+                  Professional Craftsmanship You Can Trust
                 </h3>
               </div>
               <p className="text-asphalt-600">
                 Our skilled technicians bring years of experience in line
                 striping, layout design, ADA compliance, and facility safety
-                planning. Precision is our priority — from exact measurements
-                and alignment to consistent line thickness and crisp edges.
+                planning. Precision is our priority, from exact measurements and
+                alignment to consistent line thickness and crisp edges.
               </p>
               <div className="mt-8 flex items-center gap-4">
                 <div className="flex h-16 w-16 items-center justify-center bg-linear-to-br from-stripe-500 to-stripe-400">
@@ -285,7 +300,7 @@ function WhyUsPage() {
             that cares?
           </>
         }
-        description="Whether you're managing a commercial lot, industrial facility, or residential community, you deserve quality workmanship."
+        description="Whether you're managing a commercial lot, industrial facility, municipality, or residential community, you deserve a team who cares as much about the result as you do."
         primaryButtonText="Request a Free Quote"
       />
     </div>

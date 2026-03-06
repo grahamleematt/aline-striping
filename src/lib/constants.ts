@@ -63,113 +63,130 @@ export interface FAQ {
 export const SERVICE_FAQS = {
   parkingLotStriping: [
     {
-      question: "How often should a parking lot be re-striped?",
+      question:
+        "What can I expect from A-Line's professional parking lot striping services?",
       answer:
-        "For most commercial lots, re-striping is recommended every 12–24 months, depending on traffic volume, climate exposure, and wear.",
+        "You can expect clean, durable, code-conscious striping tailored to your property's layout, traffic flow, and safety needs. Our team handles parking stalls, directional arrows, fire lanes, ADA-compliant markings, and other essential details with commercial-grade materials and reliable workmanship.",
     },
     {
-      question: "Do you handle ADA compliance and fire-lane markings?",
+      question: "What's the difference between line striping and full restriping?",
       answer:
-        "Yes. We provide full ADA-compliant striping, accessible parking zones, fire-lane painting, and safety signage to meet local code requirements.",
+        "Line striping can refer to adding or refreshing specific markings, while full restriping typically means re-laying the entire traffic pattern across a lot. A full restriping is often needed when lines have faded too far, layouts have changed, or compliance updates are required.",
     },
     {
       question:
-        "Can you customize the layout to fit my lot size and traffic flow?",
+        "How do I know when it's time to contact a parking lot striping company?",
       answer:
-        "Absolutely. Every striping plan is tailored to your lot's dimensions, traffic patterns, and intended use.",
+        "Repainting your parking lot at least once a year is the most cost-effective approach. Allowing the lines to fade completely can require a full re-layout, which is significantly more expensive than maintaining a regular striping schedule.",
     },
     {
-      question: "Is sealcoating available along with striping?",
+      question: "Does the season affect when I should schedule line striping?",
       answer:
-        "Yes. We offer combined asphalt sealcoating and striping services to maximize pavement life and improve line visibility.",
+        "Yes. Temperature, humidity, and surface conditions all affect how well striping materials cure and adhere. We help schedule work during the right conditions so the finished markings last longer and look cleaner.",
+    },
+    {
+      question: "How long does it take to re-stripe a parking lot?",
+      answer:
+        "It depends on the size of the lot and the requirements needed to meet your custom layout, traffic, and compliance needs. Smaller lots can move quickly, while larger or more complex sites may require phased scheduling.",
     },
   ],
   warehouseFloorStriping: [
     {
-      question: "How long does warehouse striping last?",
+      question: "How do warehouse striping needs differ from outdoor lots?",
       answer:
-        "The lifespan depends on floor conditions, traffic levels, and paint type. In most industrial settings, professional striping lasts 1–3 years. High-traffic forklift areas may require periodic touch-ups.",
+        "Warehouse striping must account for forklift traffic, pedestrian separation, storage zones, hazard areas, and operational workflow in a much tighter environment than outdoor lots. The materials and layout planning also need to support heavier wear and more specific safety requirements.",
     },
     {
-      question: "What type of paint or coating do you use?",
+      question:
+        "What kind of paint/materials do you use? How long will the markings last?",
       answer:
-        "We use industrial-grade, highly durable coatings formulated for warehouses, including epoxy, polyurethane, and fast-drying acrylics designed to resist abrasion and chemicals.",
+        "We use professional materials from Sherwin-Williams, PPG, and Farrell Calhoun. Our professional markings typically last 2 to 3 years, depending on the surface conditions, traffic levels, and your facility's operational requirements.",
     },
     {
       question: "Do you offer both interior and exterior line striping?",
       answer:
-        "Yes. We stripe warehouse floors, loading docks, parking lots, truck lanes, staging areas, and industrial yards.",
+        "Yes. In addition to warehouse floors, we also stripe loading docks, parking lots, truck lanes, staging areas, and industrial yards, providing consistent, safety-focused markings inside and out.",
     },
     {
       question: "Do I need to shut down my warehouse during striping?",
       answer:
-        "Not always. Many projects can be completed in sections. We offer overnight and weekend service options to minimize disruption.",
+        "Not always. Many projects can be completed in sections, so your operations remain active. We work with your schedule to reduce disruption, including overnight and weekend service options.",
     },
   ],
   asphaltSealcoating: [
     {
       question: "What is asphalt sealcoating?",
       answer:
-        "Sealcoating is the process of applying a protective coating over asphalt surfaces to safeguard them from weather damage, traffic wear, UV rays, oil spills, and moisture.",
+        "Sealcoating is the process of applying a protective coating over asphalt surfaces to safeguard them from weather damage, traffic wear, UV rays, oil spills, and moisture. It enhances durability while improving the appearance of your pavement.",
     },
     {
       question: "Why is sealcoating important?",
       answer:
-        "Sealcoating protects the surface, slows deterioration, prevents cracking, and extends the lifespan of your pavement by 5-10+ years.",
+        "Over time, asphalt dries out, fades, and begins to crack due to sun exposure, water intrusion, and heavy use. Sealcoating protects the surface, slows deterioration, prevents cracking, and extends the lifespan of your pavement.",
     },
     {
       question: "How often should asphalt be sealcoated?",
       answer:
-        "Most asphalt surfaces should be sealcoated every 2 to 3 years, depending on traffic volume, climate, and wear.",
+        "Most asphalt surfaces should be sealcoated every 2 to 3 years, depending on traffic volume, climate, and overall wear. Commercial parking lots with heavy traffic may require more frequent maintenance.",
+    },
+    {
+      question: "What type of sealcoat do you use?",
+      answer:
+        "We use commercial-grade, highly durable asphalt emulsions and coal-tar-based sealers, when permitted, to provide the strongest protection. We choose the best material based on your surface type and usage.",
     },
     {
       question: "Does sealcoating make asphalt look new again?",
       answer:
-        "Yes. Sealcoating restores a deep black, smooth finish that dramatically improves curb appeal.",
+        "Yes. Sealcoating restores a deep black, smooth finish that dramatically improves curb appeal and makes old asphalt look refreshed and uniform.",
     },
   ],
   layoutDesign: [
     {
-      question: "Do I need a blueprint before you can design a layout?",
+      question: "What is parking lot layout design?",
       answer:
-        "No. Our team handles everything from measurements to the final design. We visit your property, assess the space, and create a custom layout from scratch — no existing blueprint required.",
+        "Parking lot layout design is the process of planning stall placement, traffic flow, ADA-compliant areas, entrances, exits, and safety zones. A professional design maximizes parking capacity, improves navigation, and ensures the lot meets local and federal regulations.",
+    },
+    {
+      question: "Why is a professionally designed parking lot important?",
+      answer:
+        "A well designed layout improves safety, supports efficient traffic flow, reduces congestion, prevents accidents, and ensures the property complies with ADA and municipal standards. It also enhances customer experience and helps protect your pavement longevity.",
     },
     {
       question: "Can you redesign an existing parking lot layout?",
       answer:
-        "Absolutely. We regularly redesign existing lots to increase capacity, improve flow, or bring them into ADA compliance. We'll evaluate your current setup and recommend the best improvements.",
+        "Yes. If your current layout is outdated, inefficient, or non-compliant, we can redesign it to improve traffic flow, increase capacity, and ensure ADA compliance.",
     },
     {
-      question: "How much can a new layout increase my parking capacity?",
+      question: "What makes A-Line Striping, Inc. different?",
       answer:
-        "Depending on the current configuration, a professionally designed layout can increase parking capacity by 10-25% without expanding the physical lot size. We optimize stall sizing, angles, and lane widths to maximize every square foot.",
-    },
-    {
-      question: "How long does the layout design process take?",
-      answer:
-        "Most projects are completed within 1-2 weeks from the initial site visit to the final design. Complex commercial properties may take slightly longer. We work with your timeline to minimize disruption.",
+        "Our designers combine real-world experience with compliance knowledge, delivering layouts that are safe, efficient, visually clear, and designed for long-term functionality. All work is backed by a 1-year workmanship warranty.",
     },
   ],
   precisionLinework: [
     {
+      question: "What is precision linework and why is it important?",
+      answer:
+        "Precision linework refers to accurately painted markings used to guide vehicles, pedestrians, and equipment through a property. High-quality linework improves safety, prevents confusion, enhances traffic flow, and creates a more organized and professional environment.",
+    },
+    {
       question: "What types of signage do you install?",
       answer:
-        "We install a full range of parking lot signage including stop signs, speed limit signs, directional arrows, ADA accessible parking signs, fire lane markers, reserved parking signs, and custom stenciled markings like company logos and numbered stalls.",
+        "We install a wide variety of traffic and safety signs, including stop signs, yield signs, one-way signs, ADA handicap parking signs, fire lane signs, directional and wayfinding signage, loading zone and no-parking signs, warehouse safety and hazard signs, and custom commercial and industrial signage.",
     },
     {
-      question: "Are your signs compliant with local fire and building codes?",
+      question: "What types of line markings do you provide?",
       answer:
-        "Yes. All our signage and markings are installed to meet local, state, and federal regulations, including ADA requirements, fire code specifications, and DOT standards. We stay current with code changes to ensure full compliance.",
+        "We provide all forms of precision linework, including parking stall lines, directional arrows, stop bars, crosswalks, pedestrian lanes, loading zones, fire lanes, warehouse floor markings, safety and hazard lines, and custom stencils and lettering.",
     },
     {
-      question: "How long do painted markings and signs last?",
+      question: "How do I know what signage my property needs?",
       answer:
-        "With DOT-approved, commercial-grade materials, our painted markings typically last 1-3 years depending on traffic volume and weather exposure. Thermoplastic markings and metal signs last significantly longer. We back all work with our 1-Year warranty.",
+        "Our team performs a full on-site evaluation to assess traffic flow, pedestrian activity, safety requirements, ADA compliance, and your property's layout and usage.",
     },
     {
-      question: "Can you add custom logos or specialty markings?",
+      question: "Do you provide custom signage?",
       answer:
-        "Absolutely. We create custom stencils for company logos, numbered parking stalls, reserved/VIP spaces, EV charging spots, and any other specialty marking you need. Our team works with you to design markings that match your brand and property requirements.",
+        "Yes. We can design and install custom signs with your branding, color preferences, specific text, unique symbols, or property-specific requirements.",
     },
   ],
 } as const satisfies Record<string, readonly FAQ[]>;

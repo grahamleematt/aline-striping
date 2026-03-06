@@ -124,7 +124,7 @@ function WarehouseFloorStripingPage() {
             <Badge variant="glass" className="px-4 py-2 text-sm">
               <Factory className="mr-2 h-4 w-4 text-stripe-400" />
               <span className="text-white/90">
-                Industrial-Grade Solutions
+                Horn Lake, MS & Mid-South
               </span>
             </Badge>
           </div>
@@ -136,9 +136,11 @@ function WarehouseFloorStripingPage() {
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl animate-fade-in-up stagger-2 text-lg text-asphalt-300 sm:text-xl">
-            Transform your warehouse with durable, safe, and efficient floor
-            markings. Custom striping solutions that improve safety,
-            organization, and workflow efficiency.
+            A-Line Striping, Inc. offers professional warehouse and floor line
+            striping services that improve safety, organization, and workflow
+            efficiency. Whether you&apos;re updating faded markings or completely
+            reconfiguring your layout, our custom striping solutions help your
+            warehouse run smoothly and safely.
           </p>
 
           <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-4 sm:flex-row">
@@ -185,8 +187,9 @@ function WarehouseFloorStripingPage() {
               <span className="gradient-text">floor solutions</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-asphalt-600">
-              From aisle markings to safety zones, we handle every aspect of
-              industrial floor striping.
+              Clearly marked aisles, storage zones, forklift lanes, hazard
+              areas, loading docks, and exterior lot markings designed to
+              improve efficiency and reduce risk.
             </p>
           </div>
 
@@ -231,7 +234,8 @@ function WarehouseFloorStripingPage() {
               <span className="gradient-text">warehouse striping</span>
             </h2>
             <p className="text-lg text-asphalt-300">
-              Professional floor markings create a safer, more organized, and
+              Clear floor markings help define walkways, forklift lanes, hazard
+              zones, and storage areas, creating a safer, more organized, and
               more efficient warehouse environment.
             </p>
           </div>
@@ -297,33 +301,37 @@ function WarehouseFloorStripingPage() {
                 Why A-Line
               </Badge>
               <h2 className="mb-6 font-display text-4xl font-bold text-asphalt-900 sm:text-5xl">
-                Precision &
+                Why choose
                 <br />
-                <span className="gradient-text">durability</span>
+                <span className="gradient-text">A-Line</span>
               </h2>
               <p className="mb-8 text-lg text-asphalt-600">
-                We use commercial-grade paints and coatings designed to
-                withstand heavy foot traffic, forklifts, machinery, and
-                industrial wear.
+                Since 2003, we&apos;ve served businesses across Tennessee,
+                Mississippi, Arkansas, and the wider Mid-South with reliable
+                service backed by a 1-year workmanship warranty.
               </p>
 
               <div className="space-y-4">
                 {[
                   {
-                    title: "Commercial-Grade Materials",
-                    desc: "Industrial paints that last 1-3+ years under heavy use",
+                    title: "Precision & Durability",
+                    desc: "Commercial-grade paints and coatings designed to withstand heavy foot traffic, forklifts, machinery, and industrial wear",
                   },
                   {
                     title: "Custom Layout Design",
-                    desc: "Tailored to your warehouse footprint and workflow",
+                    desc: "We analyze your floor plan and design tailored aisle markings, zones, safety lanes, forklift paths, and storage zones",
                   },
                   {
-                    title: "Flexible Scheduling",
-                    desc: "Overnight and weekend options to minimize downtime",
+                    title: "Improved Safety & Compliance",
+                    desc: "Clear floor markings define walkways, forklift lanes, hazard zones, and storage areas to reduce accidents",
                   },
                   {
-                    title: "Experienced Team",
-                    desc: `${BUSINESS_INFO.yearsExperience}+ years serving Mid-South facilities`,
+                    title: "Indoor & Outdoor Striping",
+                    desc: "We handle both interior warehouse floors and exterior lot or loading-area markings for consistent, dependable results",
+                  },
+                  {
+                    title: "Trusted & Experienced",
+                    desc: `${BUSINESS_INFO.yearsExperience}+ years serving businesses across Tennessee, Mississippi, Arkansas, and the wider Mid-South`,
                   },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-4">
@@ -345,7 +353,7 @@ function WarehouseFloorStripingPage() {
       </section>
 
       <FAQSection
-        description="Quick answers about our warehouse striping services."
+        description="Everything you need to know about our warehouse and line striping services."
         faqs={SERVICE_FAQS.warehouseFloorStriping}
       />
 
@@ -357,7 +365,7 @@ function WarehouseFloorStripingPage() {
             your warehouse?
           </>
         }
-        description="We'll evaluate your layout, discuss your needs, and provide a free, no-obligation quote tailored to your facility."
+        description="We&apos;ll evaluate your layout, discuss your needs, and provide a free, no-obligation quote tailored to your facility."
       />
     </div>
   );

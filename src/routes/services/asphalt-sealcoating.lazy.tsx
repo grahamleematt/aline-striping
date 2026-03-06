@@ -99,7 +99,9 @@ function AsphaltSealcoatingPage() {
           <div className="mb-8 inline-flex animate-fade-in-up">
             <Badge variant="glass" className="px-4 py-2 text-sm">
               <Shield className="mr-2 h-4 w-4 text-stripe-400" />
-              <span className="text-white/90">Protect Your Investment</span>
+              <span className="text-white/90">
+                Horn Lake, MS & Surrounding Areas
+              </span>
             </Badge>
           </div>
 
@@ -110,9 +112,11 @@ function AsphaltSealcoatingPage() {
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl animate-fade-in-up stagger-2 text-lg text-asphalt-300 sm:text-xl">
-            Protect your pavement, slow deterioration, and keep your property
-            looking clean and well maintained. Our sealcoating creates a strong
-            protective barrier against weather, traffic, and daily wear.
+            A-Line Striping, Inc. provides high-quality asphalt sealcoating
+            services designed to protect your pavement, slow deterioration, and
+            keep your property clean and well maintained. Our sealcoating
+            creates a strong protective barrier against weather, traffic, oil,
+            and everyday wear.
           </p>
 
           <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-4 sm:flex-row">
@@ -160,7 +164,8 @@ function AsphaltSealcoatingPage() {
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-asphalt-600">
               Asphalt naturally breaks down over time due to sunlight, moisture,
-              chemicals, and traffic. Sealcoating acts as a durable shield.
+              chemicals, and vehicle traffic. Sealcoating acts as a durable
+              shield that protects, restores, and extends pavement life.
             </p>
           </div>
 
@@ -228,8 +233,9 @@ function AsphaltSealcoatingPage() {
               <span className="gradient-text">solutions</span>
             </h2>
             <p className="text-lg text-asphalt-300">
-              From residential driveways to large commercial properties, we have
-              the expertise and equipment to handle any project.
+              From parking lots and driveways to warehouse yards, loading areas,
+              and sealcoat-plus-striping packages, we have the expertise and
+              equipment to handle every project.
             </p>
           </div>
 
@@ -265,8 +271,9 @@ function AsphaltSealcoatingPage() {
                 <span className="gradient-text">asphalt protection</span>
               </h2>
               <p className="mb-8 text-lg text-asphalt-600">
-                Sealcoating is the most cost-effective way to extend the life of
-                your pavement and improve the look of your property.
+                Sealcoating is one of the most effective and affordable ways to
+                protect your pavement investment and improve the look of your
+                property.
               </p>
 
               <div className="space-y-3">
@@ -325,7 +332,7 @@ function AsphaltSealcoatingPage() {
       </section>
 
       <FAQSection
-        description="Common questions about our sealcoating services."
+        description="Everything you need to know about our asphalt sealcoating services."
         faqs={SERVICE_FAQS.asphaltSealcoating}
       />
 
@@ -337,7 +344,8 @@ function AsphaltSealcoatingPage() {
             your asphalt?
           </>
         }
-        description="Get a free, no-obligation estimate. We'll evaluate your asphalt and recommend the right sealcoating solution."
+        description="A-Line Striping, Inc. will evaluate your asphalt, recommend the right sealcoating solution, and provide a clear, free, no-obligation estimate."
+        primaryButtonText="Request a Free Quote"
       />
     </div>
   );

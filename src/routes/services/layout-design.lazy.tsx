@@ -31,39 +31,39 @@ export const Route = createLazyFileRoute("/services/layout-design")({
 const features = [
   {
     icon: Ruler,
-    title: "Smarter Space Use",
+    title: "Custom Parking Lot Layout Planning",
     description:
-      "Maximize parking capacity without overcrowding, using optimal stall sizing and efficient lane configurations.",
+      "Completely customized layouts based on your lot size, property usage, traffic patterns, and unique business needs.",
   },
   {
     icon: Car,
-    title: "Safer Traffic Flow",
+    title: "Parking Space Optimization",
     description:
-      "Clear lanes, directional planning, and logical entry/exit points that reduce congestion and accidents.",
+      "Maximize your parking capacity with strategic stall design, space allocation, and proper stall angles.",
   },
   {
     icon: Accessibility,
-    title: "ADA-Friendly Layout",
+    title: "ADA-Compliant Parking Layouts",
     description:
-      "Compliant accessible parking spaces, access aisles, and pathways that meet federal requirements.",
+      "Accessible stalls, loading aisles, signage, and designated routes that follow all ADA requirements for your lot size and usage.",
   },
   {
     icon: MapPin,
-    title: "No Blueprint Needed",
+    title: "Safety & Pedestrian Route Planning",
     description:
-      "We design from scratch or improve existing layouts. Our team handles all measurements and planning.",
+      "Crosswalks, walkways, hazard zones, fire lanes, and safe pedestrian paths to reduce risk and ensure compliance.",
   },
   {
     icon: Target,
-    title: "Optimized for Your Needs",
+    title: "Re-Designs & Efficiency Upgrades",
     description:
-      "Tailored designs for retail, office, industrial, or multi-use properties with specific traffic patterns.",
+      "Redesign outdated or inefficient lots to improve flow, capacity, and compliance.",
   },
   {
     icon: TrendingUp,
-    title: "Future-Ready Design",
+    title: "On-Site Evaluation & Measurement",
     description:
-      "Layouts that accommodate growth, EV charging stations, and changing traffic patterns.",
+      "We measure your lot, inspect traffic usage, and develop a layout that fits your exact property and operational needs.",
   },
 ];
 
@@ -95,12 +95,11 @@ const processSteps = [
 ];
 
 const benefits = [
-  "Increase parking capacity by 10-25%",
-  "Reduce traffic congestion and accidents",
-  "Ensure full ADA compliance",
-  "Improve customer experience",
-  "Enhance property value and curb appeal",
-  "Create safer pedestrian pathways",
+  "Experienced designers who understand traffic engineering, ADA compliance, and real-world usage patterns",
+  "Compliance-focused layouts that meet local codes and federal ADA standards",
+  "Maximum-efficiency designs that prioritize smooth traffic flow and optimal space usage",
+  "Accurate layout execution from design through final striping",
+  "All layout and striping work backed by a full 1-year workmanship warranty",
 ];
 
 function LayoutDesignPage() {
@@ -112,7 +111,7 @@ function LayoutDesignPage() {
           <div className="mb-8 inline-flex animate-fade-in-up">
             <Badge variant="glass" className="px-4 py-2 text-sm">
               <Ruler className="mr-2 h-4 w-4 text-stripe-400" />
-              <span className="text-white/90">Optimize Every Space</span>
+              <span className="text-white/90">Horn Lake, MS & Mid-South</span>
             </Badge>
           </div>
 
@@ -123,15 +122,16 @@ function LayoutDesignPage() {
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl animate-fade-in-up stagger-2 text-lg text-asphalt-300 sm:text-xl">
-            A well-planned parking lot saves space, keeps traffic moving, and
-            makes parking easier. Our designers create layouts that balance
-            efficiency, safety, and convenience for everyone.
+            A-Line Striping, Inc. provides expert parking lot layout and design
+            services for commercial properties, retail centers, industrial
+            facilities, churches, schools, and multi-use lots. We create
+            structured and optimized plans tailored to your property.
           </p>
 
           <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild variant="primary" size="xl">
               <Link to="/contact">
-                Get a Free Consultation
+                Request a Free Quote
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -164,16 +164,17 @@ function LayoutDesignPage() {
           <div className="mb-16 text-center">
             <Badge variant="accent" className="mb-4">
               <Zap className="mr-1.5 h-3.5 w-3.5" />
-              Essentials
+              Our Services
             </Badge>
             <h2 className="mb-4 font-display text-4xl font-bold text-asphalt-900 sm:text-5xl">
-              Elements of a
+              Parking lot design
               <br />
-              <span className="gradient-text">well-planned layout</span>
+              <span className="gradient-text">services</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-asphalt-600">
-              Every aspect of your parking lot design is carefully considered
-              for maximum efficiency and safety.
+              Parking lot layout planning, traffic flow design, ADA compliance,
+              safety routes, redesigns, and on-site evaluation built around your
+              property&apos;s operational needs.
             </p>
           </div>
 
@@ -253,17 +254,18 @@ function LayoutDesignPage() {
             <div>
               <Badge variant="accent" className="mb-6">
                 <TrendingUp className="mr-1.5 h-3.5 w-3.5" />
-                Benefits
+                Why Choose A-Line
               </Badge>
               <h2 className="mb-6 font-display text-4xl font-bold text-asphalt-900 sm:text-5xl">
-                What a great layout
+                Professional parking lot
                 <br />
-                <span className="gradient-text">does for you</span>
+                <span className="gradient-text">design matters</span>
               </h2>
               <p className="mb-8 text-lg text-asphalt-600">
-                A professionally designed parking lot layout isn't just about
-                fitting more cars — it's about creating a better experience for
-                everyone who uses your property.
+                A properly designed parking lot improves safety, supports
+                efficient traffic flow, maximizes parking capacity, ensures ADA
+                and municipal compliance, and creates a better customer
+                experience.
               </p>
 
               <div className="space-y-3">
@@ -316,7 +318,7 @@ function LayoutDesignPage() {
       </section>
 
       <FAQSection
-        description="Everything you need to know about our parking lot layout design services."
+        description="Everything you need to know about our parking lot layout and design services."
         faqs={SERVICE_FAQS.layoutDesign}
       />
 
@@ -328,8 +330,8 @@ function LayoutDesignPage() {
             your parking lot?
           </>
         }
-        description="Get a free consultation and discover how a better layout can improve your property. We'll assess your space and provide expert recommendations."
-        primaryButtonText="Get Started"
+        description="A smarter, safer, and more efficient parking lot layout starts here. Contact A-Line Striping, Inc. today to schedule an on-site evaluation and receive a free, no-obligation quote."
+        primaryButtonText="Request a Free Quote"
       />
     </div>
   );

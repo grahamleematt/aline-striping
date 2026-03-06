@@ -100,21 +100,23 @@ function ServiceAreaPage() {
           </div>
 
           <h1 className="mb-6 animate-fade-in-up stagger-1 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Parking Lot Striping in
+            Professional Striping, Sealcoating
             <br />
             <span className="gradient-text">
-              {area.name}, {area.stateAbbr}
+              &amp; Asphalt Services for {area.name}, {area.stateAbbr}
             </span>
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl animate-fade-in-up stagger-2 text-lg text-asphalt-300 sm:text-xl">
-            {area.description}
+            {area.description} Our team delivers clean, accurate, and
+            code-compliant work that improves safety, organization, and curb
+            appeal for commercial, industrial, and municipal properties.
           </p>
 
           <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild variant="primary" size="xl">
               <Link to="/contact">
-                Get a Free Quote
+                Request a Free Quote
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -229,15 +231,15 @@ function ServiceAreaPage() {
                 Why A-Line Striping
               </Badge>
               <h2 className="mb-6 font-display text-4xl font-bold text-asphalt-900 sm:text-5xl">
-                Your trusted partner
+                Why businesses choose
                 <br />
-                <span className="gradient-text">in {area.name}</span>
+                <span className="gradient-text">A-Line in {area.name}</span>
               </h2>
               <p className="mb-8 text-lg text-asphalt-600">
-                Based in Horn Lake, MS, we've been serving {area.name} and the
-                surrounding Mid-South region since {BUSINESS_INFO.founded}.
-                Every project gets the same attention to detail, quality
-                materials, and professional results.
+                We understand the needs of commercial properties across {area.name} and
+                are committed to delivering long-lasting results you can depend
+                on, backed by durable materials, code-compliant layouts, and
+                flexible scheduling.
               </p>
               <div className="space-y-3">
                 {whyChoose.map((reason) => (
@@ -252,12 +254,13 @@ function ServiceAreaPage() {
             <Card variant="elevated" className="p-5 sm:p-6 md:p-8">
               <CardContent className="p-0">
                 <h3 className="mb-6 font-display text-2xl font-bold text-asphalt-900">
-                  Get a Free Quote in {area.name}
+                  Ready to improve your property in {area.name}?
                 </h3>
                 <p className="mb-6 text-asphalt-600">
-                  Ready to improve your parking lot, warehouse, or driveway? We
-                  provide free, no-obligation estimates for all projects in{" "}
-                  {area.name}, {area.stateAbbr}.
+                  Whether you need expert parking lot striping, asphalt
+                  sealcoating, warehouse line marking, or a custom layout
+                  design, A-Line Striping, Inc. is ready to help. Contact us for
+                  a free, no-obligation quote.
                 </p>
                 <div className="flex flex-col gap-3">
                   <Button

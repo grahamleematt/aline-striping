@@ -34,39 +34,39 @@ export const Route = createLazyFileRoute(
 const services = [
   {
     icon: AlertTriangle,
-    title: "Clear Traffic Signs",
+    title: "Custom Traffic Sign Design & Installation",
     description:
-      "Stop signs, yield signs, speed limit signs, and directional signage that keeps traffic flowing safely.",
+      "We create and install custom signs including stop signs, yield signs, directional arrows, ADA signs, fire lane signs, loading zone signage, and more.",
   },
   {
     icon: ArrowUpDown,
-    title: "Custom Striping Layout",
+    title: "Directional & Navigation Markings",
     description:
-      "Tailored markings including arrows, turn lanes, crosshatching, and specialty stencils for your property.",
-  },
-  {
-    icon: Footprints,
-    title: "Pedestrian Crossings",
-    description:
-      "High-visibility crosswalks and walkway markings that protect pedestrians and meet safety codes.",
-  },
-  {
-    icon: Flame,
-    title: "Fire Lanes",
-    description:
-      "Properly marked fire lanes with correct coloring and signage to meet fire code requirements.",
-  },
-  {
-    icon: Ban,
-    title: "No-Parking Zones",
-    description:
-      "Clear no-parking markings, hatching, and signs for restricted areas, loading zones, and emergency access.",
+      "Clear arrows, lane indicators, drive lane markings, and pedestrian paths ensure smooth vehicle and foot traffic flow throughout your property.",
   },
   {
     icon: ParkingCircle,
-    title: "ADA Signage",
+    title: "ADA-Compliant Signage",
     description:
-      "Compliant accessible parking signs, van accessible markers, and access aisle signage.",
+      "Accessible parking signs, van-accessible indicators, and properly placed ADA-compliant markers that meet all local and federal guidelines.",
+  },
+  {
+    icon: Footprints,
+    title: "Warehouse Floor Signage & Linework",
+    description:
+      "Highly durable interior floor markings for aisle designations, forklift routes, safety zones, hazard areas, and inventory areas.",
+  },
+  {
+    icon: Flame,
+    title: "Safety & Hazard Markings",
+    description:
+      "Bright, highly visible markings for caution areas, fire lanes, emergency exits, and restricted zones.",
+  },
+  {
+    icon: Ban,
+    title: "Custom Layout Design for Signage & Linework",
+    description:
+      "We design cohesive layout plans to ensure every sign and line marking works together for a safe, organized, and professional-looking property.",
   },
 ];
 
@@ -111,12 +111,12 @@ const signageTypes = [
 ];
 
 const benefits = [
-  "Reduce liability with clear safety markings",
-  "Meet fire and building code requirements",
-  "Improve traffic flow and reduce accidents",
-  "Enhance accessibility for all visitors",
-  "Professional appearance that builds trust",
-  "Durable materials that last for years",
+  "Custom solutions designed around your property’s specific needs and layout",
+  "Durable, highly visible materials that ensure long-lasting clarity",
+  "ADA and safety compliance expertise across local laws, fire codes, and industry requirements",
+  "Precision craftsmanship with clean, straight, and consistent linework",
+  "Complete design and installation from planning through execution",
+  "1-Year workmanship warranty for added protection",
 ];
 
 function PrecisionLineworkSignagePage() {
@@ -128,7 +128,7 @@ function PrecisionLineworkSignagePage() {
           <div className="mb-8 inline-flex animate-fade-in-up">
             <Badge variant="glass" className="px-4 py-2 text-sm">
               <Eye className="mr-2 h-4 w-4 text-stripe-400" />
-              <span className="text-white/90">Safety-First Design</span>
+              <span className="text-white/90">Horn Lake, MS & Mid-South</span>
             </Badge>
           </div>
 
@@ -139,9 +139,10 @@ function PrecisionLineworkSignagePage() {
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl animate-fade-in-up stagger-2 text-lg text-asphalt-300 sm:text-xl">
-            Keep drivers and pedestrians safe with clear, easy-to-follow
-            markings. From fire lanes to custom directional signs, we ensure
-            your property is well-organized and easy to navigate.
+            A-Line Striping, Inc. provides expertly crafted signage and
+            precision linework for parking lots, warehouses, industrial
+            facilities, and commercial properties. We deliver clean, accurate,
+            and long-lasting results that improve safety and navigation.
           </p>
 
           <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-4 sm:flex-row">
@@ -188,8 +189,9 @@ function PrecisionLineworkSignagePage() {
               <span className="gradient-text">improves safety</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-asphalt-600">
-              Professional signage and linework that guides traffic, protects
-              pedestrians, and keeps your property compliant.
+              Signage and linework that guide traffic, protect pedestrians, meet
+              ADA and municipal requirements, and improve the overall appearance
+              and functionality of your property.
             </p>
           </div>
 
@@ -233,8 +235,9 @@ function PrecisionLineworkSignagePage() {
               <span className="gradient-text">we provide</span>
             </h2>
             <p className="text-lg text-asphalt-300">
-              From standard traffic signs to custom stencils, we have everything
-              you need for a well-marked property.
+              From standard traffic signs to custom stencils, ADA markers, fire
+              lane signs, and warehouse safety signs, we provide complete
+              signage and linework solutions.
             </p>
           </div>
 
@@ -301,16 +304,17 @@ function PrecisionLineworkSignagePage() {
             <div className="order-1 lg:order-2">
               <Badge variant="accent" className="mb-6">
                 <Shield className="mr-1.5 h-3.5 w-3.5" />
-                Why It Matters
+                Why Choose A-Line
               </Badge>
               <h2 className="mb-6 font-display text-4xl font-bold text-asphalt-900 sm:text-5xl">
-                The importance of
+                Professional signage
                 <br />
-                <span className="gradient-text">proper signage</span>
+                <span className="gradient-text">that performs</span>
               </h2>
               <p className="mb-8 text-lg text-asphalt-600">
-                Clear signage isn't just about looking professional — it's about
-                safety, compliance, and liability protection for your property.
+                Clear signage and precision linework are essential for safety,
+                compliance, traffic flow, curb appeal, and operational
+                efficiency across commercial and industrial properties.
               </p>
 
               <div className="space-y-3">
@@ -327,7 +331,7 @@ function PrecisionLineworkSignagePage() {
       </section>
 
       <FAQSection
-        description="Everything you need to know about our signage and linework services."
+        description="Everything you need to know about our precision linework and signage design services."
         faqs={SERVICE_FAQS.precisionLinework}
       />
 
@@ -339,8 +343,8 @@ function PrecisionLineworkSignagePage() {
             your property's safety?
           </>
         }
-        description="Get a free consultation and quote. We'll assess your signage needs and provide expert recommendations."
-        primaryButtonText="Get Started"
+        description="Improve safety, boost organization, and enhance the flow of your property with A-Line Striping, Inc.’s signage and precision linework services. Contact our team for a free, no-obligation quote."
+        primaryButtonText="Request a Free Quote"
       />
     </div>
   );

@@ -35,6 +35,7 @@ const services = [
       "Re-striping & line marking",
       "ADA-compliant spaces",
       "Fire lanes & safety markings",
+      "Directional arrows, numbers & custom stencils",
     ],
     href: "/services/parking-lot-striping",
   },
@@ -43,8 +44,9 @@ const services = [
     items: [
       "Commercial sealcoating",
       "Residential driveway sealing",
-      "Crack sealing",
-      "Weather-resistant protection",
+      "Crack sealing and surface preparation",
+      "Weather-resistant asphalt protection",
+      "Smooth, black finish for improved appearance",
     ],
     href: "/services/asphalt-sealcoating",
   },
@@ -53,7 +55,8 @@ const services = [
     items: [
       "Forklift traffic lanes",
       "Pedestrian walkways",
-      "Storage area marking",
+      "Storage and inventory marking",
+      "Hazard zone delineation",
       "OSHA-compliant markings",
     ],
     href: "/services/warehouse-floor-striping",
@@ -67,6 +70,17 @@ const services = [
       "Entry/exit planning",
     ],
     href: "/services/layout-design",
+  },
+  {
+    title: "Custom Signage & Safety Markings",
+    items: [
+      "ADA parking signage",
+      "Stop, yield, and direction signs",
+      "Fire lane and no-parking signs",
+      "Safety and hazard area markings",
+      "High-contrast markings for visibility in all conditions",
+    ],
+    href: "/services/precision-linework-signage",
   },
 ];
 
@@ -105,9 +119,9 @@ const arkansasCities = ["West Memphis", "Marion", "Jonesboro", "Forrest City"];
 
 const whyChooseUs = [
   "Over 20 years of experience",
-  "Comprehensive services: striping, sealcoating, design, signage",
+  "Comprehensive services: one contractor for striping, sealcoating, design, signage, and maintenance",
   "High-durability paints and materials",
-  "Safety & ADA compliance focused",
+  "Safety and compliance focused",
   "Flexible scheduling including evenings and weekends",
   "1-Year workmanship warranty",
 ];
@@ -121,20 +135,25 @@ function ServiceAreasPage() {
           <div className="mb-8 inline-flex animate-fade-in-up">
             <Badge variant="glass" className="px-4 py-2 text-sm">
               <MapPin className="mr-2 h-4 w-4 text-stripe-400" />
-              <span className="text-white/90">Based in Horn Lake, MS</span>
+              <span className="text-white/90">All Service Areas</span>
             </Badge>
           </div>
 
           <h1 className="mb-6 animate-fade-in-up stagger-1 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Serving the
+            Professional Parking Lot Striping,
             <br />
-            <span className="gradient-text">Mid-South Region</span>
+            <span className="gradient-text">
+              Sealcoating &amp; Line Marking
+            </span>
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl animate-fade-in-up stagger-2 text-lg text-asphalt-300 sm:text-xl">
             A-Line Striping, Inc. proudly provides high-quality striping,
-            sealcoating, signage, and parking lot layout services throughout
-            Mississippi, Tennessee, and Arkansas.
+            sealcoating, signage, and parking lot layout services throughout the
+            Mid-South region. With over {BUSINESS_INFO.yearsExperience} years of
+            experience, we serve commercial properties, industrial facilities,
+            retail centers, schools, and municipalities across Mississippi,
+            Tennessee, and Arkansas.
           </p>
 
           <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-4 sm:flex-row">
@@ -184,8 +203,8 @@ function ServiceAreasPage() {
               <span className="gradient-text">service areas</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-asphalt-600">
-              We serve commercial properties, industrial facilities, retail
-              centers, schools, and municipalities across three states.
+              We are based in Horn Lake, Mississippi, and serve surrounding
+              cities and counties throughout the Mid-South.
             </p>
           </div>
 
@@ -324,8 +343,9 @@ function ServiceAreasPage() {
               <span className="gradient-text">every industry</span>
             </h2>
             <p className="text-lg text-asphalt-300">
-              We provide asphalt maintenance and marking solutions for
-              businesses across all sectors.
+              We provide complete asphalt maintenance and marking solutions for
+              commercial shopping centers, industrial warehouses, office parks,
+              churches, municipalities, and more.
             </p>
           </div>
 
@@ -356,17 +376,18 @@ function ServiceAreasPage() {
               Our Services
             </Badge>
             <h2 className="mb-4 font-display text-4xl font-bold text-asphalt-900 sm:text-5xl">
-              Full range of
+              Our full range of
               <br />
               <span className="gradient-text">professional services</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-asphalt-600">
-              Wherever you are located, A-Line Striping offers comprehensive
-              solutions for all your pavement needs.
+              Wherever you are located, A-Line Striping, Inc. offers complete
+              striping, sealcoating, design, signage, and maintenance
+              solutions.
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
               <Card
                 key={service.title}
@@ -409,13 +430,14 @@ function ServiceAreasPage() {
                 Why A-Line
               </Badge>
               <h2 className="mb-6 font-display text-4xl font-bold text-asphalt-900 sm:text-5xl">
-                Why customers choose
+                Why customers across
                 <br />
-                <span className="gradient-text">A-Line Striping</span>
+                <span className="gradient-text">the Mid-South choose us</span>
               </h2>
               <p className="mb-8 text-lg text-asphalt-600">
                 We understand the needs of property owners in the Mid-South and
-                tailor our services accordingly.
+                tailor our services accordingly with durable materials, code
+                compliance, and flexible scheduling.
               </p>
 
               <div className="space-y-3">
@@ -458,7 +480,7 @@ function ServiceAreasPage() {
                     <p className="font-display text-2xl font-bold text-asphalt-900">
                       1000+
                     </p>
-                    <p className="text-xs text-asphalt-600">Projects Done</p>
+                    <p className="text-xs text-asphalt-600">Projects Completed</p>
                   </div>
                 </div>
               </Card>
@@ -470,12 +492,12 @@ function ServiceAreasPage() {
       <CTASection
         heading={
           <>
-            Need professional services
+            Need professional striping
             <br />
             in your area?
           </>
         }
-        description="A-Line Striping, Inc. is ready to serve your commercial or industrial property with fast, reliable, and professional results."
+        description="A-Line Striping, Inc. is ready to serve your commercial or industrial property with fast, reliable, and professional results. Contact us for a free, no-obligation quote."
         primaryButtonText="Request a Free Quote"
       />
     </div>

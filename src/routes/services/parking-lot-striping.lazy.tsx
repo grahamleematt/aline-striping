@@ -59,7 +59,7 @@ const services = [
   },
   {
     icon: Eye,
-    title: "Reflective & High-Visibility",
+    title: "Reflective & High-Visibility Coatings",
     description:
       "Enhanced visibility for low-light, nighttime, or high-traffic conditions.",
   },
@@ -67,7 +67,19 @@ const services = [
     icon: Truck,
     title: "Custom Lot Layouts",
     description:
-      "Tailored striping plans to maximize parking capacity and optimize traffic flow.",
+      "Tailored striping plans to maximize parking capacity and optimize flow based on your specific lot dimensions.",
+  },
+  {
+    icon: Shield,
+    title: "Bumper Blocks & Wheel Stops",
+    description:
+      "Clearly marked stops to protect curbs, walls, and parked vehicles.",
+  },
+  {
+    icon: Sparkles,
+    title: "Parking Lot Cleaning / Sweeping",
+    description:
+      "Remove debris and clean the surface before striping, ideal for maintenance or new paint jobs.",
   },
 ];
 
@@ -122,7 +134,7 @@ function ParkingLotStripingPage() {
             >
               <Shield className="mr-1.5 h-3.5 w-3.5 text-stripe-400 sm:mr-2 sm:h-4 sm:w-4" />
               <span className="text-white/90">
-                {BUSINESS_INFO.warranty} Warranty
+                Horn Lake, MS & Surrounding Areas
               </span>
             </Badge>
           </div>
@@ -135,9 +147,10 @@ function ParkingLotStripingPage() {
 
           <p className="mx-auto mb-8 max-w-2xl animate-fade-in-up stagger-2 text-base leading-relaxed text-asphalt-300 sm:mb-10 sm:text-lg md:text-xl">
             A faded, poorly marked parking lot can cause confusion, reduce
-            efficiency, and pose safety risks. We create precise, long-lasting
-            striping for commercial lots, retail centers, and industrial
-            properties.
+            efficiency, and even pose safety risks. At A-Line Striping, Inc., we
+            create precise, long-lasting striping for commercial lots, retail
+            centers, industrial properties, and more. We help your property stay
+            organized, safe, and compliant.
           </p>
 
           <div className="flex animate-fade-in-up stagger-3 flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
@@ -211,8 +224,9 @@ function ParkingLotStripingPage() {
               <span className="gradient-text">solutions</span>
             </h2>
             <p className="mx-auto max-w-2xl text-base text-asphalt-600 sm:text-lg">
-              From new installations to maintenance re-striping, we handle every
-              aspect of parking lot line marking.
+              From new line striping and re-striping to ADA-compliant markings,
+              fire lanes, custom stencils, wheel stops, and sweeping, we cover
+              it all.
             </p>
           </div>
 
@@ -315,11 +329,15 @@ function ParkingLotStripingPage() {
                   },
                   {
                     title: "Full Range of Services",
-                    desc: "From new line striping to ADA-compliant markings, fire lanes, and custom stencils",
+                    desc: "From new line striping and re-striping to ADA compliant markings, fire lanes, custom stencils, wheel stops, and sweeping",
                   },
                   {
                     title: "Custom Layout & Design",
-                    desc: "Optimized layouts for traffic flow and maximum parking capacity",
+                    desc: "Every parking lot is unique. We design layouts to optimize flow, maximize parking capacity, and ensure safety",
+                  },
+                  {
+                    title: "Compliance & Safety",
+                    desc: "We mark ADA parking spaces, fire lanes, directional arrows, and other essential signage to meet regulatory standards",
                   },
                   {
                     title: "Guaranteed Workmanship",
@@ -384,8 +402,7 @@ function ParkingLotStripingPage() {
                 Common questions
               </h2>
               <p className="text-base text-asphalt-600 sm:text-lg">
-                Everything you need to know about our parking lot striping
-                services.
+                Everything you need to know about our parking lot striping services.
               </p>
             </div>
 
@@ -427,8 +444,10 @@ function ParkingLotStripingPage() {
               your parking lot?
             </h2>
             <p className="mb-8 text-base text-asphalt-800 sm:mb-10 sm:text-lg lg:text-xl">
-              Get a free, no-obligation quote. Based in Horn Lake, MS, we
-              proudly serve clients throughout the Mid-South.
+              Based in Horn Lake, MS, we proudly serve clients throughout the
+              Mid-South, including surrounding counties and neighboring states.
+              We&apos;ll evaluate your lot, recommend the best striping plan, and
+              provide transparent pricing tailored to your needs.
             </p>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
               <Button
